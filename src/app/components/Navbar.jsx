@@ -1,28 +1,41 @@
+import Link from "next/link";
 
-const Navbar = () => {
-    return (
-        <div>
-            <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-1">
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div className="flex-none">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Link</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="bg-base-100 rounded-t-none p-2">
-            <li><a>Link 1</a></li>
-            <li><a>Link 2</a></li>
-          </ul>
-        </details>
-      </li>
-    </ul>
-  </div>
-</div>
+export default function Navbar() {
+  return (
+    <nav className="bg-base-200 shadow-md sticky top-0 z-50">
+      <div className=" mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-white">
+          EduVerse
         </div>
-    );
-};
 
-export default Navbar;
+        {/* Main Links */}
+        <div className="space-x-6">
+          <Link href="/" className="hover:text-primary font-medium">
+            Home
+          </Link>
+          <Link href="/courses" className="hover:text-primary font-medium">
+            Courses
+          </Link>
+          <Link href="/contact" className="hover:text-primary font-medium">
+            Contact
+          </Link>
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="space-x-4">
+          <Link href="/login">
+            <button className="px-4 py-2 border border-white text-white rounded-lg hover:bg-base-100 hover:text-white transition">
+              Login
+            </button>
+          </Link>
+          <Link href="/register">
+            <button className="px-4 py-2 bg-base-100 text-white rounded-lg hover:bg-white transition">
+              Register
+            </button>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
