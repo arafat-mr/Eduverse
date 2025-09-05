@@ -1,28 +1,63 @@
+'use client';
+import Lottie from 'lottie-react';
+import bannerAnimation from '../../../public/Home-resources/Banner/banner.json';
+import { Slide } from 'react-awesome-reveal';
+import { Typewriter } from 'react-simple-typewriter';
+
+
 export default function Banner() {
   return (
-    <section className="bg-gradient-to-r from-green-100 to-green-200 text-gray-800 py-20">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Welcome to Eduverse
-        </h1>
-        <p className="text-lg md:text-xl mb-6">
-          Learn from the best courses, track your progress, and achieve your goals.
-        </p>
-        <div className="flex justify-center gap-4">
-          <a 
-            href="/courses" 
-            className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-green-600 transition"
-          >
-            Explore Courses
-          </a>
-          <a 
-            href="/register" 
-            className="px-6 py-3 bg-white text-black rounded-lg transition"
-          >
-            Get Started
-          </a>
-        </div>
+    <Slide direction="up" duration={2000} delay={200} cascade triggerOnce>
+      <div className="grid grid-cols-12 place-content-center place-items-center text-center md:text-start bg-gradient-to-r from-green-100 to-green-200 text-gray-800 px-6 sm:px-12 py-12 sm:py-16 gap-4 md:gap-8">
+        
+        {/* Left Side: Text Content */}
+        <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6">
+          
+          <h1 className="text-[#278380] text-3xl md:text-7xl font-bold">
+            Your Awesome Online Course
+          </h1>
+
+          {/* Typing Effect Subheading */}
+      <div className='w-[500px] h-[30px]'>
+            <p className="text-sm sm:text-lg md:w-[500px] text-gray-700 leading-relaxed">
+            <Typewriter
+              words={[
+                'Cloud-based LMS Trusted by 1000+.',
+                'Lorem Ipsum is simply dummy text of the printing typesetting industry.'
+              ]}
+              loop={0}             // 0 = infinite, change to 1 to play once
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1500}
+            />
+          </p>
       </div>
-    </section>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4">
+            <button className="btn btn-outline   px-6 py-2 rounded-md w-full sm:w-auto">
+              View Courses
+            </button>
+            <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-md w-full sm:w-auto">
+              Explore More
+            </button>
+          </div>
+        </div>
+
+        {/* Right Side: Lottie Animation */}
+        <div className="col-span-12 md:col-span-6 flex justify-center mt-8 md:mt-0">
+          <div className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px]">
+            <Lottie
+              animationData={bannerAnimation}
+              loop={true}
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </div>
+        </div>
+
+      </div>
+    </Slide>
   );
 }
+// TODO: Button style change dbo,typing effect upgrade dibo
