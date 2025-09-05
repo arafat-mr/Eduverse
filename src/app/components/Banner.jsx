@@ -14,16 +14,17 @@ export default function Banner() {
         <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6">
           
           <h1 className="text-[#278380] text-3xl md:text-7xl font-bold">
-            Your Awesome Online Course
+            Your Awesome Online <br className='block md:hidden' /> Course
           </h1>
 
           {/* Typing Effect Subheading */}
-      <div className='w-[500px] h-[30px]'>
-            <p className="text-sm sm:text-lg md:w-[500px] text-gray-700 leading-relaxed">
+      <div className='w-[300px] md:w-[500px] h-[30px]'>
+            <p className="text-sm sm:text-lg md:w-[500px] text-gray-700 font-semibold leading-relaxed">
             <Typewriter
               words={[
                 'Cloud-based LMS Trusted by 1000+.',
-                'Lorem Ipsum is simply dummy text of the printing typesetting industry.'
+                'Learn at your own pace.',
+                'Unlimited Access.',
               ]}
               loop={0}             // 0 = infinite, change to 1 to play once
               cursor
@@ -35,11 +36,11 @@ export default function Banner() {
           </p>
       </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4">
-            <button className="btn btn-outline   px-6 py-2 rounded-md w-full sm:w-auto">
+          <div className="flex  flex-col items-center sm:flex-row  gap-3 sm:gap-4 mt-5">
+            <button className="btn max-w-[200px] btn-outline  px-6 py-2 rounded-md w-full sm:w-auto">
               View Courses
             </button>
-            <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-md w-full sm:w-auto">
+            <button className="btn btn-warning  px-6 py-2 max-w-[200px] rounded-md w-full sm:w-auto">
               Explore More
             </button>
           </div>
