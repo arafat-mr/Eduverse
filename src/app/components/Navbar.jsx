@@ -28,11 +28,15 @@ export default function Navbar() {
     </>
   );
   return (
-    <div className=" bg-linear-to-r from-secondary via-primary to-accent py-2 sticky top-0">
+    <div className="bg-linear-to-r from-secondary via-primary to-accent py-2 sticky top-0 z-50000">
       <div className="navbar text-white max-w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn  btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -62,8 +66,8 @@ export default function Navbar() {
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <div className="flex gap-3">
+        <div className="navbar-end ">
+          <div className="md:flex gap-3 hidden">
             <Link href={"/login"} className="btn btn-outline">
               Log In
             </Link>
