@@ -1,9 +1,17 @@
 const Navbar = () => {
   return (
+<<<<<<< HEAD
     <div>
       <div className="navbar  shadow-sm">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">daisyUI</a>
+=======
+    <nav className="bg-base-200 shadow-md sticky top-0 z-50">
+      <div className=" mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-black">
+          EduVerse
+>>>>>>> 08bbda449aabe17a38c38d3a343543f2680f5de2
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
