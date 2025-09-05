@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Web Development",
+    "description": "Learn the basics of HTML, CSS, and JavaScript to build your first website.",
+    "thumbnail": "/images/web-dev.jpg",
+    "duration": "6 weeks",
+    "level": "Beginner",
+    "instructor": "Mohima Chowdhury",
+    "price": 0
+  },
+  {
+    "id": 2,
+    "title": "React for Beginners",
+    "description": "Start building interactive UIs using React, JSX, and component-based architecture.",
+    "thumbnail": "/images/react-course.jpg",
+    "duration": "4 weeks",
+    "level": "Beginner",
+    "instructor": "Ali Rahman",
+    "price": 20
+  },
+  {
+    "id": 3,
+    "title": "Advanced JavaScript",
+    "description": "Deep dive into modern JavaScript concepts like closures, promises, and async/await.",
+    "thumbnail": "/images/js-advanced.jpg",
+    "duration": "5 weeks",
+    "level": "Intermediate",
+    "instructor": "Sadia Akter",
+    "price": 25
+  },
+  {
+    "id": 4,
+    "title": "AI & Machine Learning Basics",
+    "description": "Understand the fundamentals of AI and machine learning with hands-on projects.",
+    "thumbnail": "/images/ai-course.jpg",
+    "duration": "6 weeks",
+    "level": "Beginner",
+    "instructor": "Rana Hasan",
+    "price": 30
+  }
+]

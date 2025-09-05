@@ -1,7 +1,11 @@
+import Banner from "./components/Banner";
+import HomeCourse from "./components/HomeCourse";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="bg-primary">Hello</h1>
+      <Banner/>
+      <HomeCourse/>
     </div>
   );
 }
