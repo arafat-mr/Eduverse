@@ -23,6 +23,9 @@ const Navbar = () => {
                   <li>
                     <a>Link 3</a>
                   </li>
+                  <li>
+                    <a>Link 4</a>
+                  </li>
                   
                 </ul>
               </details>
