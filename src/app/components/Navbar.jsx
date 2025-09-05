@@ -16,14 +16,27 @@ export default function Navbar() {
       <li className={`${linkStyle} ${pathname === "/" ? activeStyle : ""}`}>
         <Link href={"/"}> Home </Link>
       </li>
-      <li className={linkStyle}>
+      <li
+        className={`${linkStyle} ${pathname === "/courses" ? activeStyle : ""}`}
+      >
         <Link href={"/courses"}> Courses </Link>
       </li>
-      <li className={linkStyle}>
+      <li
+        className={`${linkStyle} ${pathname === "/contact" ? activeStyle : ""}`}
+      >
         <Link href={"/contact"}> Contact </Link>
       </li>
-      <li className={linkStyle}>
+      <li
+        className={`${linkStyle} ${pathname === "/aboutUs" ? activeStyle : ""}`}
+      >
         <Link href={"/aboutUs"}> About Us </Link>
+      </li>
+      <li
+        className={`${linkStyle} ${
+          pathname === "/certificate" ? activeStyle : ""
+        }`}
+      >
+        <Link href={"/certificate"}> Certificate</Link>
       </li>
     </>
   );
