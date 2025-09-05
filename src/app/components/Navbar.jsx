@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="bg-base-200 shadow-md sticky top-0 z-50">
       <div className=" mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold text-white">
+        <div className="text-2xl font-bold text-black">
           EduVerse
         </div>
 
