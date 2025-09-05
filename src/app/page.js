@@ -1,9 +1,11 @@
+import Banner from "./components/Banner";
+import HomeCourse from "./components/HomeCourse";
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello</h1>
+      <Banner/>
+      <HomeCourse/>
     </div>
-
   );
 }
