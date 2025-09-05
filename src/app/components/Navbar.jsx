@@ -33,10 +33,10 @@ export default function Navbar() {
       </li>
       <li
         className={`${linkStyle} ${
-          pathname === "/certificate" ? activeStyle : ""
+          pathname === "/certificateVerification" ? activeStyle : ""
         }`}
       >
-        <Link href={"/certificate"}> Certificate</Link>
+        <Link href={"/certificateVerification"}> Certificate Verification</Link>
       </li>
     </>
   );
