@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar  shadow-sm">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">daisyUI</a>
         </div>
@@ -23,7 +23,6 @@ const Navbar = () => {
                   <li>
                     <a>Link 3</a>
                   </li>
-                  
                 </ul>
               </details>
             </li>
