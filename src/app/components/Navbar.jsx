@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import Logo from "./Logo";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();

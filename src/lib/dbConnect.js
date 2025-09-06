@@ -1,6 +1,5 @@
 
 
-
 import  { MongoClient, ServerApiVersion }  from 'mongodb' 
 const uri = process.env.NEXT_PUBLIC_MONGO_DB_URI
 
