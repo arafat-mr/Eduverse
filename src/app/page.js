@@ -1,4 +1,5 @@
 import Banner from "./components/Banner";
+import CoursesPage from "./components/courses/CoursesPage";
 import HomeCourse from "./components/HomeCourse";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <div>
       <Banner/>
       <HomeCourse/>
+      <CoursesPage/>
     </div>
   );
 }
