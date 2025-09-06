@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function Logo() {
+export default function Logo({ place }) {
   return (
     <Link href={"/"} className="text-2xl font-bold hover:cursor-pointer">
       <div className="flex items-center justify-center">
@@ -12,7 +12,11 @@ export default function Logo() {
             alt="logo"
           />
         </div>
-        <p className="-ml-4 lg:text-3xl text-2xl font-extrabold text-white md:text-[#278380]">
+        <p
+          className={`-ml-4 lg:text-3xl text-2xl font-extrabold  ${
+            place === "nav" ? "md:text-primary text-white" : "text-[#278380]"
+          } `}
+        >
           Eduverse
         </p>
       </div>

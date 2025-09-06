@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
     "bcrypt": "^6.0.0",
     "biel-react": "^0.1.13",
     "crypto": "^1.0.1",

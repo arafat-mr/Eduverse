@@ -2,7 +2,7 @@
 
 import React from "react";
 import Logo from "./Logo";
-function Footer2() {
+function Footer() {
   const navLinks = [
     {
       name: "Features",
@@ -148,7 +148,7 @@ function Footer2() {
       <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
         <div className="mb-6 flex items-center justify-center">
           <div>
-            <Logo></Logo>
+            <Logo place={"footer"}></Logo>
           </div>
         </div>
 
@@ -189,4 +189,4 @@ function Footer2() {
     </footer>
   );
 }
-export default Footer2;
+export default Footer;
