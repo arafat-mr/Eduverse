@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getSession, signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 import login from "../../assets/logIn.json";
+import GoogleLogin from "../SocialLogin/GoogleLogin";
 
 const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,11 +18,13 @@ const Page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+
+  const { data: session } = useSession();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     defaultValues: {
       email: "",
@@ -30,41 +33,38 @@ const Page = () => {
   });
 
   const onSubmit = async (data) => {
-    // console.log(data);
-    
-    setLoginError("");
-    setLoading(true);
+  setLoginError("");
+  setLoading(true);
 
-    try {
-      const res = await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
+  try {
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
 
-      if (res?.ok) {
-        const session = await getSession();
-        toast.success(`Welcome ${session?.user?.name}`, {
-          position: "top-right",
-        });
-        router.push("/");
-      } else {
-        setLoginError("Invalid email or password");
-        toast.error("Invalid email or password", { position: "top-right" });
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-right",
-      });
-    } finally {
-      setLoading(false);
+    if (res?.ok) {
+      // fetch fresh session after login
+      const session = await fetch("/api/auth/session").then((res) => res.json());
+
+      toast.success(`Welcome ${session?.user?.name || "User"}!`);
+      router.push("/");
+    } else {
+      setLoginError("Invalid email or password");
+      toast.error("Invalid email or password");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-100 to-green-200 text-gray-800">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col  md:flex-row gap-10 md:justify-between md:items-center py-10 ">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-10 md:justify-between md:items-center py-10">
         {/* Lottie Animation */}
         <div className="md:w-1/2 w-full md:mt-20 lg:mt-0">
           <Lottie animationData={login} loop={true} />
@@ -130,17 +130,10 @@ const Page = () => {
               <p className="text-red-500 text-sm">{loginError}</p>
             )}
 
-            {/* Forgot Password */}
-            <div>
-              <Link href="#" className="link link-hover text-sm">
-                Forgot password?
-              </Link>
-            </div>
-
             {/* Register Link */}
             <p className="text-sm">
               Don't have an account?{" "}
-              <Link href="/Register" className="text-green-400 hover:underline">
+              <Link href="/register" className="text-green-600 hover:underline">
                 Register Now
               </Link>
             </p>
@@ -153,6 +146,9 @@ const Page = () => {
             >
               {loading ? "Logging in..." : "Login"}
             </button>
+            <div>
+                <GoogleLogin/>
+            </div>
           </form>
         </div>
       </div>
