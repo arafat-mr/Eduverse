@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+"use client";
+
+import Lottie from "lottie-react";
+
+import notFoundLottie from "../assets/404 error.json";
+
+export default function NotFound() {
+  return (
+    <div className="flex h-[calc(100vh-80px)] items-center justify-center  text-center">
+      <div>
+        <Lottie animationData={notFoundLottie} loop={true} />
+      </div>
+=======
 // export default function NotFound() {
 //   return (
 //     <div className="flex flex-col items-center justify-center h-screen bg-gray-50 text-center">
@@ -80,6 +94,7 @@ export default function NotFound() {
           .
         </p>
       </motion.div>
+>>>>>>> 6cb51892ef9c2f72a0ee67234dde0a36ba3c2f89
     </div>
   );
 }
