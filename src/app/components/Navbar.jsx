@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-"use client";
-=======
 
 "use client"
->>>>>>> 6cb51892ef9c2f72a0ee67234dde0a36ba3c2f89
 import Link from "next/link";
-import Logo from "./Logo";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
