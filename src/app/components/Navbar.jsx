@@ -3,10 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const pathname = usePathname();
   console.log(pathname);
+
+  const session=useSession()
+  console.log(session);
+  
   const linkStyle =
     "text-base hover:scale-105  hover:bg-transparent hover:text-accent hover:font-semibold hover:shadow-lg hover:shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000";
 
