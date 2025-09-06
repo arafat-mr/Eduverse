@@ -2,10 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const authInfo=useSession()
+  const authInfo = useSession();
   console.log(authInfo);
   console.log(pathname);
   const linkStyle =
@@ -133,14 +134,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
