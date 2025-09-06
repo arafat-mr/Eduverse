@@ -9,12 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@emotion/react": "^11.14.0",
-=======
     "bcrypt": "^6.0.0",
+    "biel-react": "^0.1.13",
     "crypto": "^1.0.1",
->>>>>>> 6cb51892ef9c2f72a0ee67234dde0a36ba3c2f89
     "framer-motion": "^12.23.12",
     "lottie-react": "^2.4.1",
     "mongodb": "^6.19.0",
