@@ -38,6 +38,12 @@ export default function Navbar() {
       >
         <Link href={"/certificateVerification"}> Certificate Verification</Link>
       </li>
+   {/* <li
+  className={`${linkStyle} ${pathname.startsWith("/admin") ? activeStyle : ""}`}
+>
+  <Link href="/admin"> Admin </Link>
+</li> */}
+
     </>
   );
   return (
