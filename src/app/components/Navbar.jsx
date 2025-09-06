@@ -6,8 +6,8 @@ import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  // const authInfo=useSession()
-  // console.log(authInfo);
+  const authInfo=useSession()
+  console.log(authInfo);
   console.log(pathname);
   const linkStyle =
     "text-base hover:scale-105  hover:bg-transparent hover:text-accent hover:font-semibold hover:shadow-lg hover:shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000";
@@ -134,3 +134,14 @@ export default function Navbar() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
