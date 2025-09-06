@@ -1,28 +1,55 @@
+"use client";
 import Link from "next/link";
+import Logo from "./Logo";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  console.log(pathname);
+  const linkStyle =
+    "text-base hover:scale-105  hover:bg-transparent hover:text-accent hover:font-semibold hover:shadow-lg hover:shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000";
+
+  const activeStyle =
+    "text-base scale-105  text-accent font-semibold shadow-lg shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000 border-b-accent border-b-4 ";
   const links = (
     <>
-      <li>
+      <li className={`${linkStyle} ${pathname === "/" ? activeStyle : ""}`}>
         <Link href={"/"}> Home </Link>
       </li>
-      <li>
+      <li
+        className={`${linkStyle} ${pathname === "/courses" ? activeStyle : ""}`}
+      >
         <Link href={"/courses"}> Courses </Link>
       </li>
-      <li>
+      <li
+        className={`${linkStyle} ${pathname === "/contact" ? activeStyle : ""}`}
+      >
         <Link href={"/contact"}> Contact </Link>
       </li>
-      <li>
+      <li
+        className={`${linkStyle} ${pathname === "/aboutUs" ? activeStyle : ""}`}
+      >
         <Link href={"/aboutUs"}> About Us </Link>
+      </li>
+      <li
+        className={`${linkStyle} ${
+          pathname === "/certificateVerification" ? activeStyle : ""
+        }`}
+      >
+        <Link href={"/certificateVerification"}> Certificate Verification</Link>
       </li>
     </>
   );
   return (
-    <div className="bg-primary">
+    <div className="bg-linear-to-r from-secondary via-primary to-accent py-2 sticky top-0 z-50000">
       <div className="navbar text-white max-w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn  btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -46,24 +73,22 @@ export default function Navbar() {
               {links}
             </ul>
           </div>
-          <p>
-            {" "}
-            <Link
-              href={"/"}
-              className="text-2xl font-bold hover:cursor-pointer"
-            >
-              Eduverse
-            </Link>
-          </p>
+
+          <Logo></Logo>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className=" menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <Link href={"/login"} className="btn">
-            Log In
-          </Link>
-          <div className="dropdown dropdown-end">
+        <div className="navbar-end ">
+          <div className="md:flex gap-3 hidden">
+            <Link href={"/login"} className="btn btn-outline">
+              Log In
+            </Link>
+            <Link href={"/register"} className="btn btn-outline">
+              Register
+            </Link>
+          </div>
+          {/* <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -93,7 +118,7 @@ export default function Navbar() {
                 <a>Logout</a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
