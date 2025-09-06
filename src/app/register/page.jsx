@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { registerUser } from "../actions/registerUser";
 import GoogleLogin from "../SocialLogin/GoogleLogin";
 
+
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -77,6 +78,8 @@ const Register = () => {
       formData.append("signature", signature);
       formData.append("api_key", apiKey);
 
+       console.log(formData);
+       
       const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
         method: "POST",
         body: formData,
