@@ -1,11 +1,17 @@
 "use client";
 import Link from "next/link";
-import Logo from "./Logo";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
+import { signOut, useSession } from "next-auth/react";
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
   const pathname = usePathname();
-  console.log(pathname);
+  const user = useAuth();
+  console.log(user);
+  const userEmail = user?.email;
+  const userProfileImage = user?.profileImage;
+
   const linkStyle =
     "text-base hover:scale-105  hover:bg-transparent hover:text-accent hover:font-semibold hover:shadow-lg hover:shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000";
 
@@ -38,6 +44,17 @@ export default function Navbar() {
       >
         <Link href={"/certificateVerification"}> Certificate Verification</Link>
       </li>
+      {userEmail ? (
+        <li
+          className={`${linkStyle} ${
+            pathname === "/dashboard" ? activeStyle : ""
+          }`}
+        >
+          <Link href={"/dashboard"}> Dashboard</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
   return (
@@ -74,51 +91,40 @@ export default function Navbar() {
             </ul>
           </div>
 
-          <Logo></Logo>
+          <Logo place={"nav"}></Logo>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end ">
-          <div className="md:flex gap-3 hidden">
-            <Link href={"/login"} className="btn btn-outline">
-              Log In
-            </Link>
-            <Link href={"/register"} className="btn btn-outline">
-              Register
-            </Link>
-          </div>
-          {/* <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+          {userEmail ? (
+            <div className="flex items-center gap-2">
+              <div>
+                <button onClick={() => signOut()} className="btn btn-outline">
+                  Logout
+                </button>
+              </div>
+              <div className="dropdown dropdown-end">
+                <div role="button" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src={userProfileImage}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div> */}
+          ) : (
+            <div className="md:flex gap-3 hidden">
+              <Link href={"/login"} className="btn btn-outline">
+                Log In
+              </Link>
+              <Link href={"/register"} className="btn btn-outline">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
