@@ -1,6 +1,6 @@
 "use server";
 
-import dbConnect from "@/lib/dbConnect";
+import { dbConnect } from "@/lib/dbConnect";
 
 // Find user by email
 export const findUserByEmail = async (email) => {
