@@ -2,8 +2,9 @@
 
 
 "use server"
+import { dbConnect } from '@/lib/dbConnect';
 import bcrypt from 'bcrypt'
-import dbConnect from '@/lib/dbConnect'
+
 
 export const registerUser=async(payload)=>{
 

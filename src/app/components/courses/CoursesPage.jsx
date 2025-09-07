@@ -15,14 +15,14 @@ export default function CoursesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-6 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
       <h1 className="text-4xl font-bold text-center mb-16 text-blue-700">
         Explore Our Courses
       </h1>
 
       {categories.map((cat, idx) => (
-        <div key={idx} className="mb-16">
-          <h2 className="text-3xl font-semibold mb-8 text-gray-800 border-b pb-2 border-gray-300">
+        <div key={idx} className="mb-16 max-w-7xl mx-auto">
+          <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
             {cat.category}
           </h2>
 
@@ -47,7 +47,7 @@ export default function CoursesPage() {
 
                 <div className="p-6 flex flex-col justify-between flex-1">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2 text-blue-600 hover:text-blue-700 transition">
+                    <h3 className="text-2xl font-bold mb-2 text-primary hover:text-blue-700 transition">
                       {course.title}
                     </h3>
 
