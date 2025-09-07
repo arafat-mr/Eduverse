@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
@@ -28,7 +29,6 @@ export default function CoursesPage() {
       <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">
         Explore Our Courses
       </h1>
-
       {/* 🔍 Search Bar */}
       <div className="max-w-2xl mx-auto mb-12">
         <input
@@ -47,7 +47,6 @@ export default function CoursesPage() {
               <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
                 {cat.category}
               </h2>
-
               <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {cat.courses.map((course, i) => (
                   <motion.div
