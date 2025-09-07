@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams,useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -18,6 +18,7 @@ export default function CourseDetailPage() {
   const [categories, setCategories] = useState([]);
   const [course, setCourse] = useState(null);
   const [activeTab, setActiveTab] = useState("Curriculum");
+  const router = useRouter();
 
   useEffect(() => {
     fetch("/coursesData/courses.json")
@@ -66,12 +67,13 @@ export default function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
-      <Link
-        href="/courses"
+
+      <button
+        onClick={() => router.back()}
         className="mb-6 inline-block text-blue-600 hover:underline font-medium"
       >
-        ← Back to Courses
-      </Link>
+        ← Back
+      </button>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

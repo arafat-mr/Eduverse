@@ -13,6 +13,7 @@
     "@formspree/react": "^3.0.0",
     "bcrypt": "^6.0.0",
     "biel-react": "^0.1.13",
+    "cloudinary": "^2.7.0",
     "crypto": "^1.0.1",
     "dotenv": "^17.2.2",
     "framer-motion": "^12.23.12",
