@@ -1,8 +1,8 @@
 import Banner from "./components/Banner";
 import Chatbot from "./components/ChatBot";
 import CoursesPage from "./components/courses/CoursesPage";
-import HomeCourse from "./components/HomeCourse";
 import Instructors from "./components/instructor-section/Instructors";
+import CoursesHome from "./coursesHome/page";
 
 export default function Home() {
   return (
@@ -10,8 +10,7 @@ export default function Home() {
 
       <Banner/>
       <Chatbot/>
-      <HomeCourse/>
-      <CoursesPage/>
+      <CoursesHome/>
       <Instructors/>
     </div>
   );
