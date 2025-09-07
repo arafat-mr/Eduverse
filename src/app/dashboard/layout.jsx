@@ -3,12 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/profile", label: "Profile Management" },
-  { href: "/admin/courses", label: "Add/Update Courses & Videos" },
-  { href: "/admin/students", label: "Student Management" },
-  { href: "/admin/payments", label: "Payment Management" },
-  { href: "/admin/certificates", label: "Certificates" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/dashboard/profile", label: "Profile Management" },
+  { href: "/dashboard/courses", label: "Add/Update Courses & Videos" },
+  { href: "/dashboard/students", label: "Student Management" },
+  { href: "/dashboard/payments", label: "Payment Management" },
+  { href: "/dashboard/certificates", label: "Certificates" },
 ];
 
 export default function AdminLayout({ children }) {
