@@ -80,8 +80,8 @@ const FAQ = () => {
 
   return (
     <section className="relative py-24 px-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-200/40 via-purple-200/30 to-pink-200/40 blur-3xl -z-10"></div>
-      <div className="max-w-5xl mx-auto">
+      <div className="absolute grid grid-cols-3 inset-0 bg-gradient-to-r from-blue-200/40 via-purple-200/30 to-pink-200/40 blur-3xl -z-10"></div>
+      <div className="max-w-6xl mx-auto ">
         <div className="text-center mb-16">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
