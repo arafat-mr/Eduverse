@@ -3,6 +3,7 @@ import Chatbot from "./components/ChatBot";
 import CoursesPage from "./components/courses/CoursesPage";
 import HomeCourse from "./components/HomeCourse";
 import Instructors from "./components/instructor-section/Instructors";
+import Faq from "./quiz/faq/Faq";
 
 export default function Home() {
   return (
@@ -13,6 +14,8 @@ export default function Home() {
       <HomeCourse/>
       <CoursesPage/>
       <Instructors/>
+      <Faq></Faq>
+
     </div>
   );
 }
