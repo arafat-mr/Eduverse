@@ -1,7 +1,9 @@
+import { createUser, findUserByEmail } from "@/app/actions/googleUser";
 import { loginUser } from "@/app/actions/loginUser";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -20,7 +22,14 @@ export const authOptions = {
     }),
     GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+     authorization: {
+    params: {
+      prompt: "select_account", 
+      access_type: "offline",
+      response_type: "code",
+    },
+  },
     
   })
 
@@ -48,6 +57,24 @@ export const authOptions = {
         token.createdAt = user.createdAt;
       }
       return token;
+    },
+     async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        // Check if user exists
+        const existingUser = await findUserByEmail(user.email);
+
+        if (!existingUser) {
+          // Create if not found
+          await createUser({
+            email: user.email,
+            name: user.name,
+            profileImage: user.image,
+            role: "user",
+            createdAt: new Date(),
+          });
+        }
+      }
+      return true;
     },
   },
     
