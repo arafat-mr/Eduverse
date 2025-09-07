@@ -1,0 +1,79 @@
+[33m7af6f85[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdeveloper2[m[33m)[m Merge branch 'development' of https://github.com/MeMahi-13/next_learn into developer2
+[33mf2a5b54[m[33m ([m[1;31morigin/developer2[m[33m)[m Video Upload Testing
+[33mb944874[m[33m ([m[1;31morigin/development[m[33m)[m Merge pull request #25 from MeMahi-13/developer-5
+[33mffe97b0[m[33m ([m[1;31morigin/developer-5[m[33m)[m fixed google login
+[33ma09dbf1[m Merge pull request #15 from MeMahi-13/developer_1_Rony
+[33mfb8a61c[m[33m ([m[1;31morigin/developer_1_Rony[m[33m)[m fix logo color and add logout out btn
+[33m2fd08c4[m Merge branch 'development' of https://github.com/MeMahi-13/next_learn into developer_1_Rony
+[33mfab7690[m stass
+[33m239ae25[m Merge pull request #23 from MeMahi-13/developer-5
+[33m080a8c8[m updated env
+[33mc53ec72[m fixed conflict
+[33m3232532[m fix
+[33mf31efee[m MAhfuj Has merged developer2 codes tto development without any conflict isuues
+[33m971640e[m Push to developer2:Added instructor-sectio,added Remote patterns for supporting imgbb,postimg,cloudinary
+[33maa12896[m Merge pull request #21 from MeMahi-13/developer-5
+[33mfb99bbd[m ..
+[33m26bb80d[m Merge branch 'development' of https://github.com/MeMahi-13/next_learn into developer-5
+[33m6ff5ab7[m mergse solved
+[33mc6820a8[m ..
+[33m35759a3[m Resolve merge conflict in Navbar.jsx and update dependencies
+[33ma53af02[m .
+[33m0398e6a[m merge solve
+[33m6cb5189[m Merge pull request #20 from MeMahi-13/developer-5
+[33m6cf067c[m test
+[33m0aacd22[m fix conflict
+[33mb04f52c[m implemented login register and social login
+[33mc1e5408[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #16 from MeMahi-13/developer_1_Rony
+[33m17a3f01[m Merge pull request #19 from MeMahi-13/developer-noor
+[33me6d9659[m[33m ([m[1;31morigin/developer-noor[m[33m)[m Dynamic error page created
+[33mf6a9d90[m Merge pull request #18 from MeMahi-13/developer-noor
+[33m4f99a24[m course details page added
+[33mabb7d08[m course page added
+[33mc5cf82c[m course data json file added
+[33me13078a[m added certificate page design
+[33m6469236[m added about us page and certificate route
+[33mad316b1[m added loading and not-found page
+[33m38b7292[m fix responsive issue of navbar
+[33m7303d7a[m fix peer conflict
+[33mebffdf7[m added footer and navbar
+[33m3516cca[m Merge pull request #14 from MeMahi-13/development
+[33meb3b25e[m Fixed Responsive Isuues At Banner
+[33mba72737[m Merge pull request #12 from MeMahi-13/developer_1_Rony
+[33m8137747[m added navbar
+[33m204f072[m Merge pull request #11 from MeMahi-13/developer2
+[33mcff9c9f[m Merge pull request #3 from MeMahi-13/developer-5
+[33m4a758d8[m implemneted login page
+[33mb23df36[m Fixed Conflicts
+[33m901070a[m Banner.jsx updated /rewrited
+[33m176d8f6[m merge issue solve
+[33md1d0093[m stash
+[33m17cc57c[m Merge pull request #8 from MeMahi-13/developer_3
+[33m52dd69d[m[33m ([m[1;31morigin/developer_3[m[33m)[m aading..............
+[33m6e80830[m adding......
+[33maa2216b[m courses.json file added
+[33m980fa4b[m Merge pull request #9 from MeMahi-13/developer_1_Rony
+[33m1915e25[m added base
+[33m43ef7e9[m Merge pull request #6 from MeMahi-13/developer_1_Rony
+[33ma8ae6cd[m solved
+[33m32b73bd[m add
+[33mf0b36f9[m adding demo
+[33m08bbda4[m Merge pull request #7 from MeMahi-13/developer_3
+[33m3380b6e[m adding footer
+[33mb609302[m fix
+[33m45323ad[m navbar and footer added
+[33m270f0eb[m Merge branch 'development' of https://github.com/MeMahi-13/next_learn into developer_1_Rony
+[33ma125b20[m Merge pull request #5 from MeMahi-13/testing
+[33m0af4484[m fix daisy issues
+[33m1e92551[m[33m ([m[1;32mmain[m[33m)[m navbar and footer
+[33m8ec8726[m[33m ([m[1;31morigin/testing[m[33m)[m Merge pull request #4 from MeMahi-13/developer-4
+[33m00088ff[m[33m ([m[1;31morigin/developer-4[m[33m)[m link 4 created
+[33m5ec854f[m navbar footer added, daisyui fixed
+[33m4d659bb[m fix daisy ui issue
+[33me72a207[m initialized daisy ui
+[33m73ee4b8[m Merge pull request #2 from MeMahi-13/developer_3
+[33m44fa78a[m adding footer section
+[33m77987a6[m Merge pull request #1 from MeMahi-13/developer_3
+[33m3a5c9ed[m adding one link item
+[33mde06da5[m[33m ([m[1;31morigin/project_coordinator[m[33m)[m first commit
+[33m801de6a[m Initial commit from Create Next App
