@@ -14,6 +14,7 @@ export default function AddVideo() {
   const fetchVideos = async () => {
     const res = await fetch("/api/video/get-videos");
     const data = await res.json();
+     console.log("Fetched videos:", data); // 👀 check structure
     setVideos(data);
   };
 
@@ -29,13 +30,13 @@ export default function AddVideo() {
       // 2. Upload video to Cloudinary
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY);
+      formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEYZ);
       formData.append("signature", signature);
       formData.append("timestamp", timestamp);
       formData.append("folder", "videos");
 
       const uploadRes = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/auto/upload`,
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAMEZ}/auto/upload`,
         { method: "POST", body: formData }
       );
       const data = await uploadRes.json();
@@ -76,7 +77,7 @@ export default function AddVideo() {
 
       <h3 className="text-lg font-semibold mb-2">Uploaded Videos</h3>
       <div className="space-y-4">
-        {videos.map((v) => (
+        {videos?.map((v) => (
           <video key={v._id} controls width="400" className="rounded shadow">
             <source src={v.videoUrl} type="video/mp4" />
           </video>

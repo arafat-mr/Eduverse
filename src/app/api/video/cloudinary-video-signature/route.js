@@ -11,7 +11,7 @@ export async function GET() {
 
   const signature = cloudinary.utils.api_sign_request(
     { timestamp, folder: "videos" },
-    process.env.CLOUDINARY_API_SECRET
+    process.env.CLOUDINARY_API_SECRETZ // ✅ use the same `Z` version
   );
 
   return Response.json({ signature, timestamp });
