@@ -1,18 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
-
   useEffect(() => {
-    fetch("/coursesData/courses.json")
+    fetch('/api/courses-data')
       .then((res) => res.json())
-      .then((data) => setCategories(data.categories))
+      .then((data) => setCategories(data[0]?.categories))
       .catch((err) => console.error(err));
-  }, []);
+  });
 
   return (
     <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
@@ -20,7 +19,7 @@ export default function CoursesPage() {
         Explore Our Courses
       </h1>
 
-      {categories.map((cat, idx) => (
+      {categories?.map((cat, idx) => (
         <div key={idx} className="mb-16 max-w-7xl mx-auto">
           <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
             {cat.category}
@@ -56,19 +55,19 @@ export default function CoursesPage() {
                     </p>
 
                     <p className="text-sm text-gray-500 mb-1">
-                      Duration:{" "}
+                      Duration:{' '}
                       <span className="font-medium">
                         {course.courseDuration}
-                      </span>{" "}
-                      | Classes:{" "}
-                      <span className="font-medium">{course.totalClasses}</span>{" "}
-                      | Hours:{" "}
+                      </span>{' '}
+                      | Classes:{' '}
+                      <span className="font-medium">{course.totalClasses}</span>{' '}
+                      | Hours:{' '}
                       <span className="font-medium">{course.totalHours}</span>
                     </p>
 
                     {/* Price */}
                     <p className="text-lg text-green-700 font-semibold">
-                      TK {course.price.toLocaleString()}{" "}
+                      TK {course.price.toLocaleString()}{' '}
                       <span className="line-through text-gray-400 ml-2">
                         TK {course.originalPrice.toLocaleString()}
                       </span>
