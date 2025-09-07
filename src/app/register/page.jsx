@@ -77,10 +77,15 @@ const Register = () => {
       formData.append("signature", signature);
       formData.append("api_key", apiKey);
 
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: "POST",
-        body: formData,
-      });
+      console.log(formData);
+
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       if (data.secure_url) {
@@ -102,18 +107,28 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-to-r from-green-100 to-green-200 text-gray-800">
       {/* <ToastContainer position="top-right" autoClose={3000} /> */}
       <div className="max-w-7xl flex flex-col md:flex-row justify-between items-center gap-10 p-5 md:px-5 py-10 mx-auto">
-
         {/* Lottie */}
         <div className="w-full md:w-1/2 flex justify-center md:mt-20 md:mb-10">
-          <Lottie animationData={registerlottie} loop={true} className="w-[80%] max-w-md" />
+          <Lottie
+            animationData={registerlottie}
+            loop={true}
+            className="w-[80%] max-w-md"
+          />
         </div>
 
         {/* Form */}
-        <div className="w-full md:w-1/2 shadow-2xl p-6 rounded-lg md:mt-20 md:mb-10" style={{ boxShadow: "0 0 15px rgba(236, 72, 153, 0.8)" }}>
-          <h3 className="text-3xl font-semibold mb-6 text-center">Register Now</h3>
+        <div
+          className="w-full md:w-1/2 shadow-2xl p-6 rounded-lg md:mt-20 md:mb-10"
+          style={{ boxShadow: "0 0 15px rgba(236, 72, 153, 0.8)" }}
+        >
+          <h3 className="text-3xl font-semibold mb-6 text-center">
+            Register Now
+          </h3>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 w-full  mx-auto relative z-10">
-
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-5 w-full  mx-auto relative z-10"
+          >
             {/* Name */}
             <div>
               <label className="label text-black">Your Name</label>
@@ -123,7 +138,11 @@ const Register = () => {
                 className="input input-bordered w-full bg-transparent"
                 placeholder="Enter your name"
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -135,7 +154,11 @@ const Register = () => {
                 className="input input-bordered w-full bg-transparent"
                 placeholder="Enter your email"
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Password */}
@@ -150,18 +173,33 @@ const Register = () => {
                 className="input input-bordered w-full bg-transparent pr-10"
                 placeholder="Enter your password"
               />
-              <span className="absolute right-3 top-9 cursor-pointer text-gray-500" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+              <span
+                className="absolute right-3 top-9 cursor-pointer text-gray-500"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <AiOutlineEyeInvisible size={20} />
+                ) : (
+                  <AiOutlineEye size={20} />
+                )}
               </span>
-              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
-            {/* Profile Image */}
-<div className="flex flex-col items-center">
+         
+
+           {/* Profile Image */}
+<div className="relative">
+  <label className="label text-black">Profile Image</label>
+
   {/* Show spinner while uploading */}
   {uploading && (
     <div className="text-primary mb-2 flex items-center gap-2">
-      <span className="loading loading-dots loading-sm"></span> Uploading...
+      Uploading<span className="loading loading-dots loading-sm"></span> 
     </div>
   )}
 
@@ -175,18 +213,35 @@ const Register = () => {
     <img
       src={preview}
       alt="Profile"
-      className={`w-24 h-24 object-cover rounded-full border ${imageLoaded ? "block mb-2" : "hidden"}`}
+      className={`w-24 h-24 object-cover rounded-full border ${
+        imageLoaded ? "block mb-2" : "hidden"
+      }`}
       onLoad={() => setImageLoaded(true)}
     />
   )}
 
-  {/* File input */}
+  {/* File input (NOT directly stored in form) */}
   <input
     type="file"
     accept="image/*"
-    onChange={handleFileChange}
+    onChange={async (e) => {
+      await handleFileChange(e); // uploads to Cloudinary
+    }}
     className="file-input file-input-bordered w-full bg-transparent"
   />
+
+  {/* Hidden input registered with react-hook-form */}
+  <input
+    type="hidden"
+    {...register("profileImage", { required: "Profile image is required" })}
+  />
+
+  {/* Validation error */}
+  {errors.profileImage && (
+    <p className="text-red-500 text-sm mt-1">
+      {errors.profileImage.message}
+    </p>
+  )}
 </div>
 
             {/* Contact Number */}
@@ -198,20 +253,27 @@ const Register = () => {
                   required: "Contact number is required",
                   pattern: {
                     value: /^\+\d{7,15}$/,
-                    message: "Enter a valid number starting with + and country code",
+                    message:
+                      "Enter a valid number starting with + and country code",
                   },
                 })}
                 className="input input-bordered w-full bg-transparent"
                 placeholder="e.g. +14155552671"
               />
-              {errors.contactNumber && <p className="text-red-500 text-sm mt-1">{errors.contactNumber.message}</p>}
+              {errors.contactNumber && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.contactNumber.message}
+                </p>
+              )}
             </div>
 
             {/* Already have account */}
             <div className="flex justify-between items-center">
               <div className="flex gap-2 text-sm">
                 <p>Already have an account?</p>
-                <Link href="/login" className="text-green-500 hover:underline">Login</Link>
+                <Link href="/login" className="text-green-500 hover:underline">
+                  Login
+                </Link>
               </div>
             </div>
 
@@ -224,7 +286,7 @@ const Register = () => {
               {loading ? "Registering..." : "Register"}
             </button>
             <div>
-              <GoogleLogin/>
+              <GoogleLogin />
             </div>
           </form>
         </div>
@@ -233,4 +295,4 @@ const Register = () => {
   );
 };
 
-export default Register;  
+export default Register;
