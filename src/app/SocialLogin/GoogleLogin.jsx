@@ -11,24 +11,18 @@ const GoogleLogin = () => {
   const sesssion=useSession()
   const router=useRouter()
   
-  const handleGoogleLogin = async (providerName) => {
-    // console.log('clicked',providerName);
-    
-    setLoading(true);
-    try {
-         toast.success(`redirecting...`);
-      await signIn(providerName,{callbackUrl:'/'});
-      
-    } catch (err) {
-      toast.error("Google login failed. Please try again.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-
-      
-    }
-    
-  };
+const handleGoogleLogin = async (providerName) => {
+  setLoading(true);
+  try {
+    toast.success(`redirecting...`);
+    await signIn("google", { callbackUrl: '/' });
+  } catch (err) {
+    toast.error("Google login failed. Please try again.");
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="mt-4">
@@ -39,9 +33,9 @@ const GoogleLogin = () => {
         style={{ boxShadow: "0 0 15px rgba(236, 72, 153, 0.8)" }}
         disabled={loading}
       >
-        {/* {loading && (
-        //   <span className="loading loading-spinner absolute left-4"></span>
-        )} */}
+        {loading && (
+          <span className="loading loading-spinner absolute left-4"></span>
+        )}
         <svg
           aria-label="Google logo"
           width="16"

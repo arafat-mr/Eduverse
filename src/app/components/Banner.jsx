@@ -7,6 +7,9 @@ import { Typewriter } from 'react-simple-typewriter';
 
 export default function Banner() {
   return (
+    
+
+   
     <Slide direction="up" duration={2000} delay={200} cascade triggerOnce>
       <div className="grid grid-cols-12 place-content-center place-items-center text-center md:text-start bg-gradient-to-r from-green-100 to-green-200 text-gray-800 px-6 sm:px-12 py-12 sm:py-16 gap-4 md:gap-8">
         
@@ -62,3 +65,4 @@ export default function Banner() {
   );
 }
 // TODO: Button style change dbo,typing effect upgrade dibo
+// todo   <slide > ta k div diye wrap kore bg  bg-gradient-to-r from-green-100 to-green-200 ata diyen thle jokhn loading hobe bg white dekhabe nah     
