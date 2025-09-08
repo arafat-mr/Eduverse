@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import NextAuthProviders from "@/providers/NextAuthProviders";
+import Chatbot from "./components/ChatBot";
 
 
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
           pauseOnHover
         />
           </NextAuthProviders>
+          <Chatbot></Chatbot>
       </body>
     </html>
   );
