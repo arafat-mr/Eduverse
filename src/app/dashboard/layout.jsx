@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const adminLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/dashboard/profile", label: "Profile Management" },
-  { href: "/dashboard/courses", label: "Add/Update Courses & Videos" },
+  { href: "/dashboard/addcourse", label: "Add/Update Courses & Videos" },
   { href: "/dashboard/students", label: "Student Management" },
   { href: "/dashboard/payments", label: "Payment Management" },
   { href: "/dashboard/certificates", label: "Certificates" },
@@ -52,8 +52,15 @@ export default function AdminLayout({ children }) {
       </aside>
 
       {/* Main Content */}
+<<<<<<< HEAD
       <main className="flex-1 p-6 bg-base-100">
         <div className="bg-white rounded-xl shadow p-6">{children}</div>
+=======
+      <main className="flex-1 p-6 bg-base-100 ">
+        <div className="bg-[#031043] rounded-xl shadow p-6">
+          {children}
+        </div>
+>>>>>>> 11a15c74aa8b9db643a69f099578360055d2aa3c
       </main>
     </div>
   );
