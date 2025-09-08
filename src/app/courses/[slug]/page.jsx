@@ -25,9 +25,9 @@ export default function CourseDetailPage() {
   const user = useAuth();
 
   useEffect(() => {
-    fetch("/coursesData/courses.json")
+    fetch("/api/courses-data")
       .then((res) => res.json())
-      .then((data) => setCategories(data.categories))
+      .then((data) => setCategories(data[0]?.categories || []))
       .catch(console.error);
   }, []);
 

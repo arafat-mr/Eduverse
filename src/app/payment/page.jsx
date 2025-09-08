@@ -15,7 +15,7 @@ export default function PaymentPage() {
     if (!data) return;
 
     const paymentData = JSON.parse(data);
-    // console.log(paymentData);
+    console.log("Payment data:",paymentData);
     setPaymentData(paymentData);
 
     // const initPayment = async () => {
