@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <head>
-        <link rel="icon" href="/icon.ico" sizes="16x16 32x32 48x48" />
+        <link rel="icon" href="/icon.ico" />
         <title>Eduverse</title>
       </head>
       <body
