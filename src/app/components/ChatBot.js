@@ -22,6 +22,8 @@ export default function OpenAIChatbot() {
     setInputText('');
     setIsLoading(true);
 
+    
+
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',

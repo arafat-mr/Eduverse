@@ -1,6 +1,5 @@
 "use client";
 
-<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -8,28 +7,13 @@ import Link from 'next/link';
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-=======
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-
-export default function CoursesPage() {
-  const [categories, setCategories] = useState([]);
-
-  const [searchTerm, setSearchTerm] = useState(""); 
->>>>>>> f4eaefbd6b6ac37b493f6e5eba504bc1d453073d
 
   useEffect(() => {
     fetch("/api/courses-data")
       .then((res) => res.json())
       .then((data) => setCategories(data[0]?.categories || []))
-<<<<<<< HEAD
       .catch((err) => console.error(err));
   }, []);
-=======
-      .catch(console.error);
-  }, []); // ✅ added []
->>>>>>> f4eaefbd6b6ac37b493f6e5eba504bc1d453073d
 
   // Filter courses by search term (case-insensitive)
   const filteredCategories = categories.map((cat) => ({
