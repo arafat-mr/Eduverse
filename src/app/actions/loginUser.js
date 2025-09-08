@@ -1,5 +1,3 @@
-"use server";
-
 import { dbConnect } from "@/lib/dbConnect";
 import bcrypt from "bcrypt";
 

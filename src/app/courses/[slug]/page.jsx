@@ -85,18 +85,19 @@ export default function CourseDetailPage() {
     router.push("/payment");
   };
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-6 max-w-7xl mx-auto">
-      <Link
-        href="/courses"
+    <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
+
+      <button
+        onClick={() => router.back()}
         className="mb-6 inline-block text-blue-600 hover:underline font-medium"
       >
-        ← Back to Courses
-      </Link>
+        ← Back
+      </button>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white shadow-2xl rounded-3xl p-8 grid md:grid-cols-3 gap-10"
+        className="bg-[#0C1B54] shadow-2xl rounded-3xl p-8 grid md:grid-cols-3 gap-10"
       >
         {/* Left Column */}
         <div className="md:col-span-1 flex flex-col gap-6">
@@ -110,7 +111,7 @@ export default function CourseDetailPage() {
           </div>
 
           {/* Payment Card */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-2xl text-white shadow-xl flex flex-col gap-3">
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-2xl text-gray-50 shadow-xl flex flex-col gap-3">
             <p className="text-lg font-semibold">
               Price:{" "}
               <span className="text-3xl font-bold">
@@ -160,8 +161,8 @@ export default function CourseDetailPage() {
 
         {/* Right Column */}
         <div className="md:col-span-2 flex flex-col gap-6">
-          <h1 className="text-4xl font-bold text-blue-700">{course.title}</h1>
-          <p className="text-gray-700 text-lg">{course.courseIntroduction}</p>
+          <h1 className="text-4xl font-bold text-blue-600">{course.title}</h1>
+          <p className="text-gray-50 text-lg">{course.courseIntroduction}</p>
 
           {/* Course Overview */}
           <div className="bg-gray-50 p-5 rounded-2xl shadow-inner text-gray-700 text-base">
