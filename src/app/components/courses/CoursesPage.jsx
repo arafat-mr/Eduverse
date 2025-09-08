@@ -1,20 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
-
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("/api/courses-data")
       .then((res) => res.json())
       .then((data) => setCategories(data[0]?.categories || []))
-      .catch(console.error);
-  }, []); // ✅ added []
+      .catch((err) => console.error(err));
+  }, []);
 
   // Filter courses by search term (case-insensitive)
   const filteredCategories = categories.map((cat) => ({
@@ -29,6 +28,7 @@ export default function CoursesPage() {
       <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">
         Explore Our Courses
       </h1>
+
       {/* 🔍 Search Bar */}
       <div className="max-w-2xl mx-auto mb-12">
         <input
@@ -36,7 +36,7 @@ export default function CoursesPage() {
           placeholder="Search courses by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-gray-50"
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-gray-50 bg-[#031043]"
         />
       </div>
 
@@ -47,6 +47,7 @@ export default function CoursesPage() {
               <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
                 {cat.category}
               </h2>
+
               <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {cat.courses.map((course, i) => (
                   <motion.div

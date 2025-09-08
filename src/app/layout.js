@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import NextAuthProviders from "@/providers/NextAuthProviders";
+import Chatbot from "./components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,18 +32,21 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextAuthProviders>
-          <Navbar />
-          {children}
-          <Footer />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            pauseOnHover
-          />
-        </NextAuthProviders>
+
+      
+        <Navbar />
+        {children}
+        <Footer/>
+         <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+        />
+          </NextAuthProviders>
+          <Chatbot></Chatbot>
       </body>
     </html>
   );
