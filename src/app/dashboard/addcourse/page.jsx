@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const CourseForm = () => {
   const [uploadingCourse, setUploadingCourse] = useState(false);
   const [uploadingInstructor, setUploadingInstructor] = useState(false);
-  
+
   const {
     register,
     control,
@@ -69,17 +69,32 @@ const CourseForm = () => {
   ];
 
   // Field Arrays
-  const { fields: curriculumFields, append: appendCurriculum, remove: removeCurriculum } =
-    useFieldArray({ control, name: 'courseOverview.tabs.Curriculum' });
+  const {
+    fields: curriculumFields,
+    append: appendCurriculum,
+    remove: removeCurriculum,
+  } = useFieldArray({ control, name: 'courseOverview.tabs.Curriculum' });
 
-  const { fields: softwareFields, append: appendSoftware, remove: removeSoftware } =
-    useFieldArray({ control, name: "courseOverview.tabs['Software Used']" });
+  const {
+    fields: softwareFields,
+    append: appendSoftware,
+    remove: removeSoftware,
+  } = useFieldArray({ control, name: "courseOverview.tabs['Software Used']" });
 
-  const { fields: careerFields, append: appendCareer, remove: removeCareer } =
-    useFieldArray({ control, name: "courseOverview.tabs['Career Opportunities']" });
+  const {
+    fields: careerFields,
+    append: appendCareer,
+    remove: removeCareer,
+  } = useFieldArray({
+    control,
+    name: "courseOverview.tabs['Career Opportunities']",
+  });
 
-  const { fields: projectFields, append: appendProject, remove: removeProject } =
-    useFieldArray({ control, name: 'courseOverview.tabs.Projects' });
+  const {
+    fields: projectFields,
+    append: appendProject,
+    remove: removeProject,
+  } = useFieldArray({ control, name: 'courseOverview.tabs.Projects' });
 
   // Cloudinary upload logic
   const uploadImage = async (file, type) => {
@@ -92,19 +107,19 @@ const CourseForm = () => {
     }
 
     try {
-      const sigRes = await fetch("/api/cloudinary-signature");
+      const sigRes = await fetch('/api/cloudinary-signature');
       const { timestamp, signature, apiKey, cloudName } = await sigRes.json();
 
       const formData = new FormData();
-      formData.append("file", file);
-      formData.append("timestamp", timestamp);
-      formData.append("signature", signature);
-      formData.append("api_key", apiKey);
+      formData.append('file', file);
+      formData.append('timestamp', timestamp);
+      formData.append('signature', signature);
+      formData.append('api_key', apiKey);
 
       const res = await fetch(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
         }
       );
@@ -121,7 +136,7 @@ const CourseForm = () => {
         Swal.fire('Error', 'Image upload failed. Please try again.', 'error');
       }
     } catch (err) {
-      console.error("Signed upload error:", err);
+      console.error('Signed upload error:', err);
       Swal.fire('Error', 'Something went wrong during image upload.', 'error');
     } finally {
       if (type === 'course') {
@@ -134,6 +149,7 @@ const CourseForm = () => {
 
   const handleAddCourse = async (data) => {
     try {
+      // 1️⃣ Add course to main courses collection
       const res = await fetch('/api/courses/add-course-details', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -141,15 +157,39 @@ const CourseForm = () => {
       });
 
       if (!res.ok) {
-        throw new Error('Failed to add course');
+        throw new Error('Failed to add course to main collection');
       }
 
-      Swal.fire('Success', 'Course added successfully!', 'success');
-      // reset();
+      // 2️⃣ Add default empty module to course_resources
+      const resourceRes = await fetch('/api/video/place-inside-resource', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          category: data.category,
+          title: data.title, // course title
+        }),
+      });
+
+      if (!resourceRes.ok) {
+        console.warn(
+          'Course added to main collection but failed in course_resources'
+        );
+        Swal.fire(
+          'Warning',
+          'Course added, but failed to update course resources.',
+          'warning'
+        );
+      } else {
+        Swal.fire('Success', 'Course added successfully!', 'success');
+        // reset(); // যদি form reset করতে চাও
+      }
     } catch (error) {
-      console.log(error);
-      // console.error(error);
-      // Swal.fire('Error', 'Error adding course. Check console for details.', 'error');
+      console.error(error);
+      Swal.fire(
+        'Error',
+        'Error adding course. Check console for details.',
+        'error'
+      );
     }
   };
 
@@ -161,7 +201,9 @@ const CourseForm = () => {
       onSubmit={handleSubmit(handleAddCourse)}
       className="max-w-5xl mx-auto p-6 bg-gray-800 shadow-2xl rounded-xl space-y-6 text-white"
     >
-      <h2 className="text-4xl font-bold text-center text-white tracking-wide">Add New Course</h2>
+      <h2 className="text-4xl font-bold text-center text-white tracking-wide">
+        Add New Course
+      </h2>
 
       {/* Basic Info */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -261,14 +303,20 @@ const CourseForm = () => {
               onChange={(e) => uploadImage(e.target.files[0], 'course')}
               className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
-            {uploadingCourse && <p className="text-sm mt-2">Uploading course image...</p>}
+            {uploadingCourse && (
+              <p className="text-sm mt-2">Uploading course image...</p>
+            )}
           </div>
         )}
         <input
           type="hidden"
           {...register('courseImage', { required: 'Course image is required' })}
         />
-        {errors.courseImage && <p className="text-red-500 text-sm mt-1">{errors.courseImage.message}</p>}
+        {errors.courseImage && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.courseImage.message}
+          </p>
+        )}
       </div>
 
       {/* Introduction */}
@@ -289,7 +337,13 @@ const CourseForm = () => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {['Total Classes', 'Course Duration', 'Weekly Classes', 'Total Hours', 'Projects'].map((key) => (
+        {[
+          'Total Classes',
+          'Course Duration',
+          'Weekly Classes',
+          'Total Hours',
+          'Projects',
+        ].map((key) => (
           <input
             key={key}
             {...register(`courseOverview.details.${key}`)}
@@ -301,13 +355,35 @@ const CourseForm = () => {
 
       {/* Dynamic Sections */}
       {[
-        { label: 'Curriculum', fields: curriculumFields, append: appendCurriculum, remove: removeCurriculum },
-        { label: 'Software Used', fields: softwareFields, append: appendSoftware, remove: removeSoftware },
-        { label: 'Career Opportunities', fields: careerFields, append: appendCareer, remove: removeCareer },
-        { label: 'Projects', fields: projectFields, append: appendProject, remove: removeProject },
+        {
+          label: 'Curriculum',
+          fields: curriculumFields,
+          append: appendCurriculum,
+          remove: removeCurriculum,
+        },
+        {
+          label: 'Software Used',
+          fields: softwareFields,
+          append: appendSoftware,
+          remove: removeSoftware,
+        },
+        {
+          label: 'Career Opportunities',
+          fields: careerFields,
+          append: appendCareer,
+          remove: removeCareer,
+        },
+        {
+          label: 'Projects',
+          fields: projectFields,
+          append: appendProject,
+          remove: removeProject,
+        },
       ].map(({ label, fields, append, remove }) => (
         <div key={label}>
-          <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">{label}</h3>
+          <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">
+            {label}
+          </h3>
           {fields.map((field, index) => (
             <div key={field.id} className="flex gap-2 mb-2">
               <input
@@ -358,7 +434,9 @@ const CourseForm = () => {
 
       {/* Instructor Image Upload */}
       <div>
-        <label className="block font-semibold mb-2">Instructor Profile Image</label>
+        <label className="block font-semibold mb-2">
+          Instructor Profile Image
+        </label>
         {instructorImage ? (
           <div className="relative w-32 h-32">
             <img
@@ -382,14 +460,17 @@ const CourseForm = () => {
               onChange={(e) => uploadImage(e.target.files[0], 'instructor')}
               className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
-            {uploadingInstructor && <p className="text-sm mt-2">Uploading instructor image...</p>}
+            {uploadingInstructor && (
+              <p className="text-sm mt-2">Uploading instructor image...</p>
+            )}
           </div>
         )}
-        <input
-          type="hidden"
-          {...register('instructor.profileImage')}
-        />
-        {errors.instructor?.profileImage && <p className="text-red-500 text-sm mt-1">{errors.instructor.profileImage.message}</p>}
+        <input type="hidden" {...register('instructor.profileImage')} />
+        {errors.instructor?.profileImage && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.instructor.profileImage.message}
+          </p>
+        )}
       </div>
 
       {/* Instructor Bio */}
