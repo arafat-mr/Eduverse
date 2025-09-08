@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 
 export default function AboutUs() {
   return (
@@ -45,7 +44,7 @@ export default function AboutUs() {
       >
         {/* Feature 1 */}
         <motion.div
-          className="bg-primary/10 p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
+          className="bg-white p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },
@@ -62,7 +61,7 @@ export default function AboutUs() {
 
         {/* Feature 2 */}
         <motion.div
-          className="bg-primary/10 p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
+          className="bg-white p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },
@@ -79,7 +78,7 @@ export default function AboutUs() {
 
         {/* Feature 3 */}
         <motion.div
-          className="bg-primary/10 p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
+          className="bg-white p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },
@@ -96,7 +95,7 @@ export default function AboutUs() {
 
         {/* Feature 4 */}
         <motion.div
-          className="bg-primary/10 p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
+          className="bg-white p-8 rounded-2xl hover:cursor-pointer shadow-lg  hover:shadow-xl transition duration-500"
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },

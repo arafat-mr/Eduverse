@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function CoursesHome() {
   const [courses, setCourses] = useState([]);
@@ -19,13 +19,13 @@ export default function CoursesHome() {
   }, []);
 
   return (
-    <div className="bg-secondary py-10 px-6">
-      <div className=" max-w-11/12 mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12 text-blue-700">
+    <div className="bg-secondary py-10 pt-30 px-6">
+      <div className=" max-w-7xl mx-auto">
+        <h1 className="text-4xl font-extrabold text-center mb-12 text-primary">
           Featured Courses
         </h1>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, i) => (
             <motion.div
               key={i}
@@ -74,7 +74,7 @@ export default function CoursesHome() {
 
                 <Link
                   href={`/courses/${encodeURIComponent(course.title)}`}
-                  className="mt-5 px-4 py-2 bg-blue-600 text-white rounded-lg text-center font-medium hover:bg-blue-700 transition"
+                  className="mt-5 px-4 py-2 bg-accent text-white rounded-lg text-center font-bold hover:bg-primary transition"
                 >
                   View Details
                 </Link>
@@ -87,7 +87,7 @@ export default function CoursesHome() {
         <div className="text-center mt-12">
           <Link
             href="/courses"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+            className="px-6 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-primary transition"
           >
             View All Courses
           </Link>

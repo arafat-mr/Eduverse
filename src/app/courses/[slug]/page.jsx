@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import {
+  FaCalendarAlt,
   FaChalkboardTeacher,
   FaClock,
-  FaCalendarAlt,
   FaHourglassHalf,
   FaProjectDiagram,
 } from "react-icons/fa";
@@ -85,11 +84,11 @@ export default function CourseDetailPage() {
     router.push("/payment");
   };
   return (
-    <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
+    <div className="min-h-screen py-10 px-6 max-w-8xl mx-auto bg-gradient-to-tl from-primary via-cyan-700 to-fuchsia-400">
 
       <button
         onClick={() => router.back()}
-        className="mb-6 inline-block text-blue-600 hover:underline font-medium"
+        className="mb-6 inline-block text-white border-white border-2 py-2 px-5 rounded-md hover:underline font-medium"
       >
         ← Back
       </button>

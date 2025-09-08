@@ -26,7 +26,7 @@ const italiannoo = Italianno({
   variable: '--font-italianno'
 })
 const quicksand = Quicksand({
-  weight: '400',
+  weight: '500',
   subsets: ['latin'],
 })
 
@@ -47,20 +47,20 @@ export default function RootLayout({ children }) {
       >
         <NextAuthProviders>
 
-      
-        <Navbar />
-        {children}
-        <Footer/>
-         <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          pauseOnHover
-        />
-          </NextAuthProviders>
-          <Chatbot></Chatbot>
+
+          <Navbar />
+          {children}
+          <Footer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnHover
+          />
+        </NextAuthProviders>
+        <Chatbot></Chatbot>
       </body>
     </html>
   );

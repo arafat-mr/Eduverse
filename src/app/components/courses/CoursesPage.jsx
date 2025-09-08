@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
@@ -24,8 +24,8 @@ export default function CoursesPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-[#031043] py-10 px-6 max-w-8xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">
+    <div className="min-h-screen bg-blue-50 py-10 px-6 max-w-8xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-10 text-primary">
         Explore Our Courses
       </h1>
 
@@ -36,7 +36,7 @@ export default function CoursesPage() {
           placeholder="Search courses by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-gray-50 bg-[#031043]"
+          className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-primary bg-blue-200 border-2 border-primary"
         />
       </div>
 
@@ -62,7 +62,7 @@ export default function CoursesPage() {
                         alt={course.title}
                         className="w-full h-56 object-cover"
                       />
-                      <span className="absolute top-3 right-3 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="absolute top-3 right-3 bg-green-800 font-bold text-white px-3 py-1 rounded-full text-sm ">
                         {course.discount} Off
                       </span>
                     </div>
@@ -104,7 +104,7 @@ export default function CoursesPage() {
 
                       <Link
                         href={`/courses/${encodeURIComponent(course.title)}`}
-                        className="mt-5 px-4 py-2 bg-blue-600 text-white rounded-lg text-center font-medium hover:bg-blue-700 transition"
+                        className="mt-5 px-4 py-2 bg-accent text-white rounded-lg text-center font-medium hover:bg-blue-700 transition"
                       >
                         View Details
                       </Link>

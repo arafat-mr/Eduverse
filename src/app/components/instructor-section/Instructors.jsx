@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const InstructorSwiper = dynamic(() => import("./InstructorSwiper"), {
   ssr: false,
@@ -26,7 +26,7 @@ export default function Instructors() {
       style={{ backgroundImage: "url('/mentor.jpg')" }}
     >
       {/* gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/50 to-black/30 " />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/40 to-black/30 " />
       <h1 className="md:text-4xl text-2xl text-blue-600 font-semibold text-center py-5">
         Meet Our Instructors
       </h1>
