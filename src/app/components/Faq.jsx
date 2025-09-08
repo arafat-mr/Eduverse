@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  ChevronDown,
   BookOpen,
+  Brain,
+  ChevronDown,
+  Clock,
+  Code,
+  Cpu,
   Star,
   Users,
-  Clock,
-  Brain,
-  Cpu,
-  Code,
 } from "lucide-react";
+import { useState } from "react";
 
 const FAQ = () => {
   const [openId, setOpenId] = useState(null);

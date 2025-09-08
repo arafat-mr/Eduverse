@@ -1,5 +1,11 @@
 import NextAuthProviders from "@/providers/NextAuthProviders";
-import { Geist, Geist_Mono, Italianno, Quicksand, Roboto } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Italianno,
+  Quicksand,
+  Roboto,
+} from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -19,14 +25,14 @@ const geistMono = Geist_Mono({
 });
 
 const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
+  weight: "400",
+  subsets: ["latin"],
+});
 const italiannoo = Italianno({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-italianno'
-})
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-italianno",
+});
 const quicksand = Quicksand({
   weight: '500',
   subsets: ['latin'],
