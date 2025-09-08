@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/dashboard/profile", label: "Profile Management" },
-  { href: "/dashboard/addcourse", label: "Add/Update Courses & Videos" },
+  { href: "/dashboard/addcourse", label: "Add Courses" },
+  { href: "/dashboard//release-module", label: "Release Module" },
   { href: "/dashboard/students", label: "Student Management" },
   { href: "/dashboard/payments", label: "Payment Management" },
   { href: "/dashboard/certificates", label: "Certificates" },
+  
 ];
 
 export default function AdminLayout({ children }) {
