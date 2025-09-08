@@ -1,67 +1,78 @@
 "use client";
-import Lottie from "lottie-react";
-import bannerAnimation from "../../../public/Home-resources/Banner/banner.json";
-import { Slide } from "react-awesome-reveal";
-import { Typewriter } from "react-simple-typewriter";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Banner() {
   return (
-    <Slide direction="up" duration={2000} delay={200} cascade triggerOnce>
-      <div className="grid grid-cols-12 place-content-center place-items-center text-center md:text-start bg-gradient-to-r from-green-100 to-green-200 text-gray-800 px-6 sm:px-12 py-12 sm:py-16 gap-4 md:gap-8">
+    <div className="relative bg-secondary text-primary ">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url("https://i.postimg.cc/9XxwRBF8/digitization-1599552.jpg")',
+        }}
+      />
+      <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay for readability */}
+
+      <div className="relative grid grid-cols-12 place-content-center place-items-center text-center md:text-start px-6 sm:px-12 py-12 sm:py-20 gap-6 md:gap-10">
         {/* Left Side: Text Content */}
-        <div className="col-span-12 md:col-span-6 space-y-4 sm:space-y-6">
-          <h1 className="text-[#278380] text-3xl md:text-7xl font-bold">
-            Your Awesome Online <br className="block md:hidden" /> Course
+        <div className="col-span-12 md:col-span-6 space-y-6 z-10">
+          <h1 className="sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
+            <span id="header">
+              Our Courses Will Make Learning Your Favorite Habit!
+            </span>
           </h1>
 
           {/* Typing Effect Subheading */}
-          <div className="w-[300px] md:w-[500px] h-[30px]">
-            <p className="text-sm sm:text-lg md:w-[500px] text-gray-700 font-semibold leading-relaxed">
-              <Typewriter
-                words={[
-                  "Cloud-based LMS Trusted by 1000+.",
-                  "Learn at your own pace.",
-                  "Unlimited Access.",
-                ]}
-                loop={0} // 0 = infinite, change to 1 to play once
-                cursor
-                cursorStyle="|"
-                typeSpeed={100}
-                deleteSpeed={100}
-                delaySpeed={1500}
-              />
-            </p>
-          </div>
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 font-bold min-h-[30px]">
+            <Typewriter
+              words={[
+                "Cloud-based LMS Trusted by 1000+.",
+                "Learn at your own pace.",
+                "Unlimited Access to Courses.",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </p>
 
-          <div className="flex  flex-col items-center sm:flex-row  gap-3 sm:gap-4 mt-5">
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link href={"/courses"}>
-              {" "}
-              <button className="btn max-w-[200px] btn-outline  px-6 py-2 rounded-md w-full sm:w-auto">
+              <button className="px-6 py-3 w-full sm:w-auto rounded-xl border-2 border-[#4a9bec] text-white font-semibold hover:bg-[#4a9bec] hover:text-white transition-all duration-300 shadow-md">
                 View Courses
               </button>
             </Link>
             <Link href={"/aboutUs"}>
-              <button className="btn btn-warning  px-6 py-2 max-w-[200px] rounded-md w-full sm:w-auto">
+              <button className="px-6 py-3 w-full sm:w-auto rounded-xl bg-[#4a9bec] text-white font-semibold transition-all duration-300 shadow-md hover:bg-white hover:text-primary">
                 Explore More
               </button>
             </Link>
           </div>
         </div>
 
-        {/* Right Side: Lottie Animation */}
-        <div className="col-span-12 md:col-span-6 flex justify-center mt-8 md:mt-0">
-          <div className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px]">
-            <Lottie
-              animationData={bannerAnimation}
-              loop={true}
-              style={{ width: "100%", height: "auto" }}
+        {/* Right Side: Floating Image */}
+        <div className="col-span-12 md:col-span-6 flex justify-center mt-10 md:mt-0 z-10">
+          <motion.div
+            className="w-[280px] sm:w-[400px] md:w-[500px] lg:w-[580px]"
+            animate={{ y: [0, -15, 0] }} // Floating effect
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.img
+              src="https://i.postimg.cc/X7HvdMg0/istockphoto-1360520509-612x612.jpg"
+              alt="Banner Illustration"
+              className="w-full h-auto object-cover rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </Slide>
+    </div>
   );
 }
-// TODO: Button style change dbo,typing effect upgrade dibo
-// todo   <slide > ta k div diye wrap kore bg  bg-gradient-to-r from-green-100 to-green-200 ata diyen thle jokhn loading hobe bg white dekhabe nah

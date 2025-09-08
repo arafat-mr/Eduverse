@@ -4,26 +4,24 @@ import { usePathname, useRouter } from "next/navigation";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
 
-const adminLinks = [
+const studentLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/dashboard/profile", label: "Profile Management" },
-  { href: "/dashboard/addcourse", label: "Add Courses" },
-  { href: "/dashboard//release-module", label: "Release Module" },
-  { href: "/dashboard/students", label: "Student Management" },
-  { href: "/dashboard/payments", label: "Payment Management" },
+  { href: "/dashboard/progress", label: "Progress Tracking" },
+  { href: "/dashboard/courses", label: "Purchased Courses" },
+  { href: "/dashboard/quizzes", label: "Quizzes & Tests" },
   { href: "/dashboard/certificates", label: "Certificates" },
-  
 ];
 
-export default function AdminLayout({ children }) {
+export default function StudentLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const user = useAuth(); // get user object with role
 
-  // Redirect non-admin users
+  // Redirect non-student users
   useEffect(() => {
-    if (user && user.role !== "admin") {
-      router.push("/dashboard"); // redirect student or other roles
+    if (user && user.role !== "student") {
+      router.push("/dashboard"); // redirect admin or other roles
     }
   }, [user, router]);
 
@@ -34,10 +32,10 @@ export default function AdminLayout({ children }) {
       {/* Sidebar */}
       <aside className="w-64 bg-primary text-white shadow-lg flex flex-col">
         <div className="p-6 text-2xl font-bold border-b border-secondary">
-          Admin Panel
+          Student Panel
         </div>
         <nav className="flex-1 p-4 space-y-2">
-          {adminLinks.map((link) => (
+          {studentLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}

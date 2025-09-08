@@ -55,7 +55,7 @@ const VideoUploader = ({
           {
             title: file.name.split('.')[0],
             description: '',
-            url: data.secure_url,
+            url: data.public_id,
             status: 'uploaded',
           },
         ],
@@ -85,19 +85,19 @@ const VideoUploader = ({
     }
   };
 
-  const handleDeleteVideo = async (videoId) => {
-    setUploadedVideos(uploadedVideos.filter((v) => v.id !== videoId));
-    // TODO: Call your backend API to delete the video from Cloudinary
-    try {
-      await fetch(`/api/cloudinary-video-delete/${videoId}`, {
-        method: 'DELETE',
-      }); // Use fetch
-      toast.success('Video deleted from server.');
-    } catch (error) {
-      console.error('Failed to delete video:', error);
-      toast.error('Failed to delete video from server.');
-    }
-  };
+  // const handleDeleteVideo = async (videoId) => {
+  //   setUploadedVideos(uploadedVideos.filter((v) => v.id !== videoId));
+  //   // TODO: Call your backend API to delete the video from Cloudinary
+  //   try {
+  //     await fetch(`/api/cloudinary-video-delete/${videoId}`, {
+  //       method: 'DELETE',
+  //     }); // Use fetch
+  //     toast.success('Video deleted from server.');
+  //   } catch (error) {
+  //     console.error('Failed to delete video:', error);
+  //     toast.error('Failed to delete video from server.');
+  //   }
+  // };
 
   return (
     <div className="bg-gray-800 p-8 rounded-lg shadow-md max-w-3xl mx-auto">

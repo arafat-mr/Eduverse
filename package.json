@@ -10,8 +10,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^2.0.25",
     "@emotion/react": "^11.14.0",
     "@formspree/react": "^3.0.0",
+    "ai": "^5.0.35",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "biel-react": "^0.1.13",
@@ -29,6 +31,7 @@
     "next": "^15.5.2",
     "next-auth": "^4.24.11",
     "node-fetch": "^3.3.2",
+    "openai": "^5.19.1",
     "react": "^19.1.1",
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.1",
