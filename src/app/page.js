@@ -1,3 +1,4 @@
+import ReviewsPage from "@/reviews/page";
 import Banner from "./components/Banner";
 import Chatbot from "./components/ChatBot";
 import Instructors from "./components/instructor-section/Instructors";
@@ -8,11 +9,12 @@ export default function Home() {
   return (
     <div className="">
 
-      <Banner/>
+        <Banner/>
       <Chatbot/>
       <CoursesHome/>
       <Instructors/>
       <Faq></Faq>
+      <ReviewsPage/>
 
     </div>
   );
