@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -13,11 +13,16 @@ import {
   FaProjectDiagram,
 } from "react-icons/fa";
 
+import useAuth from "@/app/hooks/useAuth";
+import { setCookie } from "cookies-next";
+
 export default function CourseDetailPage() {
   const { slug } = useParams();
   const [categories, setCategories] = useState([]);
   const [course, setCourse] = useState(null);
   const [activeTab, setActiveTab] = useState("Curriculum");
+  const router = useRouter();
+  const user = useAuth();
 
   useEffect(() => {
     fetch("/coursesData/courses.json")
@@ -63,7 +68,22 @@ export default function CourseDetailPage() {
       course.project
     }`,
   };
+  const handlePay = () => {
+    console.log("hanldle pay");
+    // Save payment data in a cookie (secure storage)
+    setCookie(
+      "paymentData",
+      JSON.stringify({
+        amount: course.price.toLocaleString(),
+        cus_name: user?.name,
+        cus_email: user?.email,
+        course_name: course.title,
+      })
+    );
 
+    // Redirect to payment page
+    router.push("/payment");
+  };
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6 max-w-7xl mx-auto">
       <Link
@@ -101,7 +121,10 @@ export default function CourseDetailPage() {
               Original: TK {course.originalPrice.toLocaleString()} (
               {course.discount} Off)
             </p>
-            <button className="mt-2 w-full bg-white text-blue-700 font-semibold py-2 rounded-xl hover:bg-gray-100 transition">
+            <button
+              onClick={handlePay}
+              className="mt-2 w-full bg-white text-blue-700 font-semibold py-2 rounded-xl hover:bg-gray-100 transition"
+            >
               Enroll Now
             </button>
           </div>
