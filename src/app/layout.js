@@ -1,10 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import NextAuthProviders from "@/providers/NextAuthProviders";
+import { Geist, Geist_Mono, Italianno, Quicksand, Roboto } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import Chatbot from "./components/ChatBot";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
-import NextAuthProviders from "@/providers/NextAuthProviders";
-import Chatbot from "./components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +15,20 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
+const italiannoo = Italianno({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-italianno'
+})
+const quicksand = Quicksand({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export const metadata = {
   title: "Eduverse",
@@ -29,7 +43,7 @@ export default function RootLayout({ children }) {
         <title>Eduverse</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${quicksand.className} ${geistMono.variable} antialiased`}
       >
         <NextAuthProviders>
 
