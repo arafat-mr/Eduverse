@@ -1,5 +1,6 @@
-'use client';
+"use client";
 
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -7,13 +8,28 @@ import Link from 'next/link';
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+=======
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+export default function CoursesPage() {
+  const [categories, setCategories] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState(""); 
+>>>>>>> f4eaefbd6b6ac37b493f6e5eba504bc1d453073d
 
   useEffect(() => {
-    fetch('/api/courses-data')
+    fetch("/api/courses-data")
       .then((res) => res.json())
       .then((data) => setCategories(data[0]?.categories || []))
+<<<<<<< HEAD
       .catch((err) => console.error(err));
   }, []);
+=======
+      .catch(console.error);
+  }, []); // ✅ added []
+>>>>>>> f4eaefbd6b6ac37b493f6e5eba504bc1d453073d
 
   // Filter courses by search term (case-insensitive)
   const filteredCategories = categories.map((cat) => ({
@@ -42,7 +58,6 @@ export default function CoursesPage() {
 
       {filteredCategories.map((cat, idx) => (
         <div key={idx} className="mb-16 max-w-7xl mx-auto">
-          {/* Show category only if it has filtered courses */}
           {cat.courses.length > 0 && (
             <>
               <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
@@ -68,6 +83,7 @@ export default function CoursesPage() {
                       </span>
                     </div>
 
+                    {/* Course Details */}
                     <div className="p-6 flex flex-col justify-between flex-1">
                       <div>
                         <h3 className="text-2xl font-bold mb-2 text-primary hover:text-blue-700 transition">
@@ -84,9 +100,13 @@ export default function CoursesPage() {
                             {course.courseDuration}
                           </span>{" "}
                           | Classes:{" "}
-                          <span className="font-medium">{course.totalClasses}</span>{" "}
+                          <span className="font-medium">
+                            {course.totalClasses}
+                          </span>{" "}
                           | Hours:{" "}
-                          <span className="font-medium">{course.totalHours}</span>
+                          <span className="font-medium">
+                            {course.totalHours}
+                          </span>
                         </p>
 
                         {/* Price */}
