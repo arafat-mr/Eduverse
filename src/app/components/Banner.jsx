@@ -72,6 +72,7 @@ export default function Banner() {
             />
           </motion.div>
         </div>
+
       </div>
     </div>
   );

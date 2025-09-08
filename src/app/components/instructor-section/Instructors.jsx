@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-const InstructorSwiper = dynamic(() => import("./InstructorSwiper"), {
+const InstructorSwiper = dynamic(() => import('./InstructorSwiper'), {
   ssr: false,
 });
 
@@ -10,7 +10,7 @@ export default function Instructors() {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("/coursesData/courses.json")
+    fetch('/coursesData/courses.json')
       .then((res) => res.json())
       .then((data) => {
         const extracted = data.categories.flatMap((cat) =>
