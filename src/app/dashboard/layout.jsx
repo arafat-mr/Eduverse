@@ -52,15 +52,8 @@ export default function AdminLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-<<<<<<< HEAD
       <main className="flex-1 p-6 bg-base-100">
         <div className="bg-white rounded-xl shadow p-6">{children}</div>
-=======
-      <main className="flex-1 p-6 bg-base-100 ">
-        <div className="bg-[#031043] rounded-xl shadow p-6">
-          {children}
-        </div>
->>>>>>> 11a15c74aa8b9db643a69f099578360055d2aa3c
       </main>
     </div>
   );

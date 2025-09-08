@@ -4,6 +4,7 @@ import CoursesPage from "./components/courses/CoursesPage";
 import Instructors from "./components/instructor-section/Instructors";
 import Faq from "./quiz/faq/Faq";
 import CoursesHome from "./coursesHome/page";
+import ReviewsPage from "@/reviews/page";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <CoursesHome/>
       <Instructors/>
       <Faq></Faq>
-
+      <ReviewsPage/>
     </div>
   );
 }

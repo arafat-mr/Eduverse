@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Ayesha Khan",
+    "review": "This course completely changed the way I understand the subject. The instructor explained even the most complex topics in such a simple and friendly manner. I especially loved the real-life examples used throughout the lessons. The quizzes after each module helped me practice and check my progress. I feel much more confident now and would definitely recommend it to others.",
+    "rating": "⭐⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/women/65.jpg"
+  },
+  {
+    "name": "Ali Raza",
+    "review": "I joined this course to strengthen my basics, and I must say it exceeded my expectations. The content is well-structured and easy to follow, even for beginners. I also liked how the teacher encouraged practical learning rather than just theory. The assignments were challenging but very rewarding. Overall, it was an excellent learning experience.",
+    "rating": "⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    "name": "Hira Siddiqui",
+    "review": "The best part of this course was how interactive it was. I never felt like I was just watching videos — it felt more like being in a real classroom. The instructor kept the sessions engaging and provided extra resources to help us learn. I also appreciated the supportive community of students. It made the journey very enjoyable.",
+    "rating": "⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/women/47.jpg"
+  },
+  {
+    "name": "Bilal Ahmed",
+    "review": "This course was absolutely amazing! I learned new concepts that I had never properly understood before. The explanations were clear, and the visuals made it even easier to grasp. I also enjoyed the pacing — it wasn’t too fast or too slow. By the end, I felt ready to apply everything in real life projects.",
+    "rating": "⭐⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/men/76.jpg"
+  },
+  {
+    "name": "Fatima Noor",
+    "review": "I found the course very detailed and organized, covering every important point step by step. The teaching style was very student-friendly, and I could easily ask questions when I had doubts. I also liked the extra reading materials provided with each lesson. It gave me more depth and perspective on the topics. I highly recommend this to anyone who wants to learn properly.",
+    "rating": "⭐⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/women/21.jpg"
+  },
+  {
+    "name": "Usman Tariq",
+    "review": "The content was great, but I personally felt that some sections were a bit fast-paced for beginners. However, once I rewatched them, everything made sense. The instructor really knows the subject well and explains with confidence. The assignments were a bit challenging, but they pushed me to practice more. Overall, I’m happy with what I learned.",
+    "rating": "⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/men/85.jpg"
+  },
+  {
+    "name": "Zainab Javed",
+    "review": "This was a wonderful experience. I especially liked the balance between theory and practice in the course. The examples used were very relevant and helped me connect the concepts easily. I also appreciated how the instructor was always encouraging. By the end, I felt a real improvement in my skills and knowledge.",
+    "rating": "⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/women/33.jpg"
+  },
+  {
+    "name": "Hamza Iqbal",
+    "review": "Very professional and well-structured course. The videos were clear, and the explanations were easy to follow. The small projects included in the course were very helpful for applying what I learned. I also liked that the course focused on real-world applications. I will definitely take another course from this platform in the future.",
+    "rating": "⭐⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/men/41.jpg"
+  },
+  {
+    "name": "Maryam Shah",
+    "review": "I honestly did not expect this course to be so good! The teacher explained each concept patiently and repeated important points when necessary. I liked the structured approach and the gradual increase in difficulty. The course really built up my confidence to take on advanced topics. I am very thankful for this experience.",
+    "rating": "⭐⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/women/56.jpg"
+  },
+  {
+    "name": "Saad Malik",
+    "review": "The course was overall very good and covered everything I needed. I just wish there were more advanced topics included as well. The projects were useful for applying what I learned, and I enjoyed solving them. The instructor’s teaching style was motivating and kept me focused. I am looking forward to joining more courses like this.",
+    "rating": "⭐⭐⭐⭐",
+    "image": "https://randomuser.me/api/portraits/men/28.jpg"
+  }
+]
