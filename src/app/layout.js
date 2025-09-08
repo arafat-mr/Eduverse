@@ -1,6 +1,7 @@
 import NextAuthProviders from "@/providers/NextAuthProviders";
 import { Geist, Geist_Mono, Italianno, Quicksand, Roboto } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import Chatbot from "./components/ChatBot";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
@@ -45,18 +46,21 @@ export default function RootLayout({ children }) {
         className={`${quicksand.className} ${geistMono.variable} antialiased`}
       >
         <NextAuthProviders>
-          <Navbar />
-          {children}
-          <Footer />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            pauseOnHover
-          />
-        </NextAuthProviders>
+
+      
+        <Navbar />
+        {children}
+        <Footer/>
+         <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+        />
+          </NextAuthProviders>
+          <Chatbot></Chatbot>
       </body>
     </html>
   );
