@@ -1,10 +1,12 @@
 import { dbConnect } from "@/lib/dbConnect";
 import axios from "axios";
+import { redirect } from "next/navigation";
 
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
+    console.log("hit");
     // SSLCommerz will send POST data here
     const body = await req.formData(); // SSLCommerz sends data as form-data
     const paymentSuccess = {};
@@ -18,7 +20,7 @@ export async function POST(req) {
     const { data } = await axios.get(
       `https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php?val_id=${paymentSuccess.val_id}&store_id=eduve68bca73b3804d&store_passwd=eduve68bca73b3804d@ssl&format=json`
     );
-
+    console.log("isvaile", data);
     if (data.status !== "VALID") {
       return NextResponse.json({ message: "Invalid Payment" });
     }
