@@ -49,6 +49,7 @@ export async function POST(req) {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
+    console.log(iniResponse, "ini tini");
     const paymentsCollection = await dbConnect("payments");
 
     const res = await paymentsCollection.insertOne({
@@ -62,6 +63,7 @@ export async function POST(req) {
     console.log(res);
 
     const gateWayUrl = iniResponse?.data?.GatewayPageURL;
+    console.log(gateWayUrl);
 
     return NextResponse.json({ url: gateWayUrl });
   } catch (error) {
