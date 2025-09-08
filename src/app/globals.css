@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Lavishly+Yours&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
  /* @plugin "daisyui" {
@@ -27,13 +28,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.italianno-regular {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
 
   --color-primary: #124170;
   --color-secondary: #D6DAC8;
-  --color-accent: #d9c4b0;
+  --color-accent: #4a9bec;
   --color-warning: #cfab8d;
   --color-base-100: #000000;
+}
+
+#header {
+  transform: translate(-50%,-50%);
+  background-image: linear-gradient( #4a9bec);
+  background-size: 100% 8px;
+  background-repeat: no-repeat;
+  background-position: 100% 0%;
+   transition: background-size .7s, background-position .5s ease-in-out;
+}
+
+#header:hover {
+  background-size: 100% 100%;
+  background-position: 0% 100%;
+  color:white;
+  transition: background-position .7s, background-size .5s ease-in-out;
 }

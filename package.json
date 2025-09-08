@@ -10,11 +10,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^2.0.25",
     "@emotion/react": "^11.14.0",
 <<<<<<< HEAD
     "@formspree/react": "^3.0.0",
+<<<<<<< HEAD
+    "ai": "^5.0.35",
+=======
 =======
 >>>>>>> 11a15c74aa8b9db643a69f099578360055d2aa3c
+>>>>>>> eebfad048cb65f297a15bf570b897ed6186fffee
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "biel-react": "^0.1.13",
@@ -40,8 +45,13 @@
     "next": "^15.5.2",
     "next-auth": "^4.24.11",
     "node-fetch": "^3.3.2",
+<<<<<<< HEAD
+    "openai": "^5.19.1",
+    "react": "^19.1.1",
+=======
     "react": "19.1.0",
    
+>>>>>>> eebfad048cb65f297a15bf570b897ed6186fffee
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
