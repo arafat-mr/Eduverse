@@ -1,6 +1,5 @@
 import { dbConnect } from "@/lib/dbConnect";
 import axios from "axios";
-import { redirect } from "next/navigation";
 
 import { NextResponse } from "next/server";
 
