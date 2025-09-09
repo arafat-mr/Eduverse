@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
 
 const studentLinks = [
@@ -16,7 +15,7 @@ const studentLinks = [
 export default function StudentLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
-  const user = useAuth(); // get user object with role
+ 
 
   // Redirect non-student users
   useEffect(() => {
