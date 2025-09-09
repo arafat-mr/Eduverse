@@ -128,6 +128,10 @@ export default function AboutUs() {
           Eduverse now!
         </p>
       </motion.div>
+
+
+
+    
     </div>
   );
 }
