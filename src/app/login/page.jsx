@@ -8,7 +8,7 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
-
+import { useSearchParams } from "next/navigation";
 import login from "../../assets/logIn.json";
 import GoogleLogin from "../SocialLogin/GoogleLogin";
 
@@ -17,7 +17,8 @@ const Page = () => {
   const [loginError, setLoginError] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const { data: session } = useSession();
 
@@ -33,34 +34,36 @@ const Page = () => {
   });
 
   const onSubmit = async (data) => {
-  setLoginError("");
-  setLoading(true);
+    setLoginError("");
+    setLoading(true);
 
-  try {
-    const res = await signIn("credentials", {
-      redirect: false,
-      email: data.email,
-      password: data.password,
-    });
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
 
-    if (res?.ok) {
-      // fetch fresh session after login
-      const session = await fetch("/api/auth/session").then((res) => res.json());
+      if (res?.ok) {
+        // fetch fresh session after login
+        const session = await fetch("/api/auth/session").then((res) =>
+          res.json()
+        );
 
-      toast.success(`Welcome ${session?.user?.name || "User"}!`);
-      router.push("/");
-    } else {
-      setLoginError("Invalid email or password");
-      toast.error("Invalid email or password");
+        toast.success(`Welcome ${session?.user?.name || "User"}!`);
+
+        router.push(callbackUrl);
+      } else {
+        setLoginError("Invalid email or password");
+        toast.error("Invalid email or password");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error(err);
-    toast.error("Something went wrong. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-100 to-green-200 text-gray-800">
@@ -126,9 +129,7 @@ const Page = () => {
             </div>
 
             {/* Login Error */}
-            {loginError && (
-              <p className="text-red-500 text-sm">{loginError}</p>
-            )}
+            {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
 
             {/* Register Link */}
             <p className="text-sm">
@@ -147,7 +148,7 @@ const Page = () => {
               {loading ? "Logging in..." : "Login"}
             </button>
             <div>
-                <GoogleLogin/>
+              <GoogleLogin />
             </div>
           </form>
         </div>

@@ -4,6 +4,7 @@ export default async function Success() {
       <h1 className="text-green-600 text-2xl font-bold">
         ✅ Payment Successful!
       </h1>
+      <button>Your course</button>
     </div>
   );
 }

@@ -12,7 +12,6 @@ const adminLinks = [
   { href: "/dashboard/students", label: "Student Management" },
   { href: "/dashboard/payments", label: "Payment Management" },
   { href: "/dashboard/certificates", label: "Certificates" },
-  
 ];
 
 export default function AdminLayout({ children }) {

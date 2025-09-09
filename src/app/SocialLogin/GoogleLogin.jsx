@@ -1,34 +1,36 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
-  const sesssion=useSession()
-  const router=useRouter()
-  
-const handleGoogleLogin = async (providerName) => {
-  setLoading(true);
-  try {
-    toast.success(`redirecting...`);
-    await signIn("google", { callbackUrl: '/' });
-  } catch (err) {
-    toast.error("Google login failed. Please try again.");
-    console.error(err);
-  } finally {
-    setLoading(false);
-  }
-};
+  const sesssion = useSession();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+  const handleGoogleLogin = async (providerName) => {
+    setLoading(true);
+    try {
+      toast.success(`redirecting...`);
+      await signIn("google", { callbackUrl });
+    } catch (err) {
+      toast.error("Google login failed. Please try again.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="mt-4">
       <div className="divider divider-primary">Or</div>
       <button
-        onClick={()=>handleGoogleLogin('google')}
+        onClick={() => handleGoogleLogin("google")}
         className="btn bg-white text-black border-[#e5e5e5] w-full flex items-center justify-center gap-2 relative"
         style={{ boxShadow: "0 0 15px rgba(236, 72, 153, 0.8)" }}
         disabled={loading}

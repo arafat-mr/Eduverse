@@ -81,11 +81,15 @@ export default function CourseDetailPage() {
     );
 
     // Redirect to payment page
-    router.push("/payment");
+    if (!user) {
+      router.push(`/login?callbackUrl=/checkout`);
+    } else {
+      router.push("/checkout");
+    }
   };
+
   return (
     <div className="min-h-screen py-10 px-6 max-w-8xl mx-auto bg-gradient-to-tl from-primary via-cyan-700 to-fuchsia-400">
-
       <button
         onClick={() => router.back()}
         className="mb-6 inline-block text-white border-white border-2 py-2 px-5 rounded-md hover:underline font-medium"
