@@ -96,18 +96,6 @@ export default function Navbar() {
 
 
         </div>
-
-        {/* Main Links */}
-        <div className="space-x-6">
-          <Link href="/" className="hover:text-primary font-medium">
-            Home
-          </Link>
-          <Link href="/courses" className="hover:text-white font-medium">
-            Courses
-          </Link>
-          <Link href="/contact" className="hover:text-white font-medium">
-            Contact
-          </Link>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1">{links}</ul>
         </div>
@@ -142,7 +130,6 @@ export default function Navbar() {
           )}
         </div>
       </div>
-    </div>
     </div>
   );
 }
