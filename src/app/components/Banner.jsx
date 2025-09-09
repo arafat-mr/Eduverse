@@ -5,6 +5,9 @@ import { Slide } from 'react-awesome-reveal';
 import { Typewriter } from 'react-simple-typewriter';
 
 
+
+
+
 export default function Banner() {
   return (
     
@@ -46,6 +49,7 @@ export default function Banner() {
             <button className="btn btn-warning  px-6 py-2 max-w-[200px] rounded-md w-full sm:w-auto">
               Explore More
             </button>
+         
           </div>
         </div>
 
@@ -59,8 +63,9 @@ export default function Banner() {
             />
           </div>
         </div>
-
+  
       </div>
+     
     </Slide>
   );
 }
