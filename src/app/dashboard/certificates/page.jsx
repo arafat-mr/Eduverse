@@ -1,25 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Loading from "@/app/loading";
+import React, { useEffect, useState } from "react";
+import WithRole from "@/app/components/WithRole";
 
-export default function CertificatesPage() {
+function CertificatesPage() {
   const [certificates, setCertificates] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("");
-  const [studentId, setStudentId] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  // Fetch all certificates
+  // Fetch certificates
   const fetchCertificates = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const res = await axios.get("/api/certificates");
-      setCertificates(res.data);
+      const res = await fetch("/api/adminCertificates");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to fetch certificates");
+      setCertificates(data.certificates);
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.error || "Failed to fetch certificates");
+      alert("❌ " + err.message);
     } finally {
       setLoading(false);
     }
@@ -29,85 +28,110 @@ export default function CertificatesPage() {
     fetchCertificates();
   }, []);
 
-  // Add new certificate
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!title || !studentId) {
-      setError("Title and Student ID are required");
-      return;
-    }
-
+  // Approve certificate
+  const approveCertificate = async (certificateId) => {
     try {
-      const res = await axios.post("/api/certificates", { title, studentId });
-      setCertificates((prev) => [...prev, res.data]);
-      setTitle("");
-      setStudentId("");
-      setSuccess("Certificate added successfully!");
+      const res = await fetch(`/api/adminCertificates/${certificateId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          status: "issued",
+          issuedAt: new Date().toISOString(),
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to approve");
+      alert("✅ Certificate approved!");
+      fetchCertificates(); // refresh after approval
     } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.error || "Failed to add certificate");
+      alert("❌ " + err.message);
     }
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Certificates</h1>
+    
+      <div className="p-6 min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Certificate Requests</h1>
+          <button
+            onClick={fetchCertificates}
+            className="btn btn-sm btn-outline rounded-lg border-white text-white hover:bg-white hover:text-blue-900"
+          >
+            Refresh
+          </button>
+        </div>
 
-      {/* Add Certificate Form */}
-      <form onSubmit={handleSubmit} className="mb-6 flex flex-wrap gap-2">
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[150px]"
-        />
-        <input
-          type="text"
-          placeholder="Student ID"
-          value={studentId}
-          onChange={(e) => setStudentId(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[150px]"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Add
-        </button>
-      </form>
-
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      {success && <p className="text-green-500 mb-2">{success}</p>}
-
-      {/* Certificates List */}
-      {loading ? (
-        <p>Loading...</p>
-      ) : certificates.length === 0 ? (
-        <p>No certificates found.</p>
-      ) : (
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-2 py-1">ID</th>
-              <th className="border px-2 py-1">Title</th>
-              <th className="border px-2 py-1">Student ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {certificates.map((cert) => (
-              <tr key={cert._id}>
-                <td className="border px-2 py-1">{cert._id}</td>
-                <td className="border px-2 py-1">{cert.title}</td>
-                <td className="border px-2 py-1">{cert.studentId}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+        {loading ? (
+          <div className="w-full h-64 flex justify-center items-center">
+            <span className="loading loading-spinner text-white"></span>
+          </div>
+        ) : (
+          <div className="overflow-x-auto bg-blue-950 rounded-lg shadow">
+            <table className="table-auto min-w-[600px] border-collapse border border-gray-600 text-white">
+              <thead className="bg-blue-800 font-mono">
+                <tr>
+                  <th className="p-3 border-b border-gray-600">Email</th>
+                  <th className="p-3 border-b border-gray-600">Course</th>
+                  <th className="p-3 border-b border-gray-600">Status</th>
+                  <th className="p-3 border-b border-gray-600">Applied At</th>
+                  <th className="p-3 border-b border-gray-600">Issued At</th>
+                  <th className="p-3 border-b border-gray-600">Certificate ID</th>
+                  <th className="p-3 border-b border-gray-600">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {certificates.map((c) => (
+                  <tr key={c._id} className="hover:bg-blue-900 font-mono text-sm">
+                    <td className="p-3 border-b border-gray-600">{c.email}</td>
+                    <td className="p-3 border-b border-gray-600">{c.courseName}</td>
+                    <td className="p-3 border-b border-gray-600">
+                      {c.status === "pending" ? (
+                        <span className="bg-yellow-300 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold">
+                          Pending
+                        </span>
+                      ) : (
+                        <span className="bg-green-300 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">
+                          Issued
+                        </span>
+                      )}
+                    </td>
+                    <td className="p-3 border-b border-gray-600">
+                      {new Date(c.appliedAt).toLocaleString()}
+                    </td>
+                    <td className="p-3 border-b border-gray-600">
+                      {c.issuedAt ? new Date(c.issuedAt).toLocaleString() : "-"}
+                    </td>
+                    <td className="p-3 border-b border-gray-600 font-mono text-sm">{c.certificateId}</td>
+                    <td className="p-3 border-b border-gray-600">
+                      {c.status === "pending" && (
+                        <button
+                          onClick={() => approveCertificate(c.certificateId)}
+                          className="btn btn-sm rounded-lg bg-green-600 hover:bg-green-500 text-white"
+                        >
+                          Approve
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+                {certificates.length === 0 && (
+                  <tr>
+                    <td colSpan="7" className="text-center p-4 text-gray-300">
+                      No certificate requests found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    
   );
 }
+
+// Wrap with admin-only protection
+export default WithRole(CertificatesPage, ["admin"]);
+    
+  

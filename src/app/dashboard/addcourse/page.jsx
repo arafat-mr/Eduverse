@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
+import WithRole from '@/app/components/WithRole';
 import Swal from 'sweetalert2';
 
 const CourseForm = () => {
@@ -197,6 +198,9 @@ const CourseForm = () => {
   const instructorImage = watch('instructor.profileImage');
 
   return (
+  
+
+   
     <form
       onSubmit={handleSubmit(handleAddCourse)}
       className="max-w-5xl mx-auto p-6 bg-gray-800 shadow-2xl rounded-xl space-y-6 text-white"
@@ -488,7 +492,8 @@ const CourseForm = () => {
         Add Course
       </button>
     </form>
+    
   );
 };
 
-export default CourseForm;
+export default WithRole(CourseForm, ['admin']);
