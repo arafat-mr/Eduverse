@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function CoursesHome() {
   const [courses, setCourses] = useState([]);
@@ -11,9 +11,8 @@ export default function CoursesHome() {
     fetch("/coursesData/courses.json")
       .then((res) => res.json())
       .then((data) => {
-        // Flatten all categories into a single list
         const allCourses = data.categories.flatMap((cat) => cat.courses);
-        setCourses(allCourses.slice(0, 8)); // Show only first 8 courses
+        setCourses(allCourses.slice(0, 6));
       })
       .catch((err) => console.error(err));
   }, []);
@@ -36,7 +35,7 @@ export default function CoursesHome() {
           for your success.Level up your knowledge with our best courses
         </p>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, i) => (
             // card
             <motion.div
@@ -64,7 +63,6 @@ export default function CoursesHome() {
                   "0px 5px 20px 20px rgba(0,0,0,0.1)";
               }}
             >
-              {/* Course Image */}
               <div className="relative">
                 <img
                   src={course.courseImage}
@@ -95,7 +93,6 @@ export default function CoursesHome() {
                     <span className="font-medium">{course.totalHours}</span>
                   </p>
 
-                  {/* Price */}
                   <p className="text-lg text-green-700 font-semibold">
                     TK {course.price.toLocaleString()}{" "}
                     <span className="line-through text-gray-400 ml-2">

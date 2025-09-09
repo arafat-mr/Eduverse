@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  ChevronDown,
   BookOpen,
+  Brain,
+  ChevronDown,
+  Clock,
+  Code,
+  Cpu,
   Star,
   Users,
-  Clock,
-  Brain,
-  Cpu,
-  Code,
 } from "lucide-react";
+import { useState } from "react";
 
 const FAQ = () => {
   const [openId, setOpenId] = useState(null);
@@ -79,7 +79,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="relative  py-24 px-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden">
+    <section className="relative py-24 px-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden">
       <div className="absolute grid grid-cols-3 inset-0 bg-gradient-to-r from-blue-200/40 via-purple-200/30 to-pink-200/40 blur-3xl -z-10"></div>
       <div className="max-w-6xl mx-auto ">
         <div className="text-center mb-16">

@@ -1,42 +1,9 @@
-"use client";
-
-// import Lottie from "lottie-react";
-
-// import notFoundLottie from "../assets/404 error.json";
-
-// export default function NotFound() {
-//   return (
-//     <div className="flex h-[calc(100vh-80px)] items-center justify-center  text-center">
-//       <div>
-//         <Lottie animationData={notFoundLottie} loop={true} />
-//       </div>
-// </div>
-//   )
-// }
-//  export default function NotFound() {
-//   return (
-//     <div className="flex flex-col items-center justify-center h-screen bg-gray-50 text-center">
-//       <h1 className="text-6xl font-bold text-blue-600">404</h1>
-//       <p className="text-lg text-gray-600 mt-4">Oops! Page not found.</p>
-//       <a
-//         href="/"
-//         className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-//       >
-//         Go Home
-//       </a>
-//     </div>
-//   );
-// }
-
-
-
-
 
 "use client";
 
 import { motion } from "framer-motion";
-import { FaHome, FaCompass, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
+import { FaCompass, FaEnvelope, FaHome } from "react-icons/fa";
 
 export default function NotFound() {
   return (

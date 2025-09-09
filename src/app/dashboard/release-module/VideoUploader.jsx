@@ -55,7 +55,7 @@ const VideoUploader = ({
           {
             title: file.name.split('.')[0],
             description: '',
-            url: data.public_id,
+            url: data.secure_url,
             status: 'uploaded',
           },
         ],

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 export default function ContactPage() {
   const [status, setStatus] = useState(null); 
@@ -45,19 +45,19 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b bg-slate-800 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 py-12 px-6">
+    <div className="min-h-screen bg-gradient-to-b bg-white transition-colors duration-300 py-12 px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto bg-primary backdrop-blur-lg border border-white/10 shadow-xl rounded-2xl p-8"
       >
-        <h1 className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-4 text-center">
+        <h1 className="text-4xl font-bold text-white mb-4 text-center">
           Contact Us
         </h1>
         <p className="text-gray-100 dark:text-gray-200 text-center max-w-2xl mx-auto mb-8">
           Got questions or feedback about{" "}
-          <span className="text-blue-600 dark:text-blue-400 font-semibold">
+          <span className="text-white font-semibold">
             EduVerse
           </span>
           ? We’re always listening. Reach out and let’s connect!
@@ -105,7 +105,7 @@ export default function ContactPage() {
           )}
 
           <div>
-            <label htmlFor="name" className="block text-gray-50 dark:text-gray-200 mb-1">
+            <label htmlFor="name" className="block text-black dark:text-gray-200 mb-1">
               Name
             </label>
             <input
@@ -113,12 +113,12 @@ export default function ContactPage() {
               id="name"
               name="name"
               required
-              className="w-full rounded-lg px-4 py-2 bg-gray-500 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg px-4 py-2 bg-white border border-white/10 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-gray-50 dark:text-gray-200 mb-1">
+            <label htmlFor="email" className="block text-black dark:text-gray-200 mb-1">
               Email
             </label>
             <input
@@ -126,7 +126,7 @@ export default function ContactPage() {
               id="email"
               name="email"
               required
-              className="w-full rounded-lg px-4 py-2 bg-gray-500 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg px-4 py-2 bg-white border border-white/10 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -139,7 +139,7 @@ export default function ContactPage() {
               name="message"
               rows="4"
               required
-              className="w-full rounded-lg px-4 py-2 bg-gray-500 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg px-4 py-2 bg-white border border-white/10 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
           </div>
 

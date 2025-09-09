@@ -58,8 +58,8 @@
 
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
@@ -83,9 +83,9 @@ export default function ReviewsPage() {
   }, [reviews]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#031043] via-[#0b1d5c] to-[#031043] flex flex-col items-center justify-center text-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-primary via-[#670cc2] to-[#a41be9] flex flex-col items-center justify-center text-center px-6 py-12">
       {/* Heading */}
-      <h1 className="text-4xl md:text-5xl font-bold text-blue-700 mb-6">
+      <h1 className="text-4xl md:text-5xl font-bold text- mb-6">
         Journey to Success Begins Here
       </h1>
       <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl">
