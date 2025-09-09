@@ -12,8 +12,8 @@ export default function Logo({ place }) {
           />
         </div>
         <p
-          className={` -ml-4 lg:text-4xl md:text-3xl font-bold  ${
-            place === "nav" ? "md:text-white text-white" : "text-[#278380]"
+          className={`italianno-regular -ml-4 lg:text-4xl md:text-3xl font-extrabold  ${
+            place === "nav" ? "md:text-white text-white" : "text-white"
           } `}
         >
           Eduverse
