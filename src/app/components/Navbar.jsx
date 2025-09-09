@@ -1,9 +1,9 @@
 "use client";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "./Logo";
-import { signOut, useSession } from "next-auth/react";
 import useAuth from "../hooks/useAuth";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,10 +13,10 @@ export default function Navbar() {
   const userProfileImage = user?.profileImage;
 
   const linkStyle =
-    "text-base hover:scale-105  hover:bg-transparent hover:text-accent hover:font-semibold hover:shadow-lg hover:shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000";
+    "text-base hover:scale-105 font-semibold hover:font-semibold hover:shadow-lg hover:shadow-white transform transition-all rounded-md font-medium px-4 duration-1000";
 
   const activeStyle =
-    "text-base scale-105  text-accent font-semibold shadow-lg shadow-accent transform transition-all rounded-md font-medium px-4 duration-1000 border-b-accent border-b-4 ";
+    "text-base scale-105 font-semibold transform transition-all rounded-md font-medium px-4 duration-1000 border-b border-b-4 ";
   const links = (
     <>
       <li className={`${linkStyle} ${pathname === "/" ? activeStyle : ""}`}>
@@ -61,8 +61,8 @@ export default function Navbar() {
     </>
   );
   return (
-    <div className="bg-linear-to-r from-secondary via-primary to-accent py-2 sticky top-0 z-50000">
-      <div className="navbar text-white max-w-11/12 mx-auto">
+    <div className=" bg-primary py-1 sticky top-0 z-50000">
+      <div className="navbar text-white px-8 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -93,8 +93,11 @@ export default function Navbar() {
               {links}
             </ul>
           </div>
+          <div className="italianno-regular ">
+                      <Logo place={"nav"}></Logo>
+          </div>
 
-          <Logo place={"nav"}></Logo>
+
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1">{links}</ul>
@@ -103,7 +106,7 @@ export default function Navbar() {
           {userEmail ? (
             <div className="flex items-center gap-2">
               <div>
-                <button onClick={() => signOut()} className="btn btn-outline">
+                <button onClick={() => signOut()} className="btn rounded-md btn-outline">
                   Logout
                 </button>
               </div>
@@ -120,10 +123,10 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="md:flex gap-3 hidden">
-              <Link href={"/login"} className="btn btn-outline">
+              <Link href={"/login"} className="btn rounded-md btn-outline">
                 Log In
               </Link>
-              <Link href={"/register"} className="btn btn-outline">
+              <Link href={"/register"} className="btn rounded-md btn-outline">
                 Register
               </Link>
             </div>

@@ -6,7 +6,6 @@ import {
   FaBook, FaUsers, FaMoneyBillWave, FaCertificate, FaClipboardList, FaQuestion
 } from "react-icons/fa";
 import { useSession } from "next-auth/react";
-import WithRole from "../components/WithRole";
 
 const DashboardPage = () => {
   const { data: session, status } = useSession();
@@ -19,6 +18,7 @@ const DashboardPage = () => {
     totalUsers: 0,
   });
   const [loading, setLoading] = useState(true);
+
   const role = session?.user?.role || "user";
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const DashboardPage = () => {
         const email = session.user.email.trim().toLowerCase();
 
         if (role === "admin") {
+          // Fetch all admin stats together
           const [coursesRes, revenueRes, usersRes] = await Promise.all([
             fetch("/api/admin/total-courses"),
             fetch("/api/admin/total-revenue"),
@@ -44,11 +45,15 @@ const DashboardPage = () => {
             totalCourses: coursesData.totalCourses || 0,
             totalRevenue: revenueData.totalRevenue || 0,
             totalUsers: usersData.totalUsers || 0,
+            certificates: stats.certificates, // keep user fields intact
+            courses: stats.courses,
+            quizzes: stats.quizzes,
           });
         } else {
+          // Fetch user-specific stats
           const [certRes, courseRes, quizRes] = await Promise.all([
             fetch(`/api/user/certificates?email=${email}`),
-            fetch(`/api/user/payments?email=${email}`),
+            fetch(`/api/user/courses?email=${email}`),
             fetch(`/api/user/quizzes?email=${email}`),
           ]);
 
@@ -60,6 +65,9 @@ const DashboardPage = () => {
             certificates: certData.totalCertificates || 0,
             courses: courseData.totalCourses || 0,
             quizzes: quizData.totalQuizzes || 0,
+            totalCourses: stats.totalCourses,
+            totalRevenue: stats.totalRevenue,
+            totalUsers: stats.totalUsers,
           });
         }
       } catch (err) {
@@ -70,7 +78,7 @@ const DashboardPage = () => {
     };
 
     fetchStats();
-  }, [session, status]);
+  }, [session, status, role]);
 
   const cardData = role === "admin"
     ? [
@@ -108,7 +116,7 @@ const DashboardPage = () => {
               initial="hidden"
               animate="visible"
               variants={cardVariants}
-               className={`p-6 rounded-xl shadow-lg bg-gradient-to-r ${card.gradient} flex flex-col sm:flex-col lg:flex-row  items-start sm:items-center gap-4 break-words`}
+              className={`p-6 rounded-xl shadow-lg bg-gradient-to-r ${card.gradient} flex flex-col sm:flex-col lg:flex-row items-start sm:items-center gap-4 break-words`}
             >
               <div className="text-white">{card.icon}</div>
               <div>
@@ -123,4 +131,4 @@ const DashboardPage = () => {
   );
 };
 
-export default WithRole(DashboardPage, ["admin", "user"]);
+export default DashboardPage;

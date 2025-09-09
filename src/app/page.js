@@ -1,9 +1,9 @@
+import ReviewsPage from "@/reviews/page";
 import Banner from "./components/Banner";
 import Chatbot from "./components/ChatBot";
-import CoursesPage from "./components/courses/CoursesPage";
 import Instructors from "./components/instructor-section/Instructors";
-import Faq from "./quiz/faq/Faq";
 import CoursesHome from "./coursesHome/page";
+import FAQ from "./components/Faq";
 
 
 
@@ -19,8 +19,16 @@ export default function Home() {
       <Chatbot/>
       <CoursesHome/>
       <Instructors/>
-      <Faq></Faq>
+      {/* <Faq></Faq> */}
+      <FAQ></FAQ>
 
+    {/* <div className=""> */}
+      <Banner />
+      <Chatbot />
+      <CoursesHome />
+      <Instructors />
+      <FAQ></FAQ>
+      <ReviewsPage />
     </div>
   );
 }

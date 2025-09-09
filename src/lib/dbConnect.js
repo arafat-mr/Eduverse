@@ -1,7 +1,5 @@
 "use server";
 
-import dotenv from "dotenv";
-dotenv.config();
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
@@ -12,6 +10,7 @@ if (!uri) {
 let client;
 let clientPromise;
 
+// Global connection to prevent multiple connections in dev
 if (!global._mongoClientPromise) {
   client = new MongoClient(uri, {
     serverApi: {

@@ -5,10 +5,14 @@ import { dbConnect } from "@/lib/dbConnect";
 export async function GET(request) {
   try {
     const url = new URL(request.url);
-    const email = url.searchParams.get("email");
+    const email = url.searchParams.get("email")?.trim().toLowerCase();
 
-    const coursesCollection = await dbConnect("payments");
-    const myCourses = await coursesCollection.find({ enrolledUsers: email }).toArray();
+    const paymentsCollection = await dbConnect("payments");
+
+    // Fetch only successful payments for this user
+    const myCourses = await paymentsCollection
+      .find({ cus_email: email, status: "success" })
+      .toArray();
 
     return new Response(
       JSON.stringify({ totalCourses: myCourses.length, courses: myCourses }),

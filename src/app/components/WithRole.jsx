@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import NotFound from "../not-found";
+
 const WithRole = (WrappedComponent, allowedRoles = []) => {
   const RoleProtected = (props) => {
     const { data: session, status } = useSession();
@@ -39,4 +39,4 @@ const WithRole = (WrappedComponent, allowedRoles = []) => {
   return RoleProtected;
 };
 
-export default WithRole;
+export default WithRole;  

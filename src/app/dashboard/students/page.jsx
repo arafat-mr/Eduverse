@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import WithRole from "@/app/components/WithRole";
@@ -17,10 +20,7 @@ function StudentsPage() {
     setLoading(true);
     try {
       const res = await fetch("/api/users-management");
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to fetch students");
-      }
+      if (!res.ok) throw new Error("Failed to fetch students");
       const data = await res.json();
       setStudents(data);
     } catch (err) {

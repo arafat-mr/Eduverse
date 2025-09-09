@@ -5,7 +5,15 @@ import { dbConnect } from "@/lib/dbConnect";
 export async function GET() {
   try {
     const coursesCollection = await dbConnect("course_resources");
-    const totalCourses = await coursesCollection.countDocuments();
+
+    // Fetch all categories
+    const categories = await coursesCollection.find({}).toArray();
+
+    // Count total courses across all categories
+    const totalCourses = categories.reduce(
+      (sum, category) => sum + (category.courses?.length || 0),
+      0
+    );
 
     return new Response(
       JSON.stringify({ totalCourses }),

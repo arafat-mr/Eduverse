@@ -1,20 +1,19 @@
 import Link from "next/link";
-import React from "react";
 
 export default function Logo({ place }) {
   return (
-    <Link href={"/"} className="text-2xl font-bold hover:cursor-pointer">
-      <div className="flex items-center justify-center">
-        <div className="lg:h-14 lg:w-28 h-12 w-24">
+    <Link href={"/"} className=" font-bold hover:cursor-pointer">
+      <div className="flex gap-6 items-center justify-center">
+        <div className="">
           <img
-            className="w-full h-full rounded-full  "
+            className="rounded-full h-11 w-13 bg-white "
             src="/EduLogo.png"
             alt="logo"
           />
         </div>
         <p
-          className={`-ml-4 lg:text-3xl text-2xl font-extrabold  ${
-            place === "nav" ? "md:text-primary text-white" : "text-[#278380]"
+          className={` -ml-4 lg:text-4xl md:text-3xl font-bold  ${
+            place === "nav" ? "md:text-white text-white" : "text-[#278380]"
           } `}
         >
           Eduverse
