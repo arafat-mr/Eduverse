@@ -13,11 +13,12 @@ export async function GET(req) {
       );
     }
 
-    
-    const paymentsCollection =await  dbConnect("payments");
-    const courseResources = await dbConnect("course_resources");
+    // Collections connect
+    const paymentsCollection = await dbConnect("payments");
+    const coursesCollection = await dbConnect("courses");
+    const courseResourcesCollection = await dbConnect("course_resources");
 
-    // Step 1: success course names
+    // Step 1: Get all purchased course names
     const payments = await paymentsCollection
       .find({ cus_email: email, status: "success" })
       .project({ course_name: 1, _id: 0 })
@@ -34,15 +35,52 @@ export async function GET(req) {
       });
     }
 
-    // Step 2: course details
     const coursesDetails = [];
+
     for (const name of courseNames) {
-      const course = await courseResources.findOne(
-        { "courses.title": name },
-        { projection: { "courses.$": 1 } }
+      // Step 2: Get course info from 'courses' collection
+      const courseDoc = await coursesCollection.findOne(
+        { "categories.courses.title": name },
+        { projection: { "categories.$": 1 } }
       );
-      if (course && course.courses && course.courses.length > 0) {
-        coursesDetails.push(course.courses[0]);
+
+      if (
+        courseDoc &&
+        courseDoc.categories &&
+        courseDoc.categories.length > 0
+      ) {
+        const category = courseDoc.categories[0];
+        const course = category.courses.find((c) => c.title === name);
+
+        if (course) {
+          // Step 3: Get modules from course_resources
+          const resourceDoc = await courseResourcesCollection.findOne(
+            { "courses.title": name },
+            { projection: { "courses.$": 1, category: 1 } }
+          );
+
+          let modules = [];
+          if (
+            resourceDoc &&
+            resourceDoc.courses &&
+            resourceDoc.courses.length > 0
+          ) {
+            modules = resourceDoc.courses[0].modules || [];
+          }
+
+          coursesDetails.push({
+            title: course.title,
+            totalClasses: course.totalClasses,
+            courseDuration: course.courseDuration,
+            weeklyClasses: course.weeklyClasses,
+            totalHours: course.totalHours,
+            project: course.project,
+            courseImage: course.courseImage,
+            instructor: course.instructor,
+            modules, // এখানে course_resources থেকে নেওয়া হচ্ছে
+            category: category.category,
+          });
+        }
       }
     }
 
