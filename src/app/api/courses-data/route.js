@@ -1,10 +1,18 @@
 import { dbConnect } from "@/lib/dbConnect";
 
-export async function GET() {
+export async function GET(req) {
   try {
-   const coursesCollection = await dbConnect("courses");
-   const courses = await coursesCollection.find({}).toArray();
-    
+    const { searchParams } = new URL(req.url);
+    const title = searchParams.get("title");
+
+    const coursesCollection = await dbConnect("courses");
+
+    let query = {};
+    if (title) {
+      query = { title: title }; 
+    }
+
+    const courses = await coursesCollection.find(query).toArray();
 
     return new Response(JSON.stringify(courses), {
       status: 200,

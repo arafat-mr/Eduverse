@@ -43,13 +43,6 @@ export default function Banner() {
             />
           </p>
 
-          <div className="flex  flex-col items-center sm:flex-row  gap-3 sm:gap-4 mt-5">
-            <button className="btn max-w-[200px] btn-outline  px-6 py-2 rounded-md w-full sm:w-auto">
-              View Courses
-            </button>
-            <button className="btn btn-warning  px-6 py-2 max-w-[200px] rounded-md w-full sm:w-auto">
-              Explore More
-            </button>
          
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
@@ -83,11 +76,8 @@ export default function Banner() {
             />
           </motion.div>
         </div>
-  
-      </div>
-     
-   
       </div>
     </div>
+    
   );
 }

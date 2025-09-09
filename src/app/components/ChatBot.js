@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, MessageSquareX, X, Sparkles } from 'lucide-react';
+import { Bot, Send, Sparkles, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function OpenAIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function OpenAIChatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 max-h-[80vh] bg-white shadow-2xl rounded-2xl flex flex-col overflow-hidden animate-fadeIn">
+        <div className="fixed z-100 bottom-6 right-6 w-96 max-h-[80vh] bg-white shadow-2xl rounded-2xl flex flex-col overflow-hidden animate-fadeIn">
           {/* Header */}
           <div className="bg-primary text-white p-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
