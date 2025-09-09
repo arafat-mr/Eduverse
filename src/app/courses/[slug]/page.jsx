@@ -14,6 +14,7 @@ import {
 
 import useAuth from "@/app/hooks/useAuth";
 import { setCookie } from "cookies-next";
+import Loading from "@/app/loading";
 
 export default function CourseDetailPage() {
   const { slug } = useParams();
@@ -43,8 +44,9 @@ export default function CourseDetailPage() {
     }
   }, [slug, categories]);
 
-  if (!course)
-    return <p className="p-6 text-center text-gray-500">Loading...</p>;
+  if (!course) {
+    return <Loading></Loading>;
+  }
 
   const tabs = [
     "Curriculum",

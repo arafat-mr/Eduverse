@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -66,7 +65,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-green-100 to-green-200 text-gray-800">
+    <div className="min-h-screen bg-gradient-to-r from-[#D6DAC8] to-[#d9c4b0] text-[#000000]">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-10 md:justify-between md:items-center py-10">
         {/* Lottie Animation */}
         <div className="md:w-1/2 w-full md:mt-20 lg:mt-0">
@@ -75,21 +74,21 @@ const Page = () => {
 
         {/* Form Section */}
         <div
-          className="w-full md:w-1/2 bg-transparent p-6 rounded-lg text-black md:mt-20 lg:mt-0"
-          style={{ boxShadow: "0 0 15px rgba(236, 72, 153, 0.8)" }}
+          className="w-full md:w-1/2 bg-[#ffffff]/70 p-6 rounded-lg text-black md:mt-20 lg:mt-0"
+          style={{ boxShadow: "0 0 15px rgba(18, 65, 112, 0.5)" }}
         >
-          <h3 className="text-3xl font-semibold mb-6 text-center">
+          <h3 className="text-3xl font-semibold mb-6 text-center text-[#124170]">
             Please Login
           </h3>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="label">Email</label>
+              <label className="label font-medium text-[#124170]">Email</label>
               <input
                 type="email"
                 {...register("email", { required: "Email is required" })}
-                className="input input-bordered w-full bg-transparent"
+                className="input input-bordered w-full bg-[#D6DAC8] text-[#000000]"
                 placeholder="Email"
               />
               {errors.email && (
@@ -101,18 +100,20 @@ const Page = () => {
 
             {/* Password */}
             <div className="relative">
-              <label className="label">Password</label>
+              <label className="label font-medium text-[#124170]">
+                Password
+              </label>
               <input
                 type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required",
                   minLength: { value: 6, message: "Minimum 6 characters" },
                 })}
-                className="input input-bordered w-full bg-transparent pr-10"
+                className="input input-bordered w-full bg-[#D6DAC8] text-[#000000] pr-10"
                 placeholder="Password"
               />
               <span
-                className="absolute right-3 top-9 cursor-pointer text-gray-500"
+                className="absolute right-3 top-9 cursor-pointer text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
@@ -134,7 +135,7 @@ const Page = () => {
             {/* Register Link */}
             <p className="text-sm">
               Don't have an account?{" "}
-              <Link href="/register" className="text-green-600 hover:underline">
+              <Link href="/register" className="text-[#124170] hover:underline">
                 Register Now
               </Link>
             </p>
@@ -142,8 +143,7 @@ const Page = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="px-6 py-3 w-full text-center font-semibold bg-pink-500 text-white rounded-md shadow-lg
-                 hover:shadow-pink-400/80 hover:scale-105 transition duration-300 hover:animate-pulse text-sm flex items-center justify-center gap-2"
+              className="px-6 py-3 w-full text-center font-semibold bg-[#124170] text-white rounded-md shadow-md hover:bg-[#0e3156] transition duration-300"
             >
               {loading ? "Logging in..." : "Login"}
             </button>

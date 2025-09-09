@@ -64,7 +64,7 @@ export default function StripeWrapper() {
         // Payment succeeded
         // Clear cookie after use
         deleteCookie("paymentData");
-        console.log("Payment successful!");
+
         router.push("/payment/success");
       }
 
@@ -79,7 +79,7 @@ export default function StripeWrapper() {
         {error && <div>{error}</div>}
         <div className="flex justify-center items-center">
           <button
-            className="text-center text-xl  bg-blue-700 w-full"
+            className="mt-5 py-1 bg-blue-600 text-xl text-white rounded-lg text-center font-semibold  hover:bg-blue-700 transition w-full"
             disabled={!stripe || loading}
             type="submit"
           >
@@ -97,7 +97,7 @@ export default function StripeWrapper() {
     if (!data) return;
 
     const paymentData = JSON.parse(data);
-    console.log("Payment data:", paymentData);
+
     setPaymentData(paymentData);
 
     // const initPayment = async () => {

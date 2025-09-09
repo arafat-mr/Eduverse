@@ -31,7 +31,7 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchProfile();
   }, []);
-
+  console.log(profile);
   // Upload image to Cloudinary
   const uploadImage = async () => {
     if (!imageFile) return profile.image || "";

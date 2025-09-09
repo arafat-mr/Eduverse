@@ -3,20 +3,25 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Loading from "../loading";
 
 export default function CoursesHome() {
   const [courses, setCourses] = useState([]);
+  const [loadingState, setLoadingState] = useState(true);
 
   useEffect(() => {
-    fetch("/coursesData/courses.json")
+    fetch("/api/courses-data")
       .then((res) => res.json())
       .then((data) => {
-        const allCourses = data.categories.flatMap((cat) => cat.courses);
+        const allCourses = data[0].categories.flatMap((cat) => cat.courses);
         setCourses(allCourses.slice(0, 6));
+        setLoadingState(false);
       })
       .catch((err) => console.error(err));
   }, []);
-
+  if (loadingState) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden py-10 px-6">
       <div className=" max-w-11/12 mx-auto ">
