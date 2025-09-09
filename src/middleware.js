@@ -7,10 +7,13 @@ export const middleware = async (req) => {
 
   const isAdminUser = token?.role == 'admin' || 'user';
 
-  const isAdminSpecificRoute = req.nextUrl.pathname.startsWith('/dashboard');
+    
+    const isAdminSpecificRoute = req.nextUrl.pathname.startsWith("/dashboard");
 
-  if (isAdminSpecificRoute && !isAdminUser) {
-    return NextResponse.redirect(new URL('/login', req.url));
-  }
-  return NextResponse.next();
+    if(isAdminSpecificRoute && !isAdminUser){
+        return NextResponse.redirect(new URL('/login',req.url));
+    }
+    return NextResponse.next();
+
+  
 };

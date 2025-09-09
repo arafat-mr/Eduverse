@@ -1,146 +1,92 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 export default function ProfilePage() {
-  const [profile, setProfile] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [imageFile, setImageFile] = useState(null);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  // Fetch profile
-  const fetchProfile = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch("/api/profile");
-      if (!res.ok) throw new Error("Failed to fetch profile");
-      const data = await res.json();
-      setProfile(data);
-      setName(data.name || "");
-      setEmail(data.email || "");
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { data: session, status } = useSession();
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchProfile();
-  }, []);
-  console.log(profile);
-  // Upload image to Cloudinary
-  const uploadImage = async () => {
-    if (!imageFile) return profile.image || "";
+    if (status !== "authenticated" || !session?.user?.email) return;
 
-    const formData = new FormData();
-    formData.append("file", imageFile);
-    formData.append("upload_preset", "eduverse"); // make sure you have a preset in Cloudinary
-
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`,
-      { method: "POST", body: formData }
-    );
-
-    const data = await res.json();
-    return data.secure_url;
-  };
-
-  // Update profile
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!name || !email) {
-      setError("Name and email are required");
-      return;
-    }
-
-    try {
+    const fetchUser = async () => {
       setLoading(true);
-      const imageUrl = await uploadImage();
+      try {
+        // encodeURIComponent in case email has special characters
+        const res = await fetch(`/api/usersProfile/${encodeURIComponent(session.user.email)}`);
+      
+        
+        if (!res.ok) throw new Error("Failed to fetch user data");
+        const data = await res.json();
+        console.log(data);
+        
+        setUserData(data);
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to load profile data");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      const res = await fetch("/api/profile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, image: imageUrl }),
-      });
+    fetchUser();
+  }, [session, status]);
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to update profile");
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-16 h-16 border-4 border-t-transparent border-blue-500 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
-      setProfile({ name, email, image: imageUrl });
-      setSuccess("Profile updated successfully!");
-      setImageFile(null);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!userData) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl text-red-500">No user data found</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin Profile</h1>
+    <div className="max-w-3xl mx-auto p-6 bg-blue-800 text-white rounded-xl shadow-lg mt-10">
+      <div className="flex flex-col items-center">
+        {/* Profile Image */}
+        <img
+          src={userData.profileImage || "/default-profile.png"}
+          alt={userData.name}
+          className="w-32 h-32 rounded-full object-cover border-4 border-indigo-500"
+        />
+        {/* Name */}
+        <h1 className="text-3xl font-bold mt-4">{userData.name}</h1>
+        {/* Email */}
+        <p className="text-lg text-gray-300 mt-1">{userData.email}</p>
+      </div>
 
-      {loading && <p>Loading...</p>}
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {error && <p className="text-red-500">{error}</p>}
-        {success && <p className="text-green-500">{success}</p>}
-
-        <div className="flex flex-col">
-          <label className="mb-1 font-semibold">Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="border p-2 rounded"
-          />
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Contact Number */}
+        <div className="p-4  rounded-lg shadow flex flex-col">
+          <h2 className="font-semibold text-lg mb-2">Contact Number</h2>
+          <p className="text-gray-300">{userData.contactNumber || "N/A"}</p>
         </div>
 
-        <div className="flex flex-col">
-          <label className="mb-1 font-semibold">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border p-2 rounded"
-          />
+        {/* Role */}
+        <div className="p-4  rounded-lg shadow flex flex-col">
+          <h2 className="font-semibold text-lg mb-2">Role</h2>
+          <p className="text-gray-300">{userData.role}</p>
         </div>
 
-        <div className="flex flex-col">
-          <label className="mb-1 font-semibold">Profile Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImageFile(e.target.files[0])}
-            className="border p-2 rounded"
-          />
+        {/* Account Created */}
+        <div className="p-4  rounded-lg shadow flex flex-col">
+          <h2 className="font-semibold text-lg mb-2">Account Created</h2>
+          <p className="text-gray-300">{new Date(userData.createdAt).toLocaleString()}</p>
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Update Profile
-        </button>
-      </form>
-
-      {profile.image && (
-        <div className="mt-6">
-          <h2 className="font-semibold mb-2">Current Profile Image:</h2>
-          <img
-            src={profile.image}
-            alt="Profile"
-            className="w-32 h-32 object-cover rounded-full border"
-          />
-        </div>
-      )}
-    </div>
-  );
+        
+      </div>
+      </div>)
 }
+

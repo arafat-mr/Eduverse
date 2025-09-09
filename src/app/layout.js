@@ -34,14 +34,16 @@ const quicksand = Quicksand({
   weight: "500",
   subsets: ["latin"],
 });
+export const metadata = {
+  title: "Eduverse",
+  icons: {
+    icon: "/icon.png", // ✅ path relative to public
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <head>
-        <title>Eduverse</title>
-        <link rel="icon" href="/icon.png" />
-      </head>
       <body
         className={`${quicksand.className} ${geistMono.variable} antialiased`}
       >

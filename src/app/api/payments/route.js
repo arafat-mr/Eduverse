@@ -1,4 +1,12 @@
+"use server"
+
 import { dbConnect } from "@/lib/dbConnect";
+
+
+
+
+
+
 
 // GET /api/payments - get all payments
 export async function GET() {
@@ -11,7 +19,7 @@ export async function GET() {
       headers: { "Content-Type": "application/json" },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
+    return new Response(JSON.stringify({ "error": err.message }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
@@ -26,7 +34,7 @@ export async function POST(req) {
     // Optional: validate required fields
     if (!body.userId || !body.amount || !body.method) {
       return new Response(
-        JSON.stringify({ error: "userId, amount, and method are required" }),
+        JSON.stringify({ "error": "userId, amount, and method are required" }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
@@ -35,7 +43,7 @@ export async function POST(req) {
     const result = await col.insertOne(body);
 
     return new Response(
-      JSON.stringify({ _id: result.insertedId, ...body }),
+      JSON.stringify({ "_id": result.insertedId, ...body }),
       {
         status: 201,
         headers: { "Content-Type": "application/json" },
@@ -43,8 +51,10 @@ export async function POST(req) {
     );
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
+      "status": 500,
+      "headers": { "Content-Type": "application/json" },
     });
   }
 }
+
+

@@ -1,25 +1,31 @@
+
+
+
 "use client";
 
-import { useState, useEffect } from "react";
+import WithRole from "@/app/components/WithRole";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-export default function StudentsPage() {
+function truncateText(text, maxLength = 30) {
+  if (!text) return "";
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+}
+
+function StudentsPage() {
   const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  // Fetch all students
   const fetchStudents = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const res = await fetch("/api/students");
+      const res = await fetch("/api/users-management");
       if (!res.ok) throw new Error("Failed to fetch students");
       const data = await res.json();
       setStudents(data);
     } catch (err) {
-      setError(err.message);
+      console.error(err);
+      toast.error("❌ " + err.message);
     } finally {
       setLoading(false);
     }
@@ -29,94 +35,55 @@ export default function StudentsPage() {
     fetchStudents();
   }, []);
 
-  // Add new student
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!name || !email) {
-      setError("Name and email are required");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/students", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to add student");
-
-      setStudents((prev) => [...prev, data]);
-      setName("");
-      setEmail("");
-      setSuccess("Student added successfully!");
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Students</h1>
-
-      {/* Add Student Form */}
-      <form onSubmit={handleSubmit} className="mb-6 flex flex-wrap gap-2">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[150px]"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[150px]"
-        />
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 p-6 text-white">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Users Management</h1>
         <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onClick={fetchStudents}
+          className="btn btn-sm btn-outline rounded-lg border-white text-white hover:bg-white hover:text-blue-900"
         >
-          Add Student
+          Refresh
         </button>
-      </form>
+      </div>
 
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      {success && <p className="text-green-500 mb-2">{success}</p>}
-
-      {/* Students List */}
       {loading ? (
-        <p>Loading...</p>
+        <div className="w-full h-60 flex justify-center items-center">
+          <span className="loading loading-spinner text-white"></span>
+        </div>
       ) : students.length === 0 ? (
-        <p>No students found.</p>
+        <div className="bg-blue-950 rounded-lg shadow p-6 text-white">
+          <p className="text-lg font-medium">No users found.</p>
+        </div>
       ) : (
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-2 py-1">ID</th>
-              <th className="border px-2 py-1">Name</th>
-              <th className="border px-2 py-1">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student) => (
-              <tr key={student._id}>
-                <td className="border px-2 py-1">{student._id}</td>
-                <td className="border px-2 py-1">{student.name}</td>
-                <td className="border px-2 py-1">{student.email}</td>
+        <div className="overflow-x-auto bg-blue-950 rounded-lg shadow p-4">
+          <table className="min-w-[600px] w-full text-white border-collapse border border-gray-600">
+            <thead className="bg-blue-800 font-mono">
+              <tr>
+                <th className="p-3 border-b border-gray-600">Name</th>
+                <th className="p-3 border-b border-gray-600">Email</th>
+                <th className="p-3 border-b border-gray-600">Contact Number</th>
+                <th className="p-3 border-b border-gray-600">Created At</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {students.map((s) => (
+                <tr key={s._id} className="hover:bg-blue-900 font-mono text-sm">
+                  <td className="p-3 border-b border-gray-600">{truncateText(s.name, 25)}</td>
+                  <td className="p-3 border-b border-gray-600">{truncateText(s.email, 30)}</td>
+                  <td className="p-3 border-b border-gray-600">{s.contactNumber || "-"}</td>
+                  <td className="p-3 border-b border-gray-600">
+                    {new Date(s.createdAt).toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
 }
+
+// Wrap with admin-only protection
+export default WithRole(StudentsPage, ["admin"]);
