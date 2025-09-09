@@ -1,0 +1,1001 @@
+{
+  "categories": [
+    {
+      "category": "Web & Software Development",
+      "courses": [
+        {
+          "title": "Full-Stack Web Development (MERN Stack)",
+          "totalClasses": 40,
+          "courseDuration": "5 Months",
+          "weeklyClasses": 3,
+          "totalHours": 120,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/VNjP5RyB/MERN.jpg",
+          "price": 16000,
+          "originalPrice": 20000,
+          "discount": "20%",
+          "courseIntroduction": "This course takes you from a beginner to a full-stack web developer. You will learn both frontend and backend development using modern technologies. The course includes hands-on projects to build real-world applications. You will master MongoDB, Express.js, React, and Node.js (MERN stack). Authentication, routing, and deployment are covered in detail. By the end, you'll have the skills to create scalable web apps and showcase a complete portfolio.",
+          "courseOverview": {
+            "brief": "In this course, you will gain comprehensive knowledge of web development using the MERN stack. You'll understand how the frontend and backend work together to build dynamic applications. Real-world projects will prepare you for industry challenges.",
+            "details": {
+              "Total Classes": 40,
+              "Course Duration": "5 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 120,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "HTML, CSS, JavaScript",
+                "React Basics & Advanced",
+                "Next.js Fundamentals",
+                "Node.js & Express.js",
+                "MongoDB & Mongoose",
+                "Authentication & Authorization",
+                "Routing & API Development",
+                "Deployment & Hosting"
+              ],
+              "Software Used": [
+                "VS Code",
+                "Git & GitHub",
+                "MongoDB Atlas",
+                "Postman",
+                "Vercel / Netlify",
+                "Heroku"
+              ],
+              "Designed For": "Beginners to intermediate learners who want to become web developers.",
+              "Career Opportunities": [
+                "Full-Stack Developer",
+                "Frontend Developer",
+                "Backend Developer",
+                "Software Engineer"
+              ],
+              "Open Job Positions": "10,000+ jobs worldwide in Full-Stack development.",
+              "Exclusive Solutions": [
+                "Hands-on projects",
+                "Real-world assignments",
+                "Career guidance from industry experts"
+              ],
+              "Projects": [
+                "Build a complete e-commerce website with authentication, payments, and admin panel."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Salman Sadik",
+            "designation": "Senior Software Engineer",
+            "experience": "7+ years in MERN stack development",
+            "profileImage": "https://i.ibb.co.com/VpcSjWXB/fahad.jpg",
+            "bio": "Salman has worked with multiple startups and enterprises to build scalable web applications. He enjoys mentoring students and sharing industry best practices."
+          }
+        },
+        {
+          "title": "App Development with Flutter (Android & iOS)",
+          "totalClasses": 35,
+          "courseDuration": "4 Months",
+          "weeklyClasses": 3,
+          "totalHours": 100,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/3NQBNXTp/e-learning-and-earning-ltd-742714-App-Development-with-flutter.jpg",
+          "price": 14000,
+          "originalPrice": 18000,
+          "discount": "22%",
+          "courseIntroduction": "Learn how to create beautiful and fast cross-platform mobile applications using Flutter & Dart. This course covers Flutter widgets, state management, and API integration. You'll build real-world apps that work on Android and iOS. Firebase backend integration will teach you how to handle databases, authentication, and storage. You'll also learn deployment strategies and app performance optimization. By the end, you'll have the skills to publish apps on both Google Play Store and Apple App Store.",
+          "courseOverview": {
+            "brief": "You’ll begin with the fundamentals of Dart and Flutter, then move to creating powerful, scalable apps with state management, Firebase integration, and clean UI/UX design. Real-world app projects like Firebase-based apps, API integration, and navigation systems will be built to sharpen your portfolio and make you job-ready.",
+            "details": {
+              "Total Classes": 35,
+              "Course Duration": "4 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 100,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Development with Flutter",
+                "Creating Beautiful UI With Flutter for Beginners",
+                "Building Apps with State Management",
+                "Leveraging Flutter Packages to Speed Up Development",
+                "Structuring Flutter Apps",
+                "Flutter Design Patterns",
+                "Creating Advanced UI With Flutter",
+                "Dart Annotations and Modifiers",
+                "Dart Packages",
+                "Managing State in Flutter",
+                "Mapping Data into Widgets",
+                "Flutter Apps With Backend Data",
+                "Navigation and Multiple Screens",
+                "Cupertino Widgets & Platform-specific UI",
+                "Flutter App with Live Web Data",
+                "Flutter App with Firebase Sections",
+                "Firebase Cloud Firestore Integration"
+              ],
+              "Software Used": [
+                "Dart",
+                "Flutter",
+                "OOP Concepts",
+                "REST API Integration",
+                "VS Code",
+                "Git & GitHub",
+                "Firebase",
+                "Google Maps Integration",
+                "Payment Gateway Integration",
+                "Admob",
+                "MVVM Architecture",
+                "MongoDB & SQLite",
+                "Flutter Widgets"
+              ],
+              "Designed For": "Students and developers who want to create cross-platform apps with a single codebase.",
+              "Career Opportunities": [
+                "Mobile App Developer",
+                "Flutter Developer",
+                "Cross-Platform App Developer"
+              ],
+              "Open Job Positions": "8,000+ jobs globally in Flutter app development.",
+              "Exclusive Solutions": [
+                "Industry-level project guidance",
+                "Performance optimization techniques",
+                "App monetization strategies"
+              ],
+              "Projects": [
+                "Develop a cross-platform mobile app for food delivery with Firebase backend."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Umme Jami Era",
+            "designation": "Mobile App Developer",
+            "experience": "5+ years in cross-platform development",
+            "profileImage": "https://i.ibb.co.com/fYSDDNKp/hasna.jpg",
+            "bio": "Era specializes in building user-friendly mobile applications and mentoring students worldwide. She focuses on teaching practical app development skills."
+          }
+        },
+        {
+          "title": "Software Testing & Quality Assurance (Manual & Automation)",
+          "totalClasses": 30,
+          "courseDuration": "4 Months",
+          "weeklyClasses": 3,
+          "totalHours": 90,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/hjh7bfSj/e-learning-and-earning-ltd-251684-Software-Testing.jpg",
+          "price": 14000,
+          "originalPrice": 18000,
+          "discount": "22%",
+          "courseIntroduction": "Learn the fundamentals of software testing and quality assurance. This course covers manual testing techniques, test case design, defect management, and automation testing using popular tools like Selenium. You'll gain hands-on experience to ensure software reliability and performance in real-world projects.",
+          "courseOverview": {
+            "brief": "This course provides in-depth knowledge of software testing practices, both manual and automated. You'll learn how to write effective test cases, automate tests, and ensure software meets quality standards. Practical projects prepare you for QA roles in the industry.",
+            "details": {
+              "Total Classes": 30,
+              "Course Duration": "4 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 90,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Software Testing",
+                "Manual Testing Fundamentals",
+                "Test Case Design Techniques",
+                "Defect Life Cycle & Bug Reporting",
+                "Automation Testing Introduction",
+                "Selenium WebDriver Basics",
+                "Automation Frameworks",
+                "CI/CD Integration",
+                "Performance Testing Basics",
+                "Final Project: QA for a Web Application"
+              ],
+              "Software Used": [
+                "Selenium WebDriver",
+                "Postman",
+                "Jira / Bugzilla",
+                "TestNG",
+                "Maven",
+                "Jenkins",
+                "Git & GitHub"
+              ],
+              "Designed For": "Beginners and professionals who want to start a career in software quality assurance and testing.",
+              "Career Opportunities": [
+                "QA Engineer",
+                "Manual Tester",
+                "Automation Tester",
+                "Software Quality Analyst"
+              ],
+              "Open Job Positions": "5,000+ QA jobs worldwide across various industries.",
+              "Exclusive Solutions": [
+                "Hands-on testing projects",
+                "Real-world automation assignments",
+                "Guidance from industry experts"
+              ],
+              "Projects": [
+                "Test and automate a web-based application using Selenium and generate reports."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Rashid",
+            "designation": "Senior QA Engineer",
+            "experience": "6+ years in Manual & Automation Testing",
+            "profileImage": "https://i.postimg.cc/hGVCRD6p/rashid.avif",
+            "bio": "Noornabi has worked in various software companies to ensure product quality. He specializes in automation frameworks and enjoys mentoring students in QA best practices."
+          }
+        },
+        {
+          "title": "Web Development (ASP.Net Core)",
+          "totalClasses": 35,
+          "courseDuration": "5 Months",
+          "weeklyClasses": 3,
+          "totalHours": 110,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/9FqQhsXr/images-1.jpg",
+          "price": 15000,
+          "originalPrice": 19000,
+          "discount": "21%",
+          "courseIntroduction": "Learn to build modern web applications using ASP.Net Core. This course covers MVC architecture, Entity Framework, REST APIs, authentication & authorization, and deployment strategies. You'll develop real-world projects to strengthen your portfolio and gain practical experience in backend and frontend development.",
+          "courseOverview": {
+            "brief": "This course gives you a complete understanding of web development using ASP.Net Core. You'll learn both server-side and client-side development, integrating databases, implementing security, and deploying applications. Projects provide hands-on experience to prepare you for industry roles.",
+            "details": {
+              "Total Classes": 35,
+              "Course Duration": "5 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 110,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to ASP.Net Core",
+                "MVC Architecture & Routing",
+                "Razor Pages & Views",
+                "Entity Framework Core",
+                "CRUD Operations",
+                "Authentication & Authorization",
+                "Web API Development",
+                "Dependency Injection",
+                "Logging & Error Handling",
+                "Deployment on IIS / Azure",
+                "Final Project: Complete Web Application"
+              ],
+              "Software Used": [
+                "Visual Studio",
+                "SQL Server",
+                "Git & GitHub",
+                "Postman",
+                "IIS / Azure",
+                "NuGet Packages"
+              ],
+              "Designed For": "Beginners to intermediate developers interested in building robust web applications using ASP.Net Core.",
+              "Career Opportunities": [
+                "ASP.Net Core Developer",
+                "Backend Web Developer",
+                "Full-Stack Developer",
+                "Software Engineer"
+              ],
+              "Open Job Positions": "6,000+ ASP.Net Core job openings worldwide.",
+              "Exclusive Solutions": [
+                "Hands-on real-world projects",
+                "Guidance from experienced developers",
+                "Deployment and cloud integration training"
+              ],
+              "Projects": [
+                "Develop a complete e-commerce website using ASP.Net Core with authentication and payment integration."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Hasan",
+            "designation": "Senior ASP.Net Core Developer",
+            "experience": "8+ years in web development with Microsoft technologies",
+            "profileImage": "https://i.postimg.cc/WzmjDcdn/rakib.avif",
+            "bio": "Mehedi specializes in ASP.Net Core and has built multiple enterprise-level applications. He enjoys teaching and mentoring students to become industry-ready developers."
+          }
+        }
+      ]
+    },
+    {
+      "category": "Artificial Intelligence & Machine Learning",
+      "courses": [
+        {
+          "title": "Machine Learning with Python",
+          "totalClasses": 45,
+          "courseDuration": "6 Months",
+          "weeklyClasses": 2,
+          "totalHours": 140,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/Zqk01VFr/course-1662804460.jpg",
+          "price": 18000,
+          "originalPrice": 22000,
+          "discount": "18%",
+          "courseIntroduction": "Master machine learning concepts, algorithms, and their applications using Python libraries. Learn how to handle datasets, clean data, and perform feature engineering. This course covers supervised and unsupervised learning algorithms in depth. You'll gain experience with Python libraries such as NumPy, Pandas, and Scikit-learn. Hands-on projects will allow you to build models that can make predictions on real-world data. By the end of this course, you'll have the skills to deploy machine learning models and solve practical problems.",
+          "courseOverview": {
+            "brief": "You’ll start with Python fundamentals and data handling, then move to supervised and unsupervised learning. Real-world datasets, model evaluation, and deployment will make you job-ready in machine learning.",
+            "details": {
+              "Total Classes": 45,
+              "Course Duration": "6 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 140,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Python for ML",
+                "NumPy and Pandas Basics",
+                "Data Preprocessing and Cleaning",
+                "Exploratory Data Analysis",
+                "Supervised Learning Algorithms",
+                "Unsupervised Learning Algorithms",
+                "Feature Engineering Techniques",
+                "Model Evaluation and Metrics",
+                "Regression Models",
+                "Classification Models",
+                "Clustering Models",
+                "Dimensionality Reduction",
+                "Deploying ML Models",
+                "Case Studies with Real Datasets"
+              ],
+              "Software Used": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "Scikit-learn",
+                "Jupyter Notebook",
+                "Anaconda",
+                "Google Colab",
+                "Matplotlib",
+                "Seaborn"
+              ],
+              "Designed For": "Intermediate programmers and data enthusiasts.",
+              "Career Opportunities": [
+                "Machine Learning Engineer",
+                "Data Scientist",
+                "AI Researcher"
+              ],
+              "Open Job Positions": "15,000+ jobs in AI & ML globally.",
+              "Exclusive Solutions": [
+                "Real-world case studies",
+                "Kaggle competition guidance",
+                "Model optimization techniques"
+              ],
+              "Projects": [
+                "Predict house prices using machine learning algorithms."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Noornabi",
+            "designation": "AI/ML Researcher",
+            "experience": "6+ years in machine learning and AI development",
+            "profileImage": "https://i.ibb.co.com/NdnzmDQp/bob.jpg",
+            "bio": "Noornabi is a researcher and developer working on AI-powered solutions with real-world applications. He emphasizes practical understanding through projects."
+          }
+        },
+        {
+          "title": "Data Analytics (Excel, SQL, Python, Power BI & Statistics)",
+          "totalClasses": 40,
+          "courseDuration": "5 Months",
+          "weeklyClasses": 3,
+          "totalHours": 120,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/05YSs6VT/e-learning-and-earning-ltd-436989-Data-Analysis.jpg",
+          "price": 16000,
+          "originalPrice": 20000,
+          "discount": "20%",
+          "courseIntroduction": "Learn how to collect, clean, analyze, and visualize data using industry-standard tools. This course covers Excel, SQL, Python, Power BI, and statistics. Gain hands-on experience through real-world datasets and projects, preparing you for data analytics roles in business, finance, marketing, and more.",
+          "courseOverview": {
+            "brief": "This course provides a comprehensive foundation in data analytics. You'll learn to work with datasets, perform statistical analysis, create dashboards, and build data-driven solutions. Real-world projects help you gain practical experience and showcase your skills.",
+            "details": {
+              "Total Classes": 40,
+              "Course Duration": "5 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 120,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Data Analytics",
+                "Data Cleaning & Preparation",
+                "Excel for Data Analysis",
+                "SQL for Data Queries",
+                "Python for Data Analysis",
+                "Data Visualization with Power BI",
+                "Statistics & Probability Concepts",
+                "Exploratory Data Analysis",
+                "Building Interactive Dashboards",
+                "Final Project: Business Analytics Report"
+              ],
+              "Software Used": [
+                "Microsoft Excel",
+                "SQL Server / MySQL",
+                "Python (Pandas, NumPy, Matplotlib)",
+                "Power BI",
+                "Jupyter Notebook"
+              ],
+              "Designed For": "Beginners and professionals interested in data analytics, business intelligence, and data-driven decision making.",
+              "Career Opportunities": [
+                "Data Analyst",
+                "Business Intelligence Analyst",
+                "Power BI Developer",
+                "Python Data Analyst"
+              ],
+              "Open Job Positions": "15,000+ data analytics roles globally.",
+              "Exclusive Solutions": [
+                "Hands-on projects with real datasets",
+                "Guidance on resume & portfolio building",
+                "Live case studies from industry"
+              ],
+              "Projects": [
+                "Analyze a real-world sales dataset and create an interactive Power BI dashboard with actionable insights."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Rony",
+            "designation": "Data Analyst & BI Specialist",
+            "experience": "6+ years in data analytics and business intelligence",
+            "profileImage": "https://i.postimg.cc/SxxqK5k6/rana.avif",
+            "bio": "Noornabi has helped multiple companies build data-driven strategies. He enjoys teaching students how to extract meaningful insights from data and make data-backed decisions."
+          }
+        },
+        {
+          "title": "Deep Learning with TensorFlow & PyTorch",
+          "totalClasses": 50,
+          "courseDuration": "6 Months",
+          "weeklyClasses": 2,
+          "totalHours": 150,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/TYgPnrX1/2022-0830-Blog-Tensor-Flow-Py-Torch-1-1280x720.webp",
+          "price": 20000,
+          "originalPrice": 25000,
+          "discount": "20%",
+          "courseIntroduction": "Dive deep into neural networks and build advanced AI systems using TensorFlow and PyTorch. Understand architectures like CNNs, RNNs, and LSTMs. Learn transfer learning, GANs, and practical deep learning applications. The course emphasizes hands-on projects to implement state-of-the-art models. You will gain skills in model optimization, training on GPU, and deployment strategies. By the end, you'll be ready to tackle complex AI challenges in real-world scenarios.",
+          "courseOverview": {
+            "brief": "Start with neural network fundamentals, then move to building CNNs, RNNs, LSTMs, and GANs. Projects on image recognition and sequence modeling will enhance your portfolio and prepare you for AI jobs.",
+            "details": {
+              "Total Classes": 50,
+              "Course Duration": "6 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 150,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Deep Learning",
+                "Neural Network Fundamentals",
+                "Building Artificial Neural Networks (ANNs)",
+                "Convolutional Neural Networks (CNNs)",
+                "Recurrent Neural Networks (RNNs)",
+                "Long Short-Term Memory Networks (LSTMs)",
+                "Transfer Learning Techniques",
+                "Generative Adversarial Networks (GANs)",
+                "Model Optimization and Regularization",
+                "Training Models on GPU",
+                "Deploying Deep Learning Models",
+                "Hands-on Image Recognition Project",
+                "Sequence Modeling Project",
+                "Advanced Case Studies"
+              ],
+              "Software Used": [
+                "Python",
+                "TensorFlow",
+                "PyTorch",
+                "Keras",
+                "Jupyter Notebook",
+                "Google Colab",
+                "NumPy",
+                "Matplotlib"
+              ],
+              "Designed For": "Intermediate to advanced learners interested in deep learning.",
+              "Career Opportunities": [
+                "AI Engineer",
+                "Deep Learning Specialist",
+                "Research Scientist"
+              ],
+              "Open Job Positions": "12,000+ jobs in deep learning globally.",
+              "Exclusive Solutions": [
+                "End-to-end projects",
+                "GPU training sessions",
+                "Cutting-edge research applications"
+              ],
+              "Projects": [
+                "Build an image recognition system using Convolutional Neural Networks."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Saikat",
+            "designation": "AI Engineer",
+            "experience": "4+ years in deep learning and AI solutions",
+            "profileImage": "https://i.ibb.co.com/pr3VfmHH/jihad.jpg",
+            "bio": "Saikat focuses on building innovative AI applications and mentoring students in research projects. He combines theory with practical hands-on experience."
+          }
+        }
+      ]
+    },
+    {
+      "category": "Cybersecurity & Networking",
+      "courses": [
+        {
+          "title": "Ethical Hacking & Penetration Testing",
+          "totalClasses": 30,
+          "courseDuration": "4 Months",
+          "weeklyClasses": 2,
+          "totalHours": 90,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/FzgHX4pc/Ethical-Hacking-and-Penetration-Testing-1-1.jpg",
+          "price": 15000,
+          "originalPrice": 18000,
+          "discount": "17%",
+          "courseIntroduction": "Learn the art of ethical hacking and secure networks against cyber threats. Understand vulnerabilities in web applications, networks, and systems. Explore tools like Kali Linux, Burp Suite, and Metasploit for practical assessments. Gain hands-on experience through real-world simulations and labs. This course covers exploitation techniques, penetration testing methodologies, and reporting. By the end, you'll be able to identify security gaps and provide actionable solutions.",
+          "courseOverview": {
+            "brief": "Start with networking fundamentals and security basics, then move to penetration testing and ethical hacking. Real-world simulations and hands-on labs will prepare you for a career in cybersecurity.",
+            "details": {
+              "Total Classes": 30,
+              "Course Duration": "4 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 90,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Ethical Hacking",
+                "Networking Basics",
+                "Footprinting and Reconnaissance",
+                "Vulnerability Scanning",
+                "Exploitation Techniques",
+                "Web Application Security",
+                "Wireless Security",
+                "Password Attacks",
+                "Social Engineering",
+                "Penetration Testing Methodology",
+                "Reporting and Documentation",
+                "Hands-on Labs and CTF Challenges"
+              ],
+              "Software Used": [
+                "Kali Linux",
+                "Burp Suite",
+                "Wireshark",
+                "Metasploit",
+                "Nmap",
+                "OWASP ZAP"
+              ],
+              "Designed For": "Students interested in cybersecurity careers.",
+              "Career Opportunities": [
+                "Ethical Hacker",
+                "Penetration Tester",
+                "Security Analyst"
+              ],
+              "Open Job Positions": "9,000+ jobs in ethical hacking worldwide.",
+              "Exclusive Solutions": [
+                "Real-world simulations",
+                "CTF challenges",
+                "Hands-on labs"
+              ],
+              "Projects": [
+                "Conduct a penetration test on a simulated corporate environment."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Mehedi Hasan",
+            "designation": "Cybersecurity Analyst",
+            "experience": "6+ years in network security",
+            "profileImage": "https://i.ibb.co.com/tpJ2vHtQ/jisan.jpg",
+            "bio": "Mehedi is passionate about ethical hacking and helping organizations secure their systems. He focuses on practical skills and security best practices."
+          }
+        },
+        {
+          "title": "Core Hardware & Networking (A+), IT Support with CCTV",
+          "totalClasses": 35,
+          "courseDuration": "4 Months",
+          "weeklyClasses": 3,
+          "totalHours": 105,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/xCtSv3fr/Portfolio.webp",
+          "price": 15000,
+          "originalPrice": 18000,
+          "discount": "17%",
+          "courseIntroduction": "Learn core computer hardware, networking fundamentals, and IT support skills including CCTV setup and troubleshooting. Gain hands-on experience in assembling, configuring, and maintaining computer systems and networks, and understanding IT support workflows in real-world scenarios.",
+          "courseOverview": {
+            "brief": "This course offers a solid foundation in hardware, networking, and IT support. Students will learn to troubleshoot, install, and maintain PCs, servers, networking devices, and CCTV systems. Hands-on projects ensure practical knowledge for professional roles.",
+            "details": {
+              "Total Classes": 35,
+              "Course Duration": "4 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 105,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Computer Hardware",
+                "PC Assembly & Maintenance",
+                "Understanding Motherboards & Processors",
+                "RAM, Storage & Peripheral Devices",
+                "Networking Fundamentals",
+                "Cabling & Network Devices",
+                "Router & Switch Configuration",
+                "Troubleshooting IT Issues",
+                "CCTV Installation & Configuration",
+                "Security & IT Support Best Practices"
+              ],
+              "Software Used": [
+                "Windows OS",
+                "Linux OS",
+                "Network Monitoring Tools",
+                "CCTV Configuration Software",
+                "Diagnostic Tools"
+              ],
+              "Designed For": "Beginners, IT enthusiasts, and anyone seeking a career in IT support, networking, or hardware maintenance.",
+              "Career Opportunities": [
+                "IT Support Technician",
+                "Hardware Engineer",
+                "Network Administrator",
+                "CCTV Installer & Technician"
+              ],
+              "Open Job Positions": "5,000+ IT support & networking roles worldwide.",
+              "Exclusive Solutions": [
+                "Hands-on labs and practical exercises",
+                "Industry-recognized troubleshooting practices",
+                "Guidance for certifications like CompTIA A+"
+              ],
+              "Projects": [
+                "Assemble and configure a complete computer system with networking setup and CCTV monitoring solution."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Mhafuj",
+            "designation": "IT Support & Networking Specialist",
+            "experience": "8+ years in IT support, networking, and CCTV installation",
+            "profileImage": "https://i.postimg.cc/C1F4yjjx/salman.avif",
+            "bio": "Mehedi has worked with corporate IT infrastructures and security systems. He focuses on training students to become skilled IT professionals with practical, hands-on experience."
+          }
+        },
+        {
+          "title": "Network Security Fundamentals",
+          "totalClasses": 25,
+          "courseDuration": "3 Months",
+          "weeklyClasses": 2,
+          "totalHours": 75,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/4x3Nqj97/1713334884381.jpg",
+          "price": 12000,
+          "originalPrice": 15000,
+          "discount": "20%",
+          "courseIntroduction": "Understand the fundamentals of securing computer networks against attacks. Learn how to implement firewalls, VPNs, and intrusion detection systems. Gain practical experience with Cisco Packet Tracer and pfSense. The course covers access control, encryption, and network monitoring. You'll also learn troubleshooting and best security practices. By completion, you'll have the skills to protect small to medium-sized networks effectively.",
+          "courseOverview": {
+            "brief": "Learn network security basics, firewall setup, VPNs, and intrusion detection. Hands-on labs with Cisco Packet Tracer and pfSense make you ready for real-world networking jobs.",
+            "details": {
+              "Total Classes": 25,
+              "Course Duration": "3 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 75,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Network Security",
+                "Networking Basics",
+                "Firewalls and VPNs",
+                "Intrusion Detection Systems",
+                "Access Control and Authentication",
+                "Encryption Techniques",
+                "Network Monitoring and Logging",
+                "Troubleshooting Network Issues",
+                "Security Policies and Best Practices",
+                "Hands-on Labs with Cisco Packet Tracer and pfSense"
+              ],
+              "Software Used": [
+                "Cisco Packet Tracer",
+                "Wireshark",
+                "pfSense",
+                "Firewalls",
+                "VPN software"
+              ],
+              "Designed For": "Beginners looking to start a cybersecurity career.",
+              "Career Opportunities": [
+                "Network Security Engineer",
+                "IT Security Specialist"
+              ],
+              "Open Job Positions": "7,500+ jobs in network security.",
+              "Exclusive Solutions": [
+                "Beginner-friendly labs",
+                "Real-world case studies",
+                "Certification support"
+              ],
+              "Projects": [
+                "Secure a small business network using firewalls and VPN."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "John Doe",
+            "designation": "Network Security Expert",
+            "experience": "10+ years in cybersecurity",
+            "profileImage": "https://i.ibb.co.com/9k4vpjsh/John.jpg",
+            "bio": "John has secured networks for government and private organizations around the world. He emphasizes hands-on learning and practical solutions."
+          }
+        }
+      ]
+    },
+    {
+      "category": "Business & Management",
+      "courses": [
+        {
+          "title": "Project Management (Agile, Scrum, PMP)",
+          "totalClasses": 20,
+          "courseDuration": "3 Months",
+          "weeklyClasses": 2,
+          "totalHours": 60,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/CLssmnGM/scrum-key-concepts.png",
+          "price": 14000,
+          "originalPrice": 18000,
+          "discount": "22%",
+          "courseIntroduction": "Learn project management frameworks like Agile, Scrum, and PMP for effective leadership. Understand how to plan, execute, and monitor projects successfully. Gain knowledge about project lifecycle, risk management, and stakeholder communication. Explore real-world case studies and project simulations. Develop skills to lead teams efficiently and deliver projects on time. This course prepares you for PMP and Scrum certifications and practical workplace challenges.",
+          "courseOverview": {
+            "brief": "You'll start by understanding project management fundamentals, then move to Agile, Scrum, and PMP frameworks. Real-world simulations and projects prepare you to manage IT and corporate projects effectively.",
+            "details": {
+              "Total Classes": 20,
+              "Course Duration": "3 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 60,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Project Management",
+                "Agile Principles",
+                "Scrum Roles and Artifacts",
+                "PMP Fundamentals",
+                "Project Lifecycle Management",
+                "Risk Management",
+                "Stakeholder Communication",
+                "Project Planning and Scheduling",
+                "Project Execution and Monitoring",
+                "Project Reporting",
+                "Case Studies and Simulations"
+              ],
+              "Software Used": [
+                "Jira",
+                "Trello",
+                "MS Project",
+                "Slack",
+                "Asana"
+              ],
+              "Designed For": "Aspiring project managers and team leaders.",
+              "Career Opportunities": [
+                "Project Manager",
+                "Scrum Master",
+                "Product Owner"
+              ],
+              "Open Job Positions": "20,000+ project management jobs globally.",
+              "Exclusive Solutions": [
+                "Practical simulations",
+                "Team-based assignments",
+                "PMP exam guidance"
+              ],
+              "Projects": [
+                "Manage a simulated IT project using Agile methodology."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Jane Smith",
+            "designation": "Project Management Consultant",
+            "experience": "12+ years in corporate project management",
+            "profileImage": "https://i.postimg.cc/xT6t9bcx/raju.avif",
+            "bio": "Jane has managed global IT projects and trains professionals for PMP certification. She focuses on hands-on training and strategic project planning."
+          }
+        },
+        {
+          "title": "SEO for Freelancing",
+          "totalClasses": 25,
+          "courseDuration": "3 Months",
+          "weeklyClasses": 2,
+          "totalHours": 60,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/90dgPWtD/freelance.webp",
+          "price": 12000,
+          "originalPrice": 15000,
+          "discount": "20%",
+          "courseIntroduction": "Learn Search Engine Optimization (SEO) strategies to grow your freelancing career. This course covers keyword research, on-page & off-page SEO, content optimization, analytics, and strategies to get clients as a freelance SEO specialist.",
+          "courseOverview": {
+            "brief": "This course equips freelancers with the skills to optimize websites and content for search engines. Students will gain hands-on experience using SEO tools and learn strategies to attract clients and improve search rankings.",
+            "details": {
+              "Total Classes": 25,
+              "Course Duration": "3 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 60,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to SEO & Freelancing",
+                "Keyword Research & Analysis",
+                "On-Page SEO Optimization",
+                "Off-Page SEO & Link Building",
+                "Technical SEO Basics",
+                "Content Strategy for SEO",
+                "SEO Tools & Analytics",
+                "Freelancing Strategies for SEO Clients",
+                "Portfolio & Case Studies",
+                "SEO Project Work"
+              ],
+              "Software Used": [
+                "Google Analytics",
+                "Google Search Console",
+                "Ahrefs",
+                "SEMRush",
+                "Yoast SEO",
+                "Ubersuggest"
+              ],
+              "Designed For": "Aspiring freelancers, digital marketers, and content creators looking to master SEO.",
+              "Career Opportunities": [
+                "Freelance SEO Specialist",
+                "Digital Marketing Consultant",
+                "Content SEO Strategist",
+                "SEO Analyst"
+              ],
+              "Open Job Positions": "Thousands of freelance SEO opportunities available on platforms like Upwork, Fiverr, and Freelancer.",
+              "Exclusive Solutions": [
+                "Hands-on projects for portfolio building",
+                "Client acquisition strategies",
+                "Live SEO campaign practice"
+              ],
+              "Projects": [
+                "Optimize a website for SEO and create a case study for your freelance portfolio."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Md. Tarek",
+            "designation": "Digital Marketing & SEO Expert",
+            "experience": "6+ years in SEO and freelance marketing",
+            "profileImage": "https://i.postimg.cc/m20NZxQq/tarek.avif",
+            "bio": "Saikat has helped businesses and freelancers improve their online visibility. He focuses on practical SEO strategies and mentoring students to succeed as freelance professionals."
+          }
+        }
+      ]
+    },
+    {
+      "category": "Design & Creativity",
+      "courses": [
+        {
+          "title": "UI/UX Design with Figma & Adobe XD",
+          "totalClasses": 25,
+          "courseDuration": "3 Months",
+          "weeklyClasses": 2,
+          "totalHours": 70,
+          "project": 1,
+          "courseImage": "https://i.postimg.cc/T3PNbJzv/unnamed.png",
+          "price": 13000,
+          "originalPrice": 16000,
+          "discount": "19%",
+          "courseIntroduction": "Master the principles of user interface and user experience design. Learn how to create intuitive and visually appealing designs using Figma and Adobe XD. Understand wireframing, prototyping, and usability testing processes. Gain insights into design systems, color theory, and typography. Work on real client projects to build a professional portfolio. This course prepares you for careers in UI/UX design with practical, hands-on experience.",
+          "courseOverview": {
+            "brief": "You'll begin with design fundamentals, then move to creating interactive and responsive UI/UX designs. Real-world projects like mobile app prototypes and responsive websites will sharpen your portfolio and job readiness.",
+            "details": {
+              "Total Classes": 25,
+              "Course Duration": "3 Months",
+              "Weekly Classes": 2,
+              "Total Hours": 70,
+              "Projects": 1
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to UI/UX Design",
+                "Design Principles and Theory",
+                "Wireframing and Prototyping",
+                "User Research and Personas",
+                "Color Theory and Typography",
+                "Creating Responsive Designs",
+                "Design Systems and Components",
+                "Figma for Beginners",
+                "Adobe XD Fundamentals",
+                "Interactive Prototypes",
+                "Usability Testing",
+                "Portfolio Building"
+              ],
+              "Software Used": [
+                "Figma",
+                "Adobe XD",
+                "InVision",
+                "Sketch",
+                "Photoshop",
+                "Illustrator"
+              ],
+              "Designed For": "Beginners and designers looking to upskill.",
+              "Career Opportunities": [
+                "UI Designer",
+                "UX Designer",
+                "Product Designer"
+              ],
+              "Open Job Positions": "11,000+ jobs in UI/UX design globally.",
+              "Exclusive Solutions": [
+                "Portfolio building",
+                "Real client projects",
+                "Design mentorship"
+              ],
+              "Projects": [
+                "Design a full mobile app prototype and responsive website."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Alex Johnson",
+            "designation": "Product Designer",
+            "experience": "8+ years in UI/UX design",
+            "profileImage": "https://i.ibb.co.com/V0ydj7Qz/raja.jpg",
+            "bio": "Alex has designed for top tech companies and loves mentoring aspiring designers. He emphasizes hands-on learning and portfolio development."
+          }
+        },
+        {
+          "title": "Professional Video Editing",
+          "totalClasses": 30,
+          "courseDuration": "4 Months",
+          "weeklyClasses": 3,
+          "totalHours": 80,
+          "project": 2,
+          "courseImage": "https://i.postimg.cc/9FSwPG0q/e0ed0159025446fb8a619a04e1f97e07.jpg",
+          "price": 18000,
+          "originalPrice": 22000,
+          "discount": "18%",
+          "courseIntroduction": "Learn professional video editing techniques using industry-standard software. This course covers editing fundamentals, motion graphics, visual effects, color correction, sound design, and producing high-quality videos for personal or professional projects.",
+          "courseOverview": {
+            "brief": "This course provides comprehensive training in video editing from beginner to professional level. Students will work on real-world projects, gaining skills to create marketing videos, YouTube content, and cinematic productions.",
+            "details": {
+              "Total Classes": 30,
+              "Course Duration": "4 Months",
+              "Weekly Classes": 3,
+              "Total Hours": 80,
+              "Projects": 2
+            },
+            "tabs": {
+              "Curriculum": [
+                "Introduction to Video Editing",
+                "Adobe Premiere Pro Basics",
+                "Advanced Editing Techniques",
+                "Motion Graphics with After Effects",
+                "Sound Design & Audio Editing",
+                "Color Grading & Correction",
+                "Visual Effects & Transitions",
+                "Exporting & Delivery Formats",
+                "Video Editing for Social Media",
+                "Final Project Work"
+              ],
+              "Software Used": [
+                "Adobe Premiere Pro",
+                "Adobe After Effects",
+                "DaVinci Resolve",
+                "Audition",
+                "Final Cut Pro (Optional)"
+              ],
+              "Designed For": "Aspiring video editors, content creators, and multimedia enthusiasts.",
+              "Career Opportunities": [
+                "Video Editor",
+                "Motion Graphics Designer",
+                "Content Creator",
+                "YouTube Video Editor"
+              ],
+              "Open Job Positions": "Thousands of opportunities in freelance platforms and media companies worldwide.",
+              "Exclusive Solutions": [
+                "Hands-on real-world projects",
+                "Portfolio building for professional clients",
+                "Guidance on freelance and agency work"
+              ],
+              "Projects": [
+                "Create a promotional video for a brand.",
+                "Produce a short cinematic film with sound and effects."
+              ]
+            }
+          },
+          "instructor": {
+            "name": "Mrs. Riya",
+            "designation": "Professional Video Editor & Motion Designer",
+            "experience": "5+ years in video editing and motion graphics",
+            "profileImage": "https://i.postimg.cc/G2hvgbCB/riya.avif",
+            "bio": "Mehedi has worked on various corporate, commercial, and social media projects. He teaches students how to edit professionally while building a strong freelance portfolio."
+          }
+        }
+      ]
+    }
+  ]
+}
