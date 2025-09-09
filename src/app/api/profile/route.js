@@ -3,7 +3,7 @@ import { dbConnect } from "@/lib/dbConnect";
 // GET /api/profile - get admin profile
 export async function GET() {
   try {
-    const col = await dbConnect("profiles");
+    const col = await dbConnect("users");
     const profile = await col.findOne({});
     return new Response(JSON.stringify(profile || {}), {
       status: 200,

@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function CoursesHome() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("/coursesData/courses.json")
+    fetch('/api/courses-data')
       .then((res) => res.json())
       .then((data) => {
-        const allCourses = data.categories.flatMap((cat) => cat.courses);
+        const allCourses = data[0].categories.flatMap((cat) => cat.courses);
         setCourses(allCourses.slice(0, 6));
       })
       .catch((err) => console.error(err));
   }, []);
-
+  console.log(courses);
   return (
     <div className="bg-secondary py-10 px-6">
       <div className="max-w-7xl mx-auto">
@@ -53,14 +53,16 @@ export default function CoursesHome() {
                   </p>
 
                   <p className="text-sm text-gray-500 mb-1">
-                    Duration:{" "}
-                    <span className="font-medium">{course.courseDuration}</span> | Classes:{" "}
-                    <span className="font-medium">{course.totalClasses}</span> | Hours:{" "}
+                    Duration:{' '}
+                    <span className="font-medium">{course.courseDuration}</span>{' '}
+                    | Classes:{' '}
+                    <span className="font-medium">{course.totalClasses}</span> |
+                    Hours:{' '}
                     <span className="font-medium">{course.totalHours}</span>
                   </p>
 
                   <p className="text-lg text-green-700 font-semibold">
-                    TK {course.price.toLocaleString()}{" "}
+                    TK {course.price.toLocaleString()}{' '}
                     <span className="line-through text-gray-400 ml-2">
                       TK {course.originalPrice.toLocaleString()}
                     </span>
