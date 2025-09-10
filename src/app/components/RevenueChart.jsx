@@ -19,7 +19,7 @@ export default function RevenueChart() {
   useEffect(() => {
     const fetchRevenue = async () => {
       try {
-        const res = await fetch("/api/admin/course-payments");
+        const res = await fetch("/api/admin/total-revenue-admin");
         const data = await res.json();
 
         // Prepare last 4 days
@@ -79,39 +79,45 @@ export default function RevenueChart() {
       <h2 className="text-xl font-bold mb-4 text-center">Total Revenue (Last 4 Days)</h2>
       <ResponsiveContainer width="100%" height="80%">
         <LineChart
-          data={chartData}
-          margin={{ top: 20, right: 40, left: 0, bottom: 5 }}
-        >
-          <CartesianGrid stroke="#1e3a8a" strokeDasharray="4 4" />
-          <XAxis
-            dataKey="date"
-            stroke="#ffffff"
-            tick={{ fill: "#ffffff", fontSize: 14 }}
-          />
-          <YAxis
-            allowDecimals={false}
-            stroke="#ffffff"
-            tick={{ fill: "#ffffff", fontSize: 14 }}
-          />
-          <Tooltip
-            contentStyle={{ backgroundColor: "#1e40af", border: "none" }}
-            itemStyle={{ color: "#ffffff" }}
-            formatter={(value) => `${value.toLocaleString()} BDT`}
-          />
-          <Line
-            type="monotone"
-            dataKey="revenue"
-            stroke="#34d399"
-            strokeWidth={3}
-            activeDot={{ r: 6 }}
-          >
-            <LabelList
-              dataKey="revenue"
-              position="top"
-              formatter={(val) => `${val.toLocaleString()}`}
-            />
-          </Line>
-        </LineChart>
+  data={chartData}
+  margin={{ top: 20, right: 40, left: 0, bottom: 5 }}
+>
+  <CartesianGrid 
+    stroke="#4b5563" 
+    strokeDasharray="2 2" 
+    vertical={true} 
+    horizontal={true} 
+  />
+  <XAxis
+    dataKey="date"
+    stroke="#ffffff"
+    tick={{ fill: "#ffffff", fontSize: 14 }}
+  />
+  <YAxis
+    allowDecimals={false}
+    stroke="#ffffff"
+    tick={{ fill: "#ffffff", fontSize: 14 }}
+  />
+  <Tooltip
+    contentStyle={{ backgroundColor: "#1e40af", border: "none" }}
+    itemStyle={{ color: "#ffffff" }}
+    formatter={(value) => `${value.toLocaleString()} BDT`}
+  />
+  <Line
+    type="monotone"
+    dataKey="revenue"
+    stroke="#34d399"
+    strokeWidth={3}
+    activeDot={{ r: 6 }}
+  >
+    <LabelList
+      dataKey="revenue"
+      position="top"
+      formatter={(val) => `${val.toLocaleString()}`}
+    />
+  </Line>
+</LineChart>
+
       </ResponsiveContainer>
     </div>
   );

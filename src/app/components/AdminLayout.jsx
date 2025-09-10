@@ -14,10 +14,10 @@ const links = [
   { href: "/dashboard/release-module", label: "Release a module", icon: HiPlusCircle, allowedRoles: ["admin"] },
   { href: "/dashboard/students", label: "Users Management", icon: HiUsers, allowedRoles: ["admin"] },
   { href: "/dashboard/payments", label: "Payment Management", icon: HiCurrencyDollar, allowedRoles: ["admin"] },
-  { href: "/dashboard/certificates", label: "Certificates", icon: HiBadgeCheck, allowedRoles: ["admin"] },
+  { href: "/dashboard/certificatesReq", label: "Certificates", icon: HiBadgeCheck, allowedRoles: ["admin"] },
   { href: "/dashboard/userCertificates", label: "My Certificates", icon: HiClipboardList, allowedRoles: ["user"] },
   { href: "/dashboard/my-enrollments", label: "My Enrollments", icon: HiBookOpen, allowedRoles: ["user"] },
-  { href: "/dashboard/userQuizzes", label: " Quizzes for you", icon: HiClipboardCheck, allowedRoles: ["user"] },
+  { href: "/dashboard/userQuizzes", label: " Quizzes ", icon: HiClipboardCheck, allowedRoles: ["user"] },
 ];
 
 export default function AdminLayout({ children }) {

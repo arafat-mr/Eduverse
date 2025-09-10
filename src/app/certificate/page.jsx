@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { useSearchParams } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function CertificateButtonClient() {
-    const searchParams = useSearchParams();
-    const courseTitle = searchParams.get("course");
-    console.log(courseTitle);
-    
+  const searchParams = useSearchParams();
+  const courseTitle = searchParams.get("course");
   const user = useAuth(); // full user object
   const [loading, setLoading] = useState(false);
 
@@ -30,20 +31,26 @@ export default function CertificateButtonClient() {
           appliedAt: new Date().toISOString(),
         }),
       });
-    console.log(res);
-    
+
       let data;
       try {
-        // data = await res.json();
+        data = await res.json();
       } catch (err) {
         const text = await res.text();
         throw new Error("Invalid JSON response: " + text);
       }
 
       if (!res.ok) throw new Error(data.error || "Something went wrong");
-      alert("✅ Certificate requested successfully!");
+
+      toast.success("✅ Certificate requested successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } catch (err) {
-      alert("❌ " + err.message);
+      toast.error("❌ " + err.message, {
+        position: "top-right",
+        autoClose: 5000,
+      });
     } finally {
       setLoading(false);
     }
@@ -79,10 +86,16 @@ export default function CertificateButtonClient() {
           onClick={applyCertificate}
           disabled={loading}
           className={`w-full py-3 rounded-lg font-semibold text-white text-lg transition ${
-            loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-600 hover:bg-green-500"
+            loading
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-500"
           }`}
         >
-          {loading ? <span className="loading loading-spinner text-primary"></span> : "Apply for Certificate"}
+          {loading ? (
+            <span className="loading loading-spinner text-primary"></span>
+          ) : (
+            "Apply for Certificate"
+          )}
         </button>
       </div>
     </div>

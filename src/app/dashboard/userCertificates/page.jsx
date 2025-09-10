@@ -114,7 +114,7 @@ function UserCertificatesPage() {
         <td className="p-3 border-b border-gray-600">
           {isIssued ? (
             <Link
-              href={`/userCertificates/${c.certificateId}`}
+              href={`userCertificates/${c.certificateId}`}
               className="btn px-2 py-1 text-xs bg-blue-600 hover:bg-blue-500 rounded text-white w-full"
             >
               View Certificate

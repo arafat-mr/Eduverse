@@ -61,7 +61,7 @@ export default function Navbar() {
     </>
   );
   return (
-    <div className=" bg-primary py-1 sticky top-0 z-50000">
+    <div className=" bg-primary py-1 sticky top-0 z-50">
       <div className="navbar text-white px-8 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
