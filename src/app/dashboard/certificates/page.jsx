@@ -42,10 +42,10 @@ function CertificatesPage() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to approve");
-      alert("✅ Certificate approved!");
+      // alert("✅ Certificate approved!");
       fetchCertificates(); // refresh after approval
     } catch (err) {
-      alert("❌ " + err.message);
+      // alert("❌ " + err.message);
     }
   };
 
@@ -80,49 +80,72 @@ function CertificatesPage() {
                   <th className="p-3 border-b border-gray-600">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                {certificates.map((c) => (
-                  <tr key={c._id} className="hover:bg-blue-900 font-mono text-sm">
-                    <td className="p-3 border-b border-gray-600">{c.email}</td>
-                    <td className="p-3 border-b border-gray-600">{c.courseName}</td>
-                    <td className="p-3 border-b border-gray-600">
-                      {c.status === "pending" ? (
-                        <span className="bg-yellow-300 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold">
-                          Pending
-                        </span>
-                      ) : (
-                        <span className="bg-green-300 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">
-                          Issued
-                        </span>
-                      )}
-                    </td>
-                    <td className="p-3 border-b border-gray-600">
-                      {new Date(c.appliedAt).toLocaleString()}
-                    </td>
-                    <td className="p-3 border-b border-gray-600">
-                      {c.issuedAt ? new Date(c.issuedAt).toLocaleString() : "-"}
-                    </td>
-                    <td className="p-3 border-b border-gray-600 font-mono text-sm">{c.certificateId}</td>
-                    <td className="p-3 border-b border-gray-600">
-                      {c.status === "pending" && (
-                        <button
-                          onClick={() => approveCertificate(c.certificateId)}
-                          className="btn btn-sm rounded-lg bg-green-600 hover:bg-green-500 text-white"
-                        >
-                          Approve
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-                {certificates.length === 0 && (
-                  <tr>
-                    <td colSpan="7" className="text-center p-4 text-gray-300">
-                      No certificate requests found.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
+           <tbody>
+  {certificates.map((c) => (
+    <tr key={c._id} className="hover:bg-blue-900 font-mono text-sm">
+      {/* Name + Email */}
+      <td className="p-3 border-b border-gray-600">
+        <div className="flex flex-col">
+          <span className="font-semibold">{c.name || "—"}</span>
+          <span className="text-xs text-gray-300">{c.email}</span>
+        </div>
+      </td>
+
+      {/* Course */}
+      <td className="p-3 border-b border-gray-600">
+        {c.courseName || c.courseTitle || "—"}
+      </td>
+
+      {/* Status */}
+      <td className="p-3 border-b border-gray-600">
+        {c.status === "pending" ? (
+          <span className="bg-yellow-300 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold">
+            Pending
+          </span>
+        ) : (
+          <span className="bg-green-300 text-green-900 px-2 py-1 rounded-full text-xs font-semibold">
+            Issued
+          </span>
+        )}
+      </td>
+
+      {/* Applied */}
+      <td className="p-3 border-b border-gray-600">
+        {new Date(c.appliedAt).toLocaleString()}
+      </td>
+
+      {/* Issued */}
+      <td className="p-3 border-b border-gray-600">
+        {c.issuedAt ? new Date(c.issuedAt).toLocaleString() : "—"}
+      </td>
+
+      {/* Certificate ID */}
+      <td className="p-3 border-b border-gray-600 font-mono text-xs break-all">
+        {c.certificateId}
+      </td>
+
+      {/* Action */}
+      <td className="p-3 border-b border-gray-600">
+        {c.status === "pending" && (
+          <button
+            onClick={() => approveCertificate(c.certificateId)}
+            className="btn btn-sm rounded-lg bg-green-600 hover:bg-green-500 text-white"
+          >
+            Approve
+          </button>
+        )}
+      </td>
+    </tr>
+  ))}
+  {certificates.length === 0 && (
+    <tr>
+      <td colSpan="7" className="text-center p-4 text-gray-300">
+        No certificate requests found.
+      </td>
+    </tr>
+  )}
+</tbody>
+
             </table>
           </div>
         )}

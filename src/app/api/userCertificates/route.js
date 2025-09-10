@@ -2,6 +2,7 @@
 
 import { dbConnect } from "@/lib/dbConnect";
 
+
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);

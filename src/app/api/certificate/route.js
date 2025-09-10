@@ -5,9 +5,9 @@ import { dbConnect } from "@/lib/dbConnect";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { userId, name, email, courseName } = body;
+    const { userId, name, email, courseTitle } = body;
 
-    if (!userId || !name || !email || !courseName) {
+    if (!userId || !name || !email || !courseTitle) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         { status: 400, headers: { "Content-Type": "application/json" } }
@@ -19,7 +19,9 @@ export async function POST(req) {
     
     const existing = await certificatesCollection.findOne({
       email,
-      courseName,
+      
+courseTitle
+,
     });
 
     if (existing) {
@@ -36,7 +38,7 @@ export async function POST(req) {
       userId,
       name,
       email,
-      courseName,
+      courseTitle,
       status: "pending",
       appliedAt: new Date().toISOString(),
       issuedAt: null,

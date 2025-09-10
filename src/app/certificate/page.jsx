@@ -2,8 +2,12 @@
 
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
-
-export default function CertificateButtonClient({ courseName = "MERN Stack Bootcamp" }) {
+import { useSearchParams } from "next/navigation";
+export default function CertificateButtonClient() {
+    const searchParams = useSearchParams();
+    const courseTitle = searchParams.get("course");
+    console.log(courseTitle);
+    
   const user = useAuth(); // full user object
   const [loading, setLoading] = useState(false);
 
@@ -20,16 +24,17 @@ export default function CertificateButtonClient({ courseName = "MERN Stack Bootc
           name: user.name,
           email: user.email,
           profileImage: user.profileImage,
-          courseName,
+          courseTitle,
           status: "pending",
           issuedAt: null,
           appliedAt: new Date().toISOString(),
         }),
       });
-
+    console.log(res);
+    
       let data;
       try {
-        data = await res.json();
+        // data = await res.json();
       } catch (err) {
         const text = await res.text();
         throw new Error("Invalid JSON response: " + text);
@@ -63,7 +68,7 @@ export default function CertificateButtonClient({ courseName = "MERN Stack Bootc
         {/* Course Info */}
         <div className="p-4 bg-purple-900 rounded-lg">
           <h3 className="font-semibold text-lg">Course:</h3>
-          <p>{courseName}</p>
+          <p>{courseTitle}</p>
           <p className="text-sm mt-2">
             Applying Date: {new Date().toLocaleString()}
           </p>
