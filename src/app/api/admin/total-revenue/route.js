@@ -12,7 +12,7 @@ export async function GET() {
       JSON.stringify({ totalRevenue }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
-  } catch (err) {
+  } catch (err) { 
     console.error(err);
     return new Response(JSON.stringify({ error: err.message }), { status: 500 });
   }

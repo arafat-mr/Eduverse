@@ -50,7 +50,6 @@ export default function RootLayout({ children }) {
         <NextAuthProviders>
           <Navbar />
           {children}
-          <Footer />
           <ToastContainer
             position="top-right"
             autoClose={3000}
@@ -58,7 +57,10 @@ export default function RootLayout({ children }) {
             newestOnTop
             closeOnClick
             pauseOnHover
+             toastClassName="!z-[9999]" 
           />
+          <Footer />
+         
         </NextAuthProviders>
       </body>
     </html>

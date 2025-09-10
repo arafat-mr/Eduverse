@@ -1,4 +1,3 @@
-// app/your-page/page.jsx (or wherever Enrollments is)
 'use client';
 import React, { useState, useEffect } from 'react';
 import {
@@ -12,26 +11,23 @@ import {
 } from 'lucide-react';
 import useAuth from '@/app/hooks/useAuth';
 import CourseCard from './Componets/CourseCard';
+import WithRole from '@/app/components/WithRole';
 
-export default function Enrollments() {
+function Enrollments() {
   const user = useAuth();
-  // Assuming userCourses is an array of course objects
   const [userCoursesData, setUserCoursesData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Replace with your actual API call to fetch user's courses
-    // This is a placeholder example
     if (user?.email) {
       fetch(`/api/user-course-details?email=${encodeURIComponent(user.email)}`)
         .then((res) => res.json())
         .then((data) => {
-          // Ensure data.courses is an array before setting state
           if (data && Array.isArray(data.courses)) {
             setUserCoursesData(data.courses);
           } else {
-            setUserCoursesData([]); // Set to empty array if no courses or unexpected format
+            setUserCoursesData([]);
           }
           setLoading(false);
         })
@@ -41,13 +37,12 @@ export default function Enrollments() {
           setLoading(false);
         });
     } else {
-      setLoading(false); // If no user, stop loading
+      setLoading(false);
     }
   }, [user?.email]);
-  console.log(userCoursesData);
 
   if (loading) {
-    return <p className="text-center text-gray-700">Loading courses...</p>;
+    return <p className="text-center text-white">Loading courses <span className="loading text-white loading-spinner "></span></p>;
   }
 
   if (error) {
@@ -65,8 +60,6 @@ export default function Enrollments() {
       ) : (
         <div>
           {userCoursesData.map((course, idx) => (
-            
-            // Pass the individual course object to the CourseCard component
             <CourseCard key={idx} course={course} />
           ))}
         </div>
@@ -74,3 +67,6 @@ export default function Enrollments() {
     </div>
   );
 }
+
+// Wrap with WithRole to allow any authenticated user
+export default WithRole(Enrollments, ['user']);

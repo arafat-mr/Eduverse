@@ -6,6 +6,8 @@ import {
   FaBook, FaUsers, FaMoneyBillWave, FaCertificate, FaClipboardList, FaQuestion
 } from "react-icons/fa";
 import { useSession } from "next-auth/react";
+import CoursePaymentsChart from "../components/CoursePaymentsChart";
+import RevenueChart from "../components/RevenueChart";
 
 const DashboardPage = () => {
   const { data: session, status } = useSession();
@@ -48,7 +50,7 @@ const DashboardPage = () => {
             certificates: stats.certificates, // keep user fields intact
             courses: stats.courses,
             quizzes: stats.quizzes,
-          });
+          });  
         } else {
           // Fetch user-specific stats
           const [certRes, courseRes, quizRes] = await Promise.all([
@@ -127,7 +129,16 @@ const DashboardPage = () => {
           ))}
         </div>
       )}
+      
+        
+      
+      <div className="mt-6 flex flex-col gap-6">
+  {role === "user" && <CoursePaymentsChart />}
+  {role === "admin" && <RevenueChart />}
+</div>
+
     </div>
+
   );
 };
 
