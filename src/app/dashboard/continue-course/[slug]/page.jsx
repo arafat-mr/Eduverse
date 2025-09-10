@@ -1,19 +1,17 @@
 'use client';
+import WithRole from '@/app/components/WithRole';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-export default function ContinueCoursePage({ params }) {
+ function ContinueCoursePage({ params }) {
   const searchParams = useSearchParams();
   const courseParam = searchParams.get('course');
-  
-  
+
   const course = courseParam
     ? JSON.parse(decodeURIComponent(courseParam))
     : null;
-  
-  
-  
+
   if (!course) return <p>No course found!</p>;
 
   const [currentVideo, setCurrentVideo] = useState(
@@ -72,21 +70,19 @@ export default function ContinueCoursePage({ params }) {
             </ul>
 
             {/* Complete Course Button */}
-            
           </div>
-         
         ))}
-         <div>
+        <div>
           <Link
-  href={`/certificate?course=${encodeURIComponent(course.title)}`}
-  className="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
->
-  Complete Course
-</Link>
-
-         </div>
-         
+            href={`/certificate?course=${encodeURIComponent(course.title)}`}
+            className="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+          >
+            Complete Course
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
+
+export default WithRole(ContinueCoursePage, ['user']);

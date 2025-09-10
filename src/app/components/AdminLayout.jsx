@@ -17,7 +17,7 @@ const links = [
   { href: "/dashboard/certificatesReq", label: "Certificates", icon: HiBadgeCheck, allowedRoles: ["admin"] },
   { href: "/dashboard/userCertificates", label: "My Certificates", icon: HiClipboardList, allowedRoles: ["user"] },
   { href: "/dashboard/my-enrollments", label: "My Enrollments", icon: HiBookOpen, allowedRoles: ["user"] },
-  { href: "/dashboard/userQuizzes", label: " Quizzes ", icon: HiClipboardCheck, allowedRoles: ["user"] },
+  { href: "/dashboard/userQuizzes", label: " Quizzes ", icon: HiClipboardCheck, allowedRoles: ["user"], },
 ];
 
 export default function AdminLayout({ children }) {
