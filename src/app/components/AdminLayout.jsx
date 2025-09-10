@@ -6,17 +6,18 @@ import {
   HiOutlineHome, HiUser, HiPlusCircle, HiUsers, HiCurrencyDollar,
   HiBadgeCheck, HiClipboardList, HiBookOpen, HiClipboardCheck
 } from "react-icons/hi";
-
+  
 const links = [
   { href: "/dashboard", label: "Dashboard", icon: HiOutlineHome, allowedRoles: ["admin", "user"] },
   { href: "/dashboard/profile", label: "Profile Management", icon: HiUser, allowedRoles: ["admin", "user"] },
   { href: "/dashboard/addcourse", label: "Add/Update Courses & Videos", icon: HiPlusCircle, allowedRoles: ["admin"] },
+  { href: "/dashboard/release-module", label: "Release a module", icon: HiPlusCircle, allowedRoles: ["admin"] },
   { href: "/dashboard/students", label: "Users Management", icon: HiUsers, allowedRoles: ["admin"] },
   { href: "/dashboard/payments", label: "Payment Management", icon: HiCurrencyDollar, allowedRoles: ["admin"] },
-  { href: "/dashboard/certificates", label: "Certificates", icon: HiBadgeCheck, allowedRoles: ["admin"] },
+  { href: "/dashboard/certificatesReq", label: "Certificates", icon: HiBadgeCheck, allowedRoles: ["admin"] },
   { href: "/dashboard/userCertificates", label: "My Certificates", icon: HiClipboardList, allowedRoles: ["user"] },
-  { href: "/dashboard/userCourses", label: "My Courses", icon: HiBookOpen, allowedRoles: ["user"] },
-  { href: "/dashboard/userQuizzes", label: "My Quizzes", icon: HiClipboardCheck, allowedRoles: ["user"] },
+  { href: "/dashboard/my-enrollments", label: "My Enrollments", icon: HiBookOpen, allowedRoles: ["user"] },
+  { href: "/dashboard/userQuizzes", label: " Quizzes ", icon: HiClipboardCheck, allowedRoles: ["user"] },
 ];
 
 export default function AdminLayout({ children }) {

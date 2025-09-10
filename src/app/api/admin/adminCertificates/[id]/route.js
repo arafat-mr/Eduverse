@@ -1,13 +1,14 @@
+// app/api/admin/adminCertificates/[id]/route.js
 "use server";
 
 import { dbConnect } from "@/lib/dbConnect";
 
 export async function PATCH(req, { params }) {
   try {
-    const { id } = params; // this is certificateId string
+    const { id } = params; // certificateId
     const body = await req.json();
-
     const { status } = body;
+
     if (!status) {
       return new Response(
         JSON.stringify({ error: "Missing status field" }),
@@ -19,7 +20,12 @@ export async function PATCH(req, { params }) {
 
     const result = await certificatesCollection.updateOne(
       { certificateId: id },
-      { $set: { status: status, issuedAt: status === "issued" ? new Date().toISOString() : null } }
+      {
+        $set: {
+          status: status,
+          issuedAt: status === "issued" ? new Date().toISOString() : null,
+        },
+      }
     );
 
     if (result.matchedCount === 0) {
@@ -30,7 +36,7 @@ export async function PATCH(req, { params }) {
     }
 
     return new Response(
-      JSON.stringify({ message: "Certificate status updated successfully" }),
+      JSON.stringify({ message: `Certificate marked as ${status}` }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (err) {
