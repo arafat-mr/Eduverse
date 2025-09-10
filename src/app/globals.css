@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Lavishly+Yours&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Italianno&family=Lavishly+Yours&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @plugin "daisyui";
- /* @plugin "daisyui" {
+/* @plugin "daisyui" {
    themes: light --default, dark --prefersdark; */
- /* }  */ 
+/* }  */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -40,24 +40,27 @@ body {
   default: true;
 
   --color-primary: #124170;
-  --color-secondary: #D6DAC8;
+  --color-secondary: #d6dac8;
   --color-accent: #4a9bec;
   --color-warning: #cfab8d;
   --color-base-100: #000000;
 }
 
 #header {
-  transform: translate(-50%,-50%);
-  background-image: linear-gradient( #4a9bec);
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(#4a9bec);
   background-size: 100% 8px;
   background-repeat: no-repeat;
   background-position: 100% 0%;
-   transition: background-size .7s, background-position .5s ease-in-out;
+  transition: background-size 0.7s, background-position 0.5s ease-in-out;
 }
 
 #header:hover {
   background-size: 100% 100%;
   background-position: 0% 100%;
-  color:white;
-  transition: background-position .7s, background-size .5s ease-in-out;
+  color: white;
+  transition: background-position 0.7s, background-size 0.5s ease-in-out;
+}
+.b-shadow {
+  box-shadow: 3px 10px 20px 20px rgb(188, 49, 49);
 }

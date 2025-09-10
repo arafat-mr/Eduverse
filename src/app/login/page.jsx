@@ -7,6 +7,7 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { useSearchParams } from "next/navigation";
 import login from "../../assets/logIn.json";
 import GoogleLogin from "../SocialLogin/GoogleLogin";
 
@@ -15,6 +16,9 @@ const Page = () => {
   const [loginError, setLoginError] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
   const { data: session } = useSession();
 
   const {
@@ -31,6 +35,7 @@ const Page = () => {
   const onSubmit = async (data) => {
     setLoginError("");
     setLoading(true);
+
     try {
       const res = await signIn("credentials", {
         redirect: false,
@@ -39,9 +44,14 @@ const Page = () => {
       });
 
       if (res?.ok) {
-        const session = await fetch("/api/auth/session").then((res) => res.json());
+        // fetch fresh session after login
+        const session = await fetch("/api/auth/session").then((res) =>
+          res.json()
+        );
+
         toast.success(`Welcome ${session?.user?.name || "User"}!`);
-        router.push("/");
+
+        router.push(callbackUrl);
       } else {
         setLoginError("Invalid email or password");
         toast.error("Invalid email or password");
@@ -82,13 +92,17 @@ const Page = () => {
                 placeholder="Email"
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
             {/* Password */}
             <div className="relative">
-              <label className="label font-medium text-[#124170]">Password</label>
+              <label className="label font-medium text-[#124170]">
+                Password
+              </label>
               <input
                 type={showPassword ? "text" : "password"}
                 {...register("password", {
@@ -102,10 +116,16 @@ const Page = () => {
                 className="absolute right-3 top-9 cursor-pointer text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                {showPassword ? (
+                  <AiOutlineEyeInvisible size={20} />
+                ) : (
+                  <AiOutlineEye size={20} />
+                )}
               </span>
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
@@ -127,9 +147,7 @@ const Page = () => {
             >
               {loading ? "Logging in..." : "Login"}
             </button>
-
-            {/* Google Login */}
-            <div className="pt-2">
+            <div>
               <GoogleLogin />
             </div>
           </form>
