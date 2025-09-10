@@ -67,6 +67,6 @@ function Enrollments() {
     </div>
   );
 }
-
+// export default Enrollments;
 // Wrap with WithRole to allow any authenticated user
 export default WithRole(Enrollments, ['user']);

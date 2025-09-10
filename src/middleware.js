@@ -2,16 +2,18 @@ import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server';
 
 export const middleware = async (req) => {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  console.log(token);
+  const token = await getToken({ req });
   const isToken = Boolean(token);
 
   const isAdminUser = token?.role == 'admin' || 'user';
 
-  const isAdminSpecificRoute = req.nextUrl.pathname.startsWith('/dashboard');
+    
+    const isAdminSpecificRoute = req.nextUrl.pathname.startsWith("/dashboard");
 
-  if (isAdminSpecificRoute && !isAdminUser) {
-    return NextResponse.redirect(new URL('/login', req.url));
-  }
-  return NextResponse.next();
+    if(isAdminSpecificRoute && !isAdminUser){
+        return NextResponse.redirect(new URL('/login',req.url));
+    }
+    return NextResponse.next();
+
+  
 };
