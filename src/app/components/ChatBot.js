@@ -59,7 +59,7 @@ export default function OpenAIChatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed font-bold flex mr-2 bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+          className="z-100 fixed font-bold flex mr-2 bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
         >
           <p className=''>Ask AI</p><Sparkles className="w-6 h-6 ml-2" />
         </button>

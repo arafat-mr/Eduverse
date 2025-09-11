@@ -9,17 +9,17 @@ import CoursesHome from "./coursesHome/page";
 
 
 export default function Home() {
- 
+
   return (
     <div className="">
 
-        <Banner/>
-      <Chatbot/>
-      <CoursesHome/>
-      <Instructors/>
-      <FAQ/>
-      <ReviewsPage/>
-       
+      <Banner />
+      <Chatbot />
+      <CoursesHome />
+      <Instructors />
+      <FAQ />
+      <ReviewsPage />
+
     </div>
   );
 }
