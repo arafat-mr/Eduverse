@@ -1,8 +1,8 @@
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
-import axios from "axios";
 import { dbConnect } from "@/lib/dbConnect";
+import axios from "axios";
 
 const store_id = "eduve68bca73b3804d"; // from sandbox
 const store_passwd = "eduve68bca73b3804d@ssl"; // from sandbox
@@ -21,10 +21,10 @@ export async function POST(req) {
       total_amount: amount,
       currency: "BDT",
       tran_id,
-      success_url: `http://localhost:3000/api/payment/success`,
-      fail_url: `http://localhost:3000/payment/fail`,
-      cancel_url: `http://localhost:3000/payment/cancel`,
-      ipn_url: `http://localhost:3000/payment/ipn`,
+      success_url: `https://eduverse-one-gamma.vercel.app/api/payment/success`,
+      fail_url: `https://eduverse-one-gamma.vercel.app/payment/fail`,
+      cancel_url: `https://eduverse-one-gamma.vercel.app/payment/cancel`,
+      ipn_url: `https://eduverse-one-gamma.vercel.app/payment/ipn`,
       product_name: "Eduverse",
       product_category: "Education",
       product_profile: "general",
