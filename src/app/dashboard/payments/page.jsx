@@ -1,26 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import WithRole from "@/app/components/WithRole";
+import React, { useEffect, useState } from "react";
 
-export default function PaymentsPage() {
+function truncateText(text, maxLength = 40) {
+  if (!text) return "";
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+}
+
+function PaymentsPage() {
   const [payments, setPayments] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [userId, setUserId] = useState("");
-  const [amount, setAmount] = useState("");
-  const [method, setMethod] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  // Fetch all payments
   const fetchPayments = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const res = await fetch("/api/payments");
       if (!res.ok) throw new Error("Failed to fetch payments");
       const data = await res.json();
       setPayments(data);
     } catch (err) {
-      setError(err.message);
+      console.error(err);
+      alert("❌ " + err.message);
     } finally {
       setLoading(false);
     }
@@ -30,104 +31,53 @@ export default function PaymentsPage() {
     fetchPayments();
   }, []);
 
-  // Add new payment
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!userId || !amount || !method) {
-      setError("userId, amount, and method are required");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/payments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, amount, method }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to add payment");
-
-      setPayments((prev) => [...prev, data]);
-      setUserId("");
-      setAmount("");
-      setMethod("");
-      setSuccess("Payment recorded successfully!");
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Payments</h1>
-
-      {/* Add Payment Form */}
-      <form onSubmit={handleSubmit} className="mb-6 flex flex-wrap gap-2">
-        <input
-          type="text"
-          placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[120px]"
-        />
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[120px]"
-        />
-        <input
-          type="text"
-          placeholder="Method"
-          value={method}
-          onChange={(e) => setMethod(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[120px]"
-        />
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 p-6 text-white">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Payment Management</h1>
         <button
-          type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          onClick={fetchPayments}
+          className="btn btn-sm btn-outline rounded-lg border-white text-white hover:bg-white hover:text-blue-900"
         >
-          Add Payment
+          Refresh
         </button>
-      </form>
+      </div>
 
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      {success && <p className="text-green-500 mb-2">{success}</p>}
-
-      {/* Payments List */}
       {loading ? (
-        <p>Loading...</p>
+        <div className="w-full h-60 flex justify-center items-center">
+          <span className="loading loading-spinner text-white"></span>
+        </div>
       ) : payments.length === 0 ? (
-        <p>No payments found.</p>
+        <div className="bg-blue-950 rounded-lg shadow p-6 text-white">
+          <p className="text-lg font-medium">No payments found.</p>
+        </div>
       ) : (
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-2 py-1">ID</th>
-              <th className="border px-2 py-1">User ID</th>
-              <th className="border px-2 py-1">Amount</th>
-              <th className="border px-2 py-1">Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments.map((pay) => (
-              <tr key={pay._id}>
-                <td className="border px-2 py-1">{pay._id}</td>
-                <td className="border px-2 py-1">{pay.userId}</td>
-                <td className="border px-2 py-1">{pay.amount}</td>
-                <td className="border px-2 py-1">{pay.method}</td>
+        <div className="overflow-x-auto bg-blue-950 rounded-lg shadow p-4">
+          <table className="min-w-[600px] w-full text-white border-collapse border border-gray-600">
+            <thead className="bg-blue-800 font-mono">
+              <tr>
+                <th className="p-3 border-b border-gray-600">Course Name</th>
+                <th className="p-3 border-b border-gray-600">Customer Email</th>
+                <th className="p-3 border-b border-gray-600">Amount</th>
+                <th className="p-3 border-b border-gray-600">Transaction ID</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {payments.map((p) => (
+                <tr key={p._id} className="hover:bg-blue-900 font-mono text-sm">
+                  <td className="p-3 border-b border-gray-600">{truncateText(p.course_name, 40)}</td>
+                  <td className="p-3 border-b border-gray-600">{p.cus_email}</td>
+                  <td className="p-3 border-b border-gray-600">{p.amount}</td>
+                  <td className="p-3 border-b border-gray-600">{truncateText(p.tran_id, 15)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
 }
+
+// Wrap with admin-only protection
+export default WithRole(PaymentsPage, ["admin"]);

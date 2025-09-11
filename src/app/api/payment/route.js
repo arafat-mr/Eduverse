@@ -1,16 +1,15 @@
-import { ObjectId } from 'mongodb';
-import { NextResponse } from 'next/server';
+import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
 
 import { dbConnect } from '@/lib/dbConnect';
 import axios from 'axios';
 
-
-const store_id = 'eduve68bca73b3804d'; // from sandbox
-const store_passwd = 'eduve68bca73b3804d@ssl'; // from sandbox
+const store_id = "eduve68bca73b3804d"; // from sandbox
+const store_passwd = "eduve68bca73b3804d@ssl"; // from sandbox
 
 export async function POST(req) {
   try {
-    console.log('Hit Korse Bhai');
+    console.log("Hit Korse Bhai");
     const body = await req.json();
     const { amount, cus_name, cus_email, course_name } = body;
 
@@ -20,39 +19,39 @@ export async function POST(req) {
       store_id,
       store_passwd,
       total_amount: amount,
-      currency: 'BDT',
+      currency: "BDT",
       tran_id,
       success_url: `https://eduverse-one-gamma.vercel.app/api/payment/success`,
       fail_url: `https://eduverse-one-gamma.vercel.app/payment/fail`,
       cancel_url: `https://eduverse-one-gamma.vercel.app/payment/cancel`,
       ipn_url: `https://eduverse-one-gamma.vercel.app/payment/ipn`,
-      product_name: 'Eduverse',
-      product_category: 'Education',
-      product_profile: 'general',
+      product_name: "Eduverse",
+      product_category: "Education",
+      product_profile: "general",
       cus_name,
       cus_email,
-      cus_add1: 'Dhaka',
-      cus_city: 'Dhaka',
-      cus_country: 'Bangladesh',
-      cus_phone: '01711111111',
+      cus_add1: "Dhaka",
+      cus_city: "Dhaka",
+      cus_country: "Bangladesh",
+      cus_phone: "01711111111",
       ship_name: cus_name,
-      ship_add1: 'Dhaka',
-      ship_city: 'Dhaka',
-      ship_country: 'Bangladesh',
-      shipping_method: 'Courier',
+      ship_add1: "Dhaka",
+      ship_city: "Dhaka",
+      ship_country: "Bangladesh",
+      shipping_method: "Courier",
       ship_postcode: 1000,
     };
     // but ekhan theke response ashe
     const iniResponse = await axios({
-      url: 'https://sandbox.sslcommerz.com/gwprocess/v4/api.php',
-      method: 'POST',
+      url: "https://sandbox.sslcommerz.com/gwprocess/v4/api.php",
+      method: "POST",
       data: data,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     });
-    console.log('Ini response', iniResponse);
-    const paymentsCollection = await dbConnect('payments');
+    console.log("Ini response", iniResponse);
+    const paymentsCollection = await dbConnect("payments");
 
     const res = await paymentsCollection.insertOne({
       amount,
@@ -60,7 +59,7 @@ export async function POST(req) {
       cus_name,
       course_name,
       tran_id,
-      status: 'pending',
+      status: "pending",
     });
     console.log(res);
 

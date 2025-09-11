@@ -6,7 +6,10 @@ import Instructors from "./components/instructor-section/Instructors";
 import CoursesHome from "./coursesHome/page";
 
 
+
+
 export default function Home() {
+ 
   return (
     <div className="">
 
@@ -16,6 +19,7 @@ export default function Home() {
       <Instructors/>
       <FAQ/>
       <ReviewsPage/>
+       
     </div>
   );
 }

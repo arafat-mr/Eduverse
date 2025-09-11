@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
+import WithRole from '@/app/components/WithRole';
 import Swal from 'sweetalert2';
 
 const CourseForm = () => {
@@ -25,7 +26,7 @@ const CourseForm = () => {
       weeklyClasses: '',
       totalHours: '',
       project: '',
-      courseImage: '', // Will now store the Cloudinary URL
+      courseImage: '',
       price: '',
       originalPrice: '',
       discount: '',
@@ -53,13 +54,13 @@ const CourseForm = () => {
         name: '',
         designation: '',
         experience: '',
-        profileImage: '', // Will now store the Cloudinary URL
+        profileImage: '',
         bio: '',
       },
     },
   });
 
-  // Hardcoded categories from the provided data
+  // Hardcoded categories
   const categories = [
     'Web & Software Development',
     'Artificial Intelligence & Machine Learning',
@@ -69,42 +70,21 @@ const CourseForm = () => {
   ];
 
   // Field Arrays
-  const {
-    fields: curriculumFields,
-    append: appendCurriculum,
-    remove: removeCurriculum,
-  } = useFieldArray({ control, name: 'courseOverview.tabs.Curriculum' });
+  const { fields: curriculumFields, append: appendCurriculum, remove: removeCurriculum } =
+    useFieldArray({ control, name: 'courseOverview.tabs.Curriculum' });
+  const { fields: softwareFields, append: appendSoftware, remove: removeSoftware } =
+    useFieldArray({ control, name: "courseOverview.tabs['Software Used']" });
+  const { fields: careerFields, append: appendCareer, remove: removeCareer } =
+    useFieldArray({ control, name: "courseOverview.tabs['Career Opportunities']" });
+  const { fields: projectFields, append: appendProject, remove: removeProject } =
+    useFieldArray({ control, name: 'courseOverview.tabs.Projects' });
 
-  const {
-    fields: softwareFields,
-    append: appendSoftware,
-    remove: removeSoftware,
-  } = useFieldArray({ control, name: "courseOverview.tabs['Software Used']" });
-
-  const {
-    fields: careerFields,
-    append: appendCareer,
-    remove: removeCareer,
-  } = useFieldArray({
-    control,
-    name: "courseOverview.tabs['Career Opportunities']",
-  });
-
-  const {
-    fields: projectFields,
-    append: appendProject,
-    remove: removeProject,
-  } = useFieldArray({ control, name: 'courseOverview.tabs.Projects' });
-
-  // Cloudinary upload logic
+  // Cloudinary upload
   const uploadImage = async (file, type) => {
     if (!file) return;
 
-    if (type === 'course') {
-      setUploadingCourse(true);
-    } else {
-      setUploadingInstructor(true);
-    }
+    if (type === 'course') setUploadingCourse(true);
+    else setUploadingInstructor(true);
 
     try {
       const sigRes = await fetch('/api/cloudinary-signature');
@@ -116,80 +96,53 @@ const CourseForm = () => {
       formData.append('signature', signature);
       formData.append('api_key', apiKey);
 
-      const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      });
 
       const data = await res.json();
       if (data.secure_url) {
-        if (type === 'course') {
-          setValue('courseImage', data.secure_url);
-        } else {
-          setValue('instructor.profileImage', data.secure_url);
-        }
+        if (type === 'course') setValue('courseImage', data.secure_url);
+        else setValue('instructor.profileImage', data.secure_url);
+
         Swal.fire('Success', 'Image uploaded successfully!', 'success');
       } else {
-        Swal.fire('Error', 'Image upload failed. Please try again.', 'error');
+        Swal.fire('Error', 'Image upload failed.', 'error');
       }
     } catch (err) {
       console.error('Signed upload error:', err);
       Swal.fire('Error', 'Something went wrong during image upload.', 'error');
     } finally {
-      if (type === 'course') {
-        setUploadingCourse(false);
-      } else {
-        setUploadingInstructor(false);
-      }
+      if (type === 'course') setUploadingCourse(false);
+      else setUploadingInstructor(false);
     }
   };
 
   const handleAddCourse = async (data) => {
     try {
-      // 1️⃣ Add course to main courses collection
       const res = await fetch('/api/courses/add-course-details', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) {
-        throw new Error('Failed to add course to main collection');
-      }
+      if (!res.ok) throw new Error('Failed to add course');
 
-      // 2️⃣ Add default empty module to course_resources
       const resourceRes = await fetch('/api/video/place-inside-resource', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          category: data.category,
-          title: data.title, // course title
-        }),
+        body: JSON.stringify({ category: data.category, title: data.title }),
       });
 
       if (!resourceRes.ok) {
-        console.warn(
-          'Course added to main collection but failed in course_resources'
-        );
-        Swal.fire(
-          'Warning',
-          'Course added, but failed to update course resources.',
-          'warning'
-        );
+        Swal.fire('Warning', 'Course added but failed in resources.', 'warning');
       } else {
         Swal.fire('Success', 'Course added successfully!', 'success');
-        // reset(); // যদি form reset করতে চাও
       }
-    } catch (error) {
-      console.error(error);
-      Swal.fire(
-        'Error',
-        'Error adding course. Check console for details.',
-        'error'
-      );
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error', 'Error adding course. Check console.', 'error');
     }
   };
 
@@ -199,11 +152,9 @@ const CourseForm = () => {
   return (
     <form
       onSubmit={handleSubmit(handleAddCourse)}
-      className="max-w-5xl mx-auto p-6 bg-gray-800 shadow-2xl rounded-xl space-y-6 text-white"
+      className="max-w-5xl mx-auto p-6 bg-blue-900 shadow-2xl rounded-xl space-y-6 text-white"
     >
-      <h2 className="text-4xl font-bold text-center text-white tracking-wide">
-        Add New Course
-      </h2>
+      <h2 className="text-4xl font-bold text-center tracking-wide mb-4">Add New Course</h2>
 
       {/* Basic Info */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -211,13 +162,11 @@ const CourseForm = () => {
           {...register('title', { required: true })}
           type="text"
           placeholder="Course Title"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
-
-        {/* Category Dropdown */}
         <select
           {...register('category', { required: true })}
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white bg-blue-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         >
           <option value="">Select a category</option>
           {categories.map((cat) => (
@@ -231,62 +180,58 @@ const CourseForm = () => {
           {...register('totalClasses', { required: true })}
           type="number"
           placeholder="Total Classes"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('courseDuration', { required: true })}
           type="text"
           placeholder="Course Duration"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('weeklyClasses', { required: true })}
           type="number"
           placeholder="Weekly Classes"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('totalHours', { required: true })}
           type="number"
           placeholder="Total Hours"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('project', { required: true })}
           type="number"
           placeholder="Projects"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('price', { required: true })}
           type="number"
           placeholder="Price"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('originalPrice')}
           type="number"
           placeholder="Original Price (Optional)"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('discount')}
           type="text"
           placeholder="Discount (Optional)"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
       </div>
 
-      {/* Course Image Upload */}
+      {/* Course Image */}
       <div>
         <label className="block font-semibold mb-2">Course Image</label>
         {courseImage ? (
           <div className="relative w-40 h-40">
-            <img
-              src={courseImage}
-              alt="Course Preview"
-              className="w-40 h-40 object-cover rounded shadow"
-            />
+            <img src={courseImage} alt="Course Preview" className="w-40 h-40 object-cover rounded shadow" />
             <button
               type="button"
               onClick={() => setValue('courseImage', '')}
@@ -301,95 +246,56 @@ const CourseForm = () => {
               type="file"
               accept="image/*"
               onChange={(e) => uploadImage(e.target.files[0], 'course')}
-              className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
-            {uploadingCourse && (
-              <p className="text-sm mt-2">Uploading course image...</p>
-            )}
+            {uploadingCourse && <p className="text-sm mt-2">Uploading course image...</p>}
           </div>
         )}
-        <input
-          type="hidden"
-          {...register('courseImage', { required: 'Course image is required' })}
-        />
-        {errors.courseImage && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.courseImage.message}
-          </p>
-        )}
+        <input type="hidden" {...register('courseImage', { required: 'Course image is required' })} />
+        {errors.courseImage && <p className="text-red-500 text-sm mt-1">{errors.courseImage.message}</p>}
       </div>
 
       {/* Introduction */}
       <textarea
         {...register('courseIntroduction')}
         placeholder="Course Introduction"
-        className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-24"
+        className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-24"
       />
 
       {/* Overview */}
-      <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">
-        Course Overview
-      </h3>
+      <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">Course Overview</h3>
       <textarea
         {...register('courseOverview.brief')}
         placeholder="Brief Overview"
-        className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-20"
+        className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-20"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {[
-          'Total Classes',
-          'Course Duration',
-          'Weekly Classes',
-          'Total Hours',
-          'Projects',
-        ].map((key) => (
+        {['Total Classes', 'Course Duration', 'Weekly Classes', 'Total Hours', 'Projects'].map((key) => (
           <input
             key={key}
             {...register(`courseOverview.details.${key}`)}
             placeholder={key}
-            className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           />
         ))}
       </div>
 
       {/* Dynamic Sections */}
       {[
-        {
-          label: 'Curriculum',
-          fields: curriculumFields,
-          append: appendCurriculum,
-          remove: removeCurriculum,
-        },
-        {
-          label: 'Software Used',
-          fields: softwareFields,
-          append: appendSoftware,
-          remove: removeSoftware,
-        },
-        {
-          label: 'Career Opportunities',
-          fields: careerFields,
-          append: appendCareer,
-          remove: removeCareer,
-        },
-        {
-          label: 'Projects',
-          fields: projectFields,
-          append: appendProject,
-          remove: removeProject,
-        },
+        { label: 'Curriculum', fields: curriculumFields, append: appendCurriculum, remove: removeCurriculum },
+        { label: 'Software Used', fields: softwareFields, append: appendSoftware, remove: removeSoftware },
+        { label: 'Career Opportunities', fields: careerFields, append: appendCareer, remove: removeCareer },
+        { label: 'Projects', fields: projectFields, append: appendProject, remove: removeProject },
       ].map(({ label, fields, append, remove }) => (
         <div key={label}>
-          <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">
-            {label}
-          </h3>
+          <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">{label}</h3>
           {fields.map((field, index) => (
             <div key={field.id} className="flex gap-2 mb-2">
               <input
                 {...register(`courseOverview.tabs['${label}'].${index}`)}
                 placeholder={`${label} Item ${index + 1}`}
-                className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               />
               <button
                 type="button"
@@ -411,39 +317,31 @@ const CourseForm = () => {
       ))}
 
       {/* Instructor Info */}
-      <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">
-        Instructor Info
-      </h3>
+      <h3 className="text-xl font-semibold text-white border-b border-gray-400 pb-2 mt-6">Instructor Info</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input
           {...register('instructor.name')}
           placeholder="Instructor Name"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('instructor.designation')}
           placeholder="Designation"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
         <input
           {...register('instructor.experience')}
           placeholder="Experience"
-          className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
       </div>
 
-      {/* Instructor Image Upload */}
+      {/* Instructor Image */}
       <div>
-        <label className="block font-semibold mb-2">
-          Instructor Profile Image
-        </label>
+        <label className="block font-semibold mb-2">Instructor Profile Image</label>
         {instructorImage ? (
           <div className="relative w-32 h-32">
-            <img
-              src={instructorImage}
-              alt="Instructor Preview"
-              className="w-32 h-32 object-cover rounded-full shadow"
-            />
+            <img src={instructorImage} alt="Instructor Preview" className="w-32 h-32 object-cover rounded-full shadow" />
             <button
               type="button"
               onClick={() => setValue('instructor.profileImage', '')}
@@ -458,29 +356,22 @@ const CourseForm = () => {
               type="file"
               accept="image/*"
               onChange={(e) => uploadImage(e.target.files[0], 'instructor')}
-              className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
-            {uploadingInstructor && (
-              <p className="text-sm mt-2">Uploading instructor image...</p>
-            )}
+            {uploadingInstructor && <p className="text-sm mt-2">Uploading instructor image...</p>}
           </div>
         )}
         <input type="hidden" {...register('instructor.profileImage')} />
-        {errors.instructor?.profileImage && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.instructor.profileImage.message}
-          </p>
-        )}
       </div>
 
       {/* Instructor Bio */}
       <textarea
         {...register('instructor.bio')}
         placeholder="Instructor Bio"
-        className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-24"
+        className="w-full text-white border border-gray-300 rounded-lg px-4 py-2 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition h-24"
       />
 
-      {/* Submit Button */}
+      {/* Submit */}
       <button
         type="submit"
         className="w-full bg-gradient-to-r from-green-600 to-lime-600 hover:from-green-700 hover:to-lime-700 text-white px-6 py-3 rounded-lg text-lg font-semibold mt-6 transition transform hover:scale-105"
@@ -491,4 +382,4 @@ const CourseForm = () => {
   );
 };
 
-export default CourseForm;
+export default WithRole(CourseForm, ['admin']);
