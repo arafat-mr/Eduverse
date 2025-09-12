@@ -21,7 +21,10 @@ export async function GET(req) {
     // Step 1: Get all purchased course names
     const payments = await paymentsCollection
       .find({ cus_email: email, status: "success" })
+      
+      .sort({pay_at: -1})
       .project({ course_name: 1, _id: 0 })
+    
       .toArray();
 
     const courseNames = payments.map((p) => p.course_name);

@@ -26,7 +26,7 @@ courseTitle
 
     if (existing) {
       return new Response(
-        JSON.stringify({ error: "Certificate request already exists" }),
+        JSON.stringify({ error: "Certificate request already exists " }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }

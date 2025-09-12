@@ -14,7 +14,7 @@ import CourseCard from './Componets/CourseCard';
 import WithRole from '@/app/components/WithRole';
 
 function Enrollments() {
-  const user = useAuth();
+  const {user} = useAuth();
   const [userCoursesData, setUserCoursesData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -42,7 +42,7 @@ function Enrollments() {
   }, [user?.email]);
 
   if (loading) {
-    return <p className="text-center text-white">Loading courses <span className="loading text-white loading-spinner "></span></p>;
+    return <p className="text-center text-white items-center flex justify-center w-full h-60">Loading courses <span className="loading text-white loading-spinner "></span></p>;
   }
 
   if (error) {

@@ -22,7 +22,7 @@ export default function CourseDetailPage() {
   const [course, setCourse] = useState(null);
   const [activeTab, setActiveTab] = useState("Curriculum");
   const router = useRouter();
-  const user = useAuth();
+  const {user} = useAuth();
 
   useEffect(() => {
     fetch("/api/courses-data")
