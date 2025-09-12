@@ -120,7 +120,7 @@ export default function CertificateVerification() {
                   </p>
                   <p className="text-gray-800">
                     <span className="font-semibold">Course:</span>{" "}
-                    {result.data.courseName}
+                    {result.data.courseName || result.data.courseTitle}
                   </p>
                   <p className="text-gray-800">
                     <span className="font-semibold">Email:</span>{" "}
