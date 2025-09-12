@@ -29,6 +29,7 @@ export async function POST(request) {
         course_name,
         pay_at: new Date(),
         status: "success",
+        amount
       });
       console.log(insertPayment);
     }

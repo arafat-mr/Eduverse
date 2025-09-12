@@ -1,19 +1,24 @@
+
+
 import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server';
 
 export const middleware = async (req) => {
   const token = await getToken({ req });
   const isToken = Boolean(token);
+  const isUserRole = token?.role === 'admin' || token?.role === 'user';
 
-  const isAdminUser = token?.role == 'admin' || 'user';
+  const isPrivateRoute = req.nextUrl.pathname.startsWith("/dashboard")||
+   req.nextUrl.pathname.startsWith("/checkout") ||
+   req.nextUrl.pathname.startsWith("/payment")
 
+
+  if (isPrivateRoute && (!isToken || !isUserRole)) {
     
-    const isAdminSpecificRoute = req.nextUrl.pathname.startsWith("/dashboard");
+    const loginUrl = new URL('/login', req.url);
+    loginUrl.searchParams.set('callbackUrl', req.nextUrl.pathname + req.nextUrl.search);
+    return NextResponse.redirect(loginUrl);
+  }
 
-    if(isAdminSpecificRoute && !isAdminUser){
-        return NextResponse.redirect(new URL('/login',req.url));
-    }
-    return NextResponse.next();
-
-  
+  return NextResponse.next();
 };

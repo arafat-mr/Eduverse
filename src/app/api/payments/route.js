@@ -12,7 +12,7 @@ import { dbConnect } from "@/lib/dbConnect";
 export async function GET() {
   try {
     const col = await dbConnect("payments");
-    const payments = await col.find().toArray();
+    const payments = await col.find().sort({pay_at:-1}).toArray();
 
     return new Response(JSON.stringify(payments), {
       status: 200,
