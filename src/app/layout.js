@@ -37,7 +37,7 @@ const quicksand = Quicksand({
 export const metadata = {
   title: "Eduverse",
   icons: {
-    icon: "/icon.png", // ✅ path relative to public
+    icon: "/icon.png", 
   },
 };
 

@@ -31,7 +31,7 @@ export async function GET(req, { params }) {
       JSON.stringify({
         studentName: certificate.name,
         email: certificate.email,
-        courseName: certificate.courseName,
+        courseName: certificate.courseName || certificate.courseTitle,
         date: new Date(certificate.issuedAt).toLocaleDateString(),
         certificateId: certificate.certificateId,
       }),

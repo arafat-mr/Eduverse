@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function CertificateButtonClient() {
   const searchParams = useSearchParams();
   const courseTitle = searchParams.get("course");
-  const user = useAuth(); // full user object
+  const {user} = useAuth(); // full user object
   const [loading, setLoading] = useState(false);
 
   if (!user) return null; // hide if not logged in
@@ -42,7 +42,7 @@ export default function CertificateButtonClient() {
 
       if (!res.ok) throw new Error(data.error || "Something went wrong");
 
-      toast.success("✅ Certificate requested successfully!", {
+      toast.success(" Certificate requested successfully!", {
         position: "top-right",
         autoClose: 3000,
       });

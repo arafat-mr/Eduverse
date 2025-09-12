@@ -13,9 +13,17 @@ import {
 import useAuth from "@/app/hooks/useAuth";
 
 export default function CoursePaymentsChart() {
-  const user = useAuth(); // logged-in user
+  const {user,loading} = useAuth(); // logged-in user
   const [chartData, setChartData] = useState([]);
-  const [loading, setLoading] = useState(true);
+ 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 1024);
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   useEffect(() => {
     if (!user?.email) return;
@@ -65,19 +73,25 @@ export default function CoursePaymentsChart() {
         });
 
         setChartData(chartArray);
+        
       } catch (err) {
         console.error("❌ Fetch payments error:", err);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
     fetchPayments();
+   
+    
   }, [user]);
 
   if (loading)
     return (
-      <div className="text-center py-10 text-white">Loading chart...</div>
+      <div className="w-full h-60 flex justify-center items-center">
+        Loading chart{" "}
+        <span className="loading loading-spinner ml-2 text-white"></span>
+      </div>
     );
 
   return (
@@ -97,11 +111,15 @@ export default function CoursePaymentsChart() {
               vertical
               horizontal
             />
+
             <XAxis
               dataKey="date"
               stroke="#ffffff"
               tick={{ fill: "#ffffff", fontSize: 14 }}
+              angle={isMobile ? -55 : 0}
+              textAnchor={isMobile ? "end" : "middle"}
               interval={0}
+              height={isMobile ? 80 : 30}
             />
             <YAxis
               allowDecimals={false}

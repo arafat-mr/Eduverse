@@ -7,7 +7,7 @@ import useAuth from "@/app/hooks/useAuth";
 
 export default function CertificateView() {
   const { certificateId } = useParams();
-  const user = useAuth();
+  const {user} = useAuth();
   const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
   const certificateRef = useRef(null);
@@ -91,7 +91,7 @@ export default function CertificateView() {
           </p>
 
           {/* Recipient Name */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-6 underline decoration-wavy">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-6 ">
             {certificate.name}
           </h2>
 
@@ -100,7 +100,7 @@ export default function CertificateView() {
             has successfully completed the course
           </p>
           <h3 className="text-2xl md:text-3xl font-semibold text-center text-gray-900 mb-6 italic">
-            “{certificate.courseTitle}”
+            “{certificate?.courseTitle || certificate.courseName}”
           </h3>
 
           {/* Description */}

@@ -20,7 +20,7 @@ export default function Banner() {
       <div className="relative grid grid-cols-12 place-content-center place-items-center text-center md:text-start px-6 sm:px-12 py-12 sm:py-20 gap-6 md:gap-10">
         {/* Left Side: Text Content */}
         <div className="col-span-12 md:col-span-6 space-y-6 z-10">
-          <h1 className="sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
+          <h1 className="sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
             <span id="header">
               Our Courses Will Make Learning Your Favorite Habit!
             </span>

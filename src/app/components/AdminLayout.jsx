@@ -90,8 +90,8 @@ export default function AdminLayout({ children }) {
         </div>
 
         {/* Outlet / main content */}
-        <main className="flex-1 p-6 bg-[#031043] overflow-auto">
-          <div className="rounded-xl shadow-xl p-6 overflow-auto bg-blue-900">
+        <main className="flex-1 p-4 bg-[#031043] overflow-auto">
+          <div className="rounded-xl shadow-xl  overflow-auto bg-blue-900">
             {children}
           </div>
         </main>

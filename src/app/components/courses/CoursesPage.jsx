@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/app/loading";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,11 +8,15 @@ import { useEffect, useState } from "react";
 export default function CoursesPage() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/courses-data")
       .then((res) => res.json())
-      .then((data) => setCategories(data[0]?.categories || []))
+      .then((data) => {
+        setCategories(data[0]?.categories || []);
+        setLoading(false)
+      })
       .catch((err) => console.error(err));
   }, []);
 
@@ -22,6 +27,12 @@ export default function CoursesPage() {
       course.title.toLowerCase().includes(searchTerm.toLowerCase())
     ),
   }));
+  if (loading)
+    return (
+      <div>
+        <Loading/>
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-blue-50 py-10 px-6 max-w-8xl mx-auto">
@@ -44,7 +55,7 @@ export default function CoursesPage() {
         <div key={idx} className="mb-16 max-w-7xl mx-auto">
           {cat.courses.length > 0 && (
             <>
-              <h2 className="text-3xl font-semibold mb-8 text-gray-50 border-b pb-2 border-gray-300">
+              <h2 className="text-3xl font-semibold mb-8 text-primary border-b pb-2 border-gray-300">
                 {cat.category}
               </h2>
 
