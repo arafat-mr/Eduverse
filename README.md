@@ -1,58 +1,50 @@
-Eduverse 📚✨
+📚 Eduverse
 
-An e-learning platform where learners can explore courses, complete quizzes, earn certificates, and track their progress. Admins can manage courses, users, and approve certificates.
+An e-learning platform where learners can explore courses, complete quizzes, earn certificates, and track progress. Admins can manage courses, users, revenue, and approve certificates.
 
-🚀 Features
-🎓 Learners
+✨ Features
+👨‍🎓 Learners
 
-Browse and enroll in courses.
+📖 Browse and enroll in courses
 
-Take quizzes and track scores.
+📝 Take quizzes and track scores
 
-Request certificates after course completion.
+🏅 Request certificates after completion
 
-View My Dashboard with:
+📊 Dashboard with:
 
-My Courses
+🎓 My Courses
 
-My Certificates
+📜 My Certificates
 
-Available Quizzes
+❓ Available Quizzes
 
-🧑‍🏫 Admins
+🛠️ Admins
 
-Manage all courses (create, update, delete).
+📚 Manage all courses (CRUD)
 
-View total revenue, users, and courses in the dashboard.
+👥 Manage users (roles & pagination)
 
-Review and approve/reject certificate requests.
+💰 View total revenue, users, courses in dashboard
 
-Manage users (pagination, roles: admin, vendor, rider, etc. as per your structure).
+✅ Approve or reject certificate requests
 
 🏆 Certificates
 
-Learners can apply for certificates after course completion.
+⏳ Pending → Approved flow
 
-Requests are stored in backend with a pending status.
+🖊️ Dynamic certificate with learner’s name, course & date
 
-Admin approval dynamically generates a certificate with:
+⬇️ Option to download / print
 
-Learner’s Name
+🖥️ Tech Stack
 
-Course Details
+⚛️ Frontend: Next.js, React, Tailwind CSS, Recharts, Framer Motion
 
-Completion Date
+🟢 Backend: Node.js, Express.js
 
-Option to download/print certificate.
+🍃 Database: MongoDB
 
-🛠️ Tech Stack
+🔑 Auth: Firebase Authentication
 
-Frontend: Next.js, React, Tailwind CSS, Recharts (for analytics), Framer Motion (animations)
-
-Backend: Node.js, Express.js
-
-Database: MongoDB (with Firebase Authentication)
-
-Payments: Stripe (for premium courses/products)
-
-Authentication: Firebase Auth (Google login, JWT verification)
+💳 Payments: Stripe
