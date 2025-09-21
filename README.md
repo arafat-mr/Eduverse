@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Eduverse 📚✨
 
-## Getting Started
+An e-learning platform where learners can explore courses, complete quizzes, earn certificates, and track their progress. Admins can manage courses, users, and approve certificates.
 
-First, run the development server:
+🚀 Features
+🎓 Learners
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Browse and enroll in courses.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Take quizzes and track scores.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Request certificates after course completion.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+View My Dashboard with:
 
-## Learn More
+My Courses
 
-To learn more about Next.js, take a look at the following resources:
+My Certificates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Available Quizzes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🧑‍🏫 Admins
 
-## Deploy on Vercel
+Manage all courses (create, update, delete).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+View total revenue, users, and courses in the dashboard.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Review and approve/reject certificate requests.
+
+Manage users (pagination, roles: admin, vendor, rider, etc. as per your structure).
+
+🏆 Certificates
+
+Learners can apply for certificates after course completion.
+
+Requests are stored in backend with a pending status.
+
+Admin approval dynamically generates a certificate with:
+
+Learner’s Name
+
+Course Details
+
+Completion Date
+
+Option to download/print certificate.
+
+🛠️ Tech Stack
+
+Frontend: Next.js, React, Tailwind CSS, Recharts (for analytics), Framer Motion (animations)
+
+Backend: Node.js, Express.js
+
+Database: MongoDB (with Firebase Authentication)
+
+Payments: Stripe (for premium courses/products)
+
+Authentication: Firebase Auth (Google login, JWT verification)
